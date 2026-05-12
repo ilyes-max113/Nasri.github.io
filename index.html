@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilyes Nasr Chatti | Portfolio Technicien</title>
+    <style>
+        :root {
+            --bg-dark: #0a0b10;
+            --accent-blue: #00d4ff;
+            --accent-purple: #9d50bb;
+            --text-gray: #a0a0c0;
+            --neon-glow: 0 0 15px rgba(0, 212, 255, 0.4);
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Effet de grain de fond */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, var(--bg-dark) 100%),
+                        url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-bottom: 1px solid rgba(157, 80, 187, 0.3);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            filter: drop-shadow(var(--neon-glow));
+        }
+
+        .typewriter {
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        section {
+            padding: 80px 10%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: var(--accent-purple);
+            border-left: 4px solid var(--accent-blue);
+            padding-left: 15px;
+            text-transform: uppercase;
+            font-size: 1.8rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--accent-blue);
+            box-shadow: var(--neon-glow);
+            transform: translateY(-5px);
+        }
+
+        .tech-tag {
+            display: inline-block;
+            background: rgba(157, 80, 187, 0.2);
+            color: var(--accent-purple);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 10px;
+            border: 1px solid var(--accent-purple);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            border-top: 1px solid rgba(157, 80, 187, 0.2);
+        }
+
+        /* Animation simple pour les sections */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 1s all ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <p style="color: var(--text-gray); margin-bottom: 0;">&lt; SI / RESEAUX &gt;</p>
+        <h1>ILYES NASR CHATTI</h1>
+        <div class="typewriter" id="typewriter">Technicien Systèmes et Réseaux en alternance...</div>
+    </header>
+
+    <section id="bio" class="reveal">
+        <h2>01. Présentation</h2>
+        <div class="card">
+            <p>Étudiant en <strong>BTS SIO</strong>, je forge mon expertise dans le monde de l'infrastructure. Passionné par l'optimisation des systèmes et la sécurisation des flux de données, j'allie curiosité technologique et rigueur opérationnelle pour bâtir le SI de demain.</p>
+        </div>
+    </section>
+
+    <section id="entreprise" class="reveal">
+        <h2>02. L'Alternance : Transports Suma</h2>
+        <div class="card">
+            <h3>Support & Infrastructure IT</h3>
+            <p>Au sein d'un acteur majeur de la mobilité régionale, j'assure la disponibilité des services critiques :</p>
+            <ul>
+                <li><strong>Préparation & Déploiement :</strong> Masterisation et mise en service des postes de travail.</li>
+                <li><strong>Support Utilisateurs :</strong> Diagnostic et résolution d'incidents (Niveau 1 & 2).</li>
+                <li><strong>Cloud & Data :</strong> Migration et administration des environnements de stockage collaboratif.</li>
+                <li><strong>Réseau :</strong> Troubleshooting LAN/WAN sur les différents dépôts.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="projets" class="reveal">
+        <h2>03. Projets Techniques</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Projet "Sentinel"</h3>
+                <p>Mise en place d'une instance <strong>Adguard Home</strong> pour le filtrage DNS et la protection contre les malwares au niveau du réseau local.</p>
+                <span class="tech-tag">DNS</span><span class="tech-tag">Sécurité</span>
+            </div>
+            <div class="card">
+                <h3>Virtual Lab</h3>
+                <p>Déploiement d'un hyperviseur <strong>Proxmox</strong> pour simuler des architectures client-serveur et tester des solutions Open-Source (Samba, GLPI).</p>
+                <span class="tech-tag">Virtualisation</span><span class="tech-tag">Linux</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="veille" class="reveal">
+        <h2>04. Veille Technologique</h2>
+        <div class="card">
+            <p>Mon flux d'actualité est centré sur :</p>
+            <p style="color: var(--accent-blue); font-family: monospace;">> Cybersécurité : Nouvelles failles Zero-Day<br>> Cloud Computing : Hybridation Azure/AWS<br>> Automatisation : Ansible & Scripting Bash</p>
+        </div>
+    </section>
+
+    <div class="contact-footer">
+        ilyeschatti13@icloud.com | 07 48 61 38 99 | Vitrolles, France
+    </div>
+
+    <script>
+        // Animation au défilement
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Lancer une fois au chargement
+        reveal();
+    </script>
+</body>
+</html>
