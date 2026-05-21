@@ -24,7 +24,17 @@
             padding: 0;
         }
 
-        /* Navbar style Cyber */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.05));
+            background-size: 100% 4px, 6px 100%;
+            z-index: 1000;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
         nav {
             background: rgba(12, 14, 23, 0.8);
             backdrop-filter: blur(10px);
@@ -46,7 +56,7 @@
 
         .container {
             max-width: 1200px;
-            margin: 100px auto p;
+            margin: 100px auto 0;
             padding: 40px 20px;
         }
 
@@ -88,6 +98,7 @@
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 25px;
+            cursor: pointer;
             transition: all 0.3s ease;
         }
 
@@ -134,13 +145,73 @@
             color: #00ff00;
             overflow-x: auto;
         }
+
+        /* --- STYLES DES FENETRES MODALES (SURGISSANTES) --- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(6, 7, 13, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 200;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #0d0f1d;
+            border: 2px solid var(--accent-blue);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+            width: 90%;
+            max-width: 650px;
+            padding: 35px;
+            border-radius: 16px;
+            position: relative;
+            animation: modalOpen 0.3s ease-out;
+        }
+
+        @keyframes modalOpen {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px; right: 20px;
+            color: var(--text-muted);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .close-btn:hover { color: #fff; }
+
+        .modal h3 {
+            color: var(--accent-blue);
+            margin-top: 0;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            font-family: monospace;
+        }
+
+        .modal-body {
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .modal-body ul {
+            padding-left: 20px;
+        }
+        .modal-body li {
+            margin-bottom: 8px;
+        }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="logo">[ INC_SYSTEM_V2 ]</div>
-        <div style="font-family: monospace; color: var(--text-muted);">STATUS: ONLINE</div>
+        <div style="font-family: monospace; color: var(--text-muted);">STATUS: ONLINE | CLIQUEZ SUR LES PROJETS</div>
     </nav>
 
     <div class="container">
@@ -150,48 +221,48 @@
             <p style="color: var(--text-muted); max-width: 600px; margin: 15px auto 0;">Plateforme technique centralisant mes projets d'ingénierie système, déploiements réseaux et architectures de virtualisation.</p>
         </div>
 
-        <h2>// PROJETS & LABS RECENT</h2>
+        <h2>// PROJETS & LABS RECENT (CLIQUEZ POUR DETAIL)</h2>
         
         <div class="grid-projects">
-            <div class="project-card">
+            <div class="project-card" onclick="openModal('modal1')">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                     <span class="status-badge">PRODUCTION</span>
                 </div>
                 <h3 class="project-title">Centralisation Vidéoprotection Multi-Sites</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem;">Déploiement et sécurisation d'une infrastructure de surveillance centralisée pour les différents dépôts de l'entreprise. Configuration des accès maîtres et isolation stricte des sous-comptes.</p>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Déploiement et sécurisation d'une infrastructure de surveillance centralisée pour les différents dépôts logistiques...</p>
                 <div class="tech-stack">
                     <span>Sécurité</span><span>Réseau LAN/WAN</span><span>Gestion Droits</span>
                 </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" onclick="openModal('modal2')">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                     <span class="status-badge">LABS EN SERVICE</span>
                 </div>
                 <h3 class="project-title">Cluster de Virtualisation Proxmox VE</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem;">Création et administration d'un environnement virtualisé complet. Déploiement de machines virtuelles (VM) et de conteneurs Linux (CT) légers pour l'hébergement de services internes.</p>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Création et administration d'un environnement virtualisé complet. Déploiement de machines virtuelles (VM) et conteneurs Linux...</p>
                 <div class="tech-stack">
-                    <span>Proxmox</span><span>Linux</span><span>Virtualisation</span><span>CT/VM</span>
+                    <span>Proxmox</span><span>Linux</span><span>Virtualisation</span>
                 </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" onclick="openModal('modal3')">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                     <span class="status-badge">PRODUCTION</span>
                 </div>
                 <h3 class="project-title">Gestion Console Google Workspace</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem;">Administration complète du domaine d'entreprise, automatisation des processus d'on-boarding et off-boarding, recyclage d'adresses et gestion des politiques de sécurité des comptes.</p>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Administration complète du domaine d'entreprise, automatisation des processus d'on-boarding et off-boarding des comptes...</p>
                 <div class="tech-stack">
                     <span>SaaS</span><span>Google Console</span><span>Sécurité ID</span>
                 </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" onclick="openModal('modal4')">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                     <span class="status-badge" style="color: #ffa500; border-color: rgba(255,165,0,0.3);">LABS EN COURS</span>
                 </div>
-                <h3 class="project-title">Serveur de Stockage Samba & Liaison AD</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem;">Mise en place d'un partage de fichiers réseau sous Linux couplé à un filtrage DNS Adguard Home pour sécuriser et assainir les requêtes réseau de l'infrastructure.</p>
+                <h3 class="project-title">Serveur de Stockage Samba & AD</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Mise en place d'un partage de fichiers réseau sous Linux couplé à un filtrage DNS complet avec Adguard Home...</p>
                 <div class="tech-stack">
                     <span>Samba</span><span>Active Directory</span><span>Adguard Home</span>
                 </div>
@@ -208,5 +279,83 @@
         </div>
     </div>
 
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
+            <h3>// Fiche Projet : Vidéoprotection Multi-sites</h3>
+            <div class="modal-body">
+                <p><b>Contexte industriel (Transports Suma) :</b> Centralisation des flux vidéo pour superviser l'ensemble des entrepôts régionaux de l'entreprise.</p>
+                <h4>Détails des Interventions :</h4>
+                <ul>
+                    <li>Configuration et administration des serveurs d'enregistrement maîtres (NVR).</li>
+                    <li>Création de sous-comptes utilisateurs avec politiques de privilèges minimales pour préserver la confidentialité.</li>
+                    <li>Routage des flux à travers le réseau WAN pour interconnecter les dépôts distants de manière sécurisée.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal2')">&times;</span>
+            <h3>// Fiche Projet : Hyperviseur Proxmox VE</h3>
+            <div class="modal-body">
+                <p><b>Environnement Infra Lab :</b> Conception d'une infrastructure virtualisée de test pour simuler des services de production en entreprise.</p>
+                <h4>Détails des Interventions :</h4>
+                <ul>
+                    <li>Installation de Proxmox VE sur architecture dédiée avec gestion des interfaces réseaux physiques (Bridges).</li>
+                    <li>Déploiement de serveurs Linux (Debian/Ubuntu) sous forme de conteneurs LXC légers pour optimiser l'usage des ressources matérielles.</li>
+                    <li>Configuration de règles de stockage (LVM-Thin) et ordonnancement des snapshots de sauvegarde automatique.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal3')">&times;</span>
+            <h3>// Fiche Projet : Console Google Workspace</h3>
+            <div class="modal-body">
+                <p><b>Administration de domaine d'entreprise :</b> Gestion centralisée de l'ensemble des identités et des applications cloud de la structure logistique.</p>
+                <h4>Détails des Interventions :</h4>
+                <ul>
+                    <li>Gestion du cycle complet des comptes du domaine professionnel : création, attribution de licences, suspension et archivage sécurisé (Off-boarding).</li>
+                    <li>Configuration des règles de sécurité (authentification forte, politiques de mots de passe, restrictions de terminaux).</li>
+                    <li>Supervision et nettoyage des alias et des listes de diffusion pour optimiser la clarté de l'annuaire d'entreprise.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal4')">&times;</span>
+            <h3>// Fiche Projet : Stockage Samba & Adguard Home</h3>
+            <div class="modal-body">
+                <p><b>Intégration Systèmes Hybrides :</b> Déploiement de serveurs de fichiers Linux intégrés à une gestion centralisée des identités et protection des flux DNS.</p>
+                <h4>Détails des Interventions :</h4>
+                <ul>
+                    <li>Mise en place de partages réseaux sécurisés via le protocole SMB (Samba) avec jonction à un annuaire Active Directory (AD).</li>
+                    <li>Configuration des ACLs (droits d'accès) Linux pour mapper fidèlement les groupes de sécurité Windows.</li>
+                    <li>Déploiement d'une instance Adguard Home pour intercepter, filtrer et bloquer les requêtes malicieuses au niveau de la passerelle locale.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(id) {
+            document.getElementById(id).style.display = "flex";
+        }
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
+        }
+        // Fermer la fenêtre si on clique en dehors de la boîte
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
