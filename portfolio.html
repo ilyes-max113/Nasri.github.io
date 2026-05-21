@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilyes Nasr Chatti | Cyber Portfolio v2</title>
+    <style>
+        :root {
+            --bg-main: #06070d;
+            --bg-card: #0c0e17;
+            --accent-blue: #00ffff;
+            --accent-purple: #9d4edd;
+            --text-main: #f8fafc;
+            --text-muted: #64748b;
+            --border: rgba(0, 255, 255, 0.15);
+            --glow-blue: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar style Cyber */
+        nav {
+            background: rgba(12, 14, 23, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; width: 100%; z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 5%;
+            box-sizing: border-box;
+        }
+
+        nav .logo {
+            font-family: monospace;
+            font-weight: bold;
+            color: var(--accent-blue);
+            text-shadow: var(--glow-blue);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 100px auto p;
+            padding: 40px 20px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            border: 1px solid var(--border);
+            background: radial-gradient(circle at center, #111424 0%, var(--bg-main) 100%);
+            border-radius: 16px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            color: var(--accent-blue);
+            font-family: monospace;
+            border-left: 4px solid var(--accent-purple);
+            padding-left: 15px;
+            margin-top: 50px;
+        }
+
+        .grid-projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-purple);
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(157, 78, 221, 0.2);
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            color: #fff;
+            margin-top: 0;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: rgba(0, 255, 255, 0.1);
+            color: var(--accent-blue);
+            padding: 3px 10px;
+            font-size: 0.8rem;
+            border-radius: 20px;
+            font-family: monospace;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .tech-stack span {
+            display: inline-block;
+            background: #1e293b;
+            color: #94a3b8;
+            padding: 4px 8px;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            margin-right: 5px;
+            margin-top: 10px;
+        }
+
+        .terminal-block {
+            background: #020205;
+            border: 1px solid #1e293b;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            border-radius: 8px;
+            color: #00ff00;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">[ INC_SYSTEM_V2 ]</div>
+        <div style="font-family: monospace; color: var(--text-muted);">STATUS: ONLINE</div>
+    </nav>
+
+    <div class="container">
+        <div class="hero">
+            <h1>ILYES NASR CHATTI</h1>
+            <p style="color: var(--accent-blue); font-family: monospace; margin-top: 10px;">> TECHNICIEN INFRASTRUCTURES & INFRA-LABS</p>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 15px auto 0;">Plateforme technique centralisant mes projets d'ingénierie système, déploiements réseaux et architectures de virtualisation.</p>
+        </div>
+
+        <h2>// PROJETS & LABS RECENT</h2>
+        
+        <div class="grid-projects">
+            <div class="project-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <span class="status-badge">PRODUCTION</span>
+                </div>
+                <h3 class="project-title">Centralisation Vidéoprotection Multi-Sites</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Déploiement et sécurisation d'une infrastructure de surveillance centralisée pour les différents dépôts de l'entreprise. Configuration des accès maîtres et isolation stricte des sous-comptes.</p>
+                <div class="tech-stack">
+                    <span>Sécurité</span><span>Réseau LAN/WAN</span><span>Gestion Droits</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <span class="status-badge">LABS EN SERVICE</span>
+                </div>
+                <h3 class="project-title">Cluster de Virtualisation Proxmox VE</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Création et administration d'un environnement virtualisé complet. Déploiement de machines virtuelles (VM) et de conteneurs Linux (CT) légers pour l'hébergement de services internes.</p>
+                <div class="tech-stack">
+                    <span>Proxmox</span><span>Linux</span><span>Virtualisation</span><span>CT/VM</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <span class="status-badge">PRODUCTION</span>
+                </div>
+                <h3 class="project-title">Gestion Console Google Workspace</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Administration complète du domaine d'entreprise, automatisation des processus d'on-boarding et off-boarding, recyclage d'adresses et gestion des politiques de sécurité des comptes.</p>
+                <div class="tech-stack">
+                    <span>SaaS</span><span>Google Console</span><span>Sécurité ID</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <span class="status-badge" style="color: #ffa500; border-color: rgba(255,165,0,0.3);">LABS EN COURS</span>
+                </div>
+                <h3 class="project-title">Serveur de Stockage Samba & Liaison AD</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Mise en place d'un partage de fichiers réseau sous Linux couplé à un filtrage DNS Adguard Home pour sécuriser et assainir les requêtes réseau de l'infrastructure.</p>
+                <div class="tech-stack">
+                    <span>Samba</span><span>Active Directory</span><span>Adguard Home</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>// ARCHITECTURE TECHNIQUE & LOGS SYSTEME</h2>
+        <div class="terminal-block">
+            ilyes@nasri-root:~$ show network --status<br>
+            <span style="color: #fff;">[IP_LAN] 192.168.x.x | [DHCP] ACTIVE | [DNS_FILTER] ADGUARD OPERATIONAL</span><br>
+            ilyes@nasri-root:~$ show certs --list<br>
+            <span style="color: #ffa500;">[CISCO CCNA] - TRAINING IN PROGRESS (Modules : Routage, Commutation, IPv4/IPv6)</span><br>
+            ilyes@nasri-root:~$ _
+        </div>
+    </div>
+
+</body>
+</html>
