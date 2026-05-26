@@ -1,0 +1,1781 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio professionnel d'Ilyes Nasr Chatti - Alternant Technicien Systèmes et Réseaux en 1ère année de BTS SIO SISR chez Transports Suma.">
+    <title>SI-MONITOR // Ilyes Nasr Chatti - Portfolio SISR</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- SYSTEM DESIGN & VARIABLES --- */
+        :root {
+            --bg-grid-color: rgba(14, 165, 233, 0.04);
+            --bg-grid-color-major: rgba(14, 165, 233, 0.08);
+            --bg-main: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-dark-console: #f1f5f9;
+            
+            --border-tech: rgba(14, 165, 233, 0.25);
+            --border-tech-active: #0ea5e9;
+            --border-faint: #e2e8f0;
+            
+            --primary: #0ea5e9; /* Cyan */
+            --primary-hover: #0284c7;
+            --secondary: #1e3a8a; /* Cobalt/Marine */
+            --secondary-light: #3b82f6;
+            
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --text-navy: #1e3a8a;
+            --text-cyan: #0284c7;
+            
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: 'Fira Code', Consolas, monospace;
+            
+            --shadow-sm: 0 1px 3px rgba(30, 58, 138, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(30, 58, 138, 0.05), 0 2px 4px -1px rgba(30, 58, 138, 0.03);
+            --shadow-lg: 0 10px 25px -5px rgba(30, 58, 138, 0.08), 0 8px 10px -6px rgba(30, 58, 138, 0.08);
+            
+            --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* --- RESET & BASIC STYLES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+            
+            /* Blueprint Grid Pattern */
+            background-image: 
+                linear-gradient(var(--bg-grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--bg-grid-color) 1px, transparent 1px),
+                linear-gradient(var(--bg-grid-color-major) 1px, transparent 1px),
+                linear-gradient(90deg, var(--bg-grid-color-major) 1px, transparent 1px);
+            background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
+            background-position: center center;
+        }
+
+        /* Subtle Blueprint Decorative Elements */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: radial-gradient(circle at 50% 30%, rgba(14, 165, 233, 0.03) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* --- HEADER / TOP BAR --- */
+        .top-bar {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-tech);
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .system-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--secondary);
+            letter-spacing: -0.025em;
+        }
+
+        .system-title span {
+            color: var(--primary);
+        }
+
+        .sys-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(14, 165, 233, 0.08);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-cyan);
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7);
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 6px rgba(14, 165, 233, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(14, 165, 233, 0);
+            }
+        }
+
+        .sys-metrics {
+            display: flex;
+            gap: 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .metric-item strong {
+            color: var(--secondary);
+        }
+
+        /* --- MAIN LAYOUT CONTAINER --- */
+        .dashboard-container {
+            max-width: 1440px;
+            width: 100%;
+            margin: 1.5rem auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 1.5rem;
+            flex-grow: 1;
+            z-index: 10;
+        }
+
+        /* --- LEFT SIDEBAR (MONITOR PROFILE) --- */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .profile-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-tech);
+            border-radius: 12px;
+            padding: 1.75rem;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .profile-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary);
+        }
+
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border-bottom: 1px solid var(--border-faint);
+            padding-bottom: 1.25rem;
+        }
+
+        /* Custom schematic avatar */
+        .avatar-container {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(30, 58, 138, 0.1) 100%);
+            border: 2px dashed var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .avatar-container svg {
+            width: 40px;
+            height: 40px;
+            color: var(--secondary);
+        }
+
+        .avatar-badge {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            background-color: #ffffff;
+            border: 1px solid var(--border-tech);
+            border-radius: 50%;
+            padding: 2px;
+            display: flex;
+        }
+
+        .profile-name {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--secondary);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .profile-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-cyan);
+            margin-top: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .profile-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            justify-content: center;
+            margin-top: 0.75rem;
+        }
+
+        .tag {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            background-color: var(--bg-main);
+            color: var(--secondary);
+            border: 1px solid var(--border-faint);
+            border-radius: 4px;
+            transition: var(--transition-smooth);
+        }
+
+        .tag:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background-color: rgba(14, 165, 233, 0.05);
+        }
+
+        /* Metadata Table */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+        }
+
+        .info-table tr {
+            border-bottom: 1px solid var(--border-faint);
+        }
+
+        .info-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .info-table td {
+            padding: 0.65rem 0;
+            vertical-align: middle;
+        }
+
+        .info-table td.label {
+            font-family: var(--font-mono);
+            color: var(--text-muted);
+            font-weight: 600;
+            width: 40%;
+        }
+
+        .info-table td.value {
+            color: var(--secondary);
+            font-weight: 700;
+            text-align: right;
+        }
+
+        /* Action Buttons */
+        .action-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            background-color: var(--secondary);
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: 0 4px 10px rgba(30, 58, 138, 0.15);
+        }
+
+        .action-button:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(14, 165, 233, 0.25);
+        }
+
+        .action-button svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Small telemetry monitor block */
+        .telemetry-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-tech);
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .telemetry-title {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .telemetry-value {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--secondary);
+            display: flex;
+            align-items: baseline;
+            gap: 0.25rem;
+        }
+
+        .telemetry-value span {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* --- RIGHT CONTENT AREA (MODULES GRID) --- */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .grid-header {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-tech);
+            border-radius: 12px;
+            padding: 1.25rem 1.75rem;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .grid-header-title h2 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--secondary);
+            letter-spacing: -0.02em;
+        }
+
+        .grid-header-title p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.15rem;
+        }
+
+        .sys-counters {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .counter-box {
+            text-align: right;
+        }
+
+        .counter-label {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .counter-num {
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        /* --- THE 4 INTERACTIVE CARDS --- */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .module-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-tech);
+            border-radius: 12px;
+            padding: 1.75rem;
+            box-shadow: var(--shadow-md);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, transparent 45%, rgba(14, 165, 233, 0.1) 46%, var(--primary) 100%);
+            transition: var(--transition-smooth);
+        }
+
+        .module-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 20px -8px rgba(14, 165, 233, 0.25), var(--shadow-lg);
+        }
+
+        .module-card:hover::after {
+            transform: scale(1.2);
+        }
+
+        .module-card.active {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.3), var(--shadow-lg);
+        }
+
+        .card-top {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .module-id {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .module-id span {
+            width: 6px;
+            height: 6px;
+            background-color: var(--primary);
+            border-radius: 50%;
+        }
+
+        .module-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--secondary);
+            letter-spacing: -0.02em;
+        }
+
+        .module-preview {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            line-height: 1.5;
+        }
+
+        /* Minimal list/tag design on preview */
+        .preview-list {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .preview-bullet {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+            background-color: var(--bg-main);
+            color: var(--secondary);
+            border-radius: 4px;
+            border: 1px solid var(--border-faint);
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .preview-bullet svg {
+            width: 12px;
+            height: 12px;
+            color: var(--primary);
+        }
+
+        .card-footer {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-faint);
+            padding-top: 1rem;
+        }
+
+        .click-action {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            transition: var(--transition-smooth);
+        }
+
+        .module-card:hover .click-action {
+            color: var(--secondary);
+            gap: 0.6rem;
+        }
+
+        .click-action svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        /* --- SLIDE-OUT DETAIL PANEL (DRAWER) --- */
+        .detail-drawer {
+            position: fixed;
+            top: 0;
+            right: -520px; /* Hidden initially */
+            width: 500px;
+            height: 100vh;
+            background-color: #ffffff;
+            border-left: 1px solid var(--border-tech);
+            box-shadow: -10px 0 30px rgba(30, 58, 138, 0.15);
+            z-index: 1000;
+            transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-drawer.open {
+            right: 0;
+        }
+
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(30, 58, 138, 0.15);
+            backdrop-filter: blur(4px);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition-smooth);
+        }
+
+        .drawer-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .drawer-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-faint);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--bg-main);
+        }
+
+        .drawer-meta {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--primary);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .drawer-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-top: 0.25rem;
+        }
+
+        .close-btn {
+            background: none;
+            border: 1px solid var(--border-faint);
+            border-radius: 6px;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: var(--transition-smooth);
+        }
+
+        .close-btn:hover {
+            background-color: rgba(226, 232, 240, 0.5);
+            color: var(--secondary);
+            border-color: var(--primary);
+        }
+
+        .close-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .drawer-content {
+            padding: 2rem;
+            overflow-y: auto;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+        }
+
+        /* Detail Typography & Elements */
+        .drawer-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--text-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.05rem;
+            border-bottom: 1px solid rgba(14, 165, 233, 0.15);
+            padding-bottom: 0.25rem;
+        }
+
+        .text-desc {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--text-main);
+        }
+
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .bullet-list li {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .bullet-list li svg {
+            width: 16px;
+            height: 16px;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        /* Timeline style (Module 01) */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: 55px;
+            top: 20px;
+            bottom: -20px;
+            width: 2px;
+            background-color: var(--border-faint);
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            background-color: rgba(14, 165, 233, 0.08);
+            border: 1px solid rgba(14, 165, 233, 0.15);
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            height: fit-content;
+            width: 55px;
+            text-align: center;
+        }
+
+        .time-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #ffffff;
+            border: 2.5px solid var(--primary);
+            border-radius: 50%;
+            margin-top: 4px;
+            z-index: 2;
+        }
+
+        .time-content {
+            flex-grow: 1;
+        }
+
+        .time-task {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .time-subtext {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.1rem;
+        }
+
+        /* Mini Sub-sections (Module 02) */
+        .sub-project {
+            background-color: var(--bg-main);
+            border: 1px solid var(--border-faint);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .sub-project h4 {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sub-project h4 svg {
+            width: 16px;
+            height: 16px;
+            color: var(--primary);
+        }
+
+        /* Terminal Simulator (Module 03) */
+        .terminal-container {
+            background-color: var(--bg-dark-console);
+            border: 1px solid var(--border-faint);
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            line-height: 1.4;
+            color: var(--secondary);
+            height: 180px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(30, 58, 138, 0.05);
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .terminal-controls {
+            display: flex;
+            gap: 4px;
+        }
+
+        .terminal-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: rgba(30, 58, 138, 0.15);
+        }
+
+        .terminal-dot.red { background-color: rgba(239, 68, 68, 0.3); }
+        .terminal-dot.yellow { background-color: rgba(245, 158, 11, 0.3); }
+        .terminal-dot.green { background-color: rgba(34, 197, 94, 0.3); }
+
+        .terminal-body {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cli-prompt {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .cli-success {
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .cli-info {
+            color: var(--text-muted);
+        }
+
+        /* Form styling (Module 04 / Contact modal) */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .form-group label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .form-control {
+            border: 1px solid var(--border-faint);
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--secondary);
+            background-color: var(--bg-main);
+            transition: var(--transition-smooth);
+            width: 100%;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+        }
+
+        textarea.form-control {
+            resize: none;
+            height: 80px;
+        }
+
+        .submit-btn {
+            background-color: var(--primary);
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.65rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: var(--transition-smooth);
+            margin-top: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .form-success-msg {
+            display: none;
+            color: #10b981;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-align: center;
+            background-color: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-top: 0.5rem;
+        }
+
+        /* CV Download block inside Contact Modal */
+        .cv-download-block {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgba(14, 165, 233, 0.05);
+            border: 1px dashed var(--border-tech);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cv-info-block {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .cv-info-block svg {
+            width: 24px;
+            height: 24px;
+            color: var(--primary);
+        }
+
+        .cv-meta-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .cv-meta-sub {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .cv-dl-btn {
+            background-color: var(--secondary);
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .cv-dl-btn:hover {
+            background-color: var(--primary);
+        }
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 1024px) {
+            .dashboard-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .sidebar {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .profile-card {
+                flex: 1 1 500px;
+            }
+            .telemetry-card {
+                flex: 1 1 200px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-bottom: 2rem;
+            }
+            .top-bar {
+                padding: 0.75rem 1rem;
+            }
+            .sys-metrics {
+                display: none;
+            }
+            .sidebar {
+                flex-direction: column;
+            }
+            .profile-card, .telemetry-card {
+                flex: none;
+                width: 100%;
+            }
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+            .detail-drawer {
+                width: 100%;
+                right: -100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP HEADER BAR -->
+    <header class="top-bar">
+        <div class="system-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+            SI-MONITOR // <span>ILYES_N_CHATTI_V1.0</span>
+        </div>
+        
+        <div class="sys-metrics">
+            <div class="metric-item">ROLE: <strong>SYSADMIN_APPRENTICE</strong></div>
+            <div class="metric-item">SYS_UPTIME: <strong>100.0%</strong></div>
+            <div class="metric-item">LOC: <strong>ROGNAC // VITROLLES</strong></div>
+        </div>
+
+        <div class="sys-status">
+            <span class="pulse-dot"></span>
+            SYS_OPERATIONAL
+        </div>
+    </header>
+
+    <!-- DASHBOARD WORKSPACE -->
+    <main class="dashboard-container">
+        
+        <!-- LEFT SIDEBAR: PROFILE & GENERAL METRICS -->
+        <section class="sidebar">
+            
+            <div class="profile-card">
+                <div class="profile-header">
+                    <div class="avatar-container">
+                        <!-- Technical blueprint schematic avatar -->
+                        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <!-- Circular grids -->
+                            <circle cx="50" cy="50" r="45" stroke="rgba(14, 165, 233, 0.2)" stroke-dasharray="2,2"/>
+                            <circle cx="50" cy="50" r="38" stroke="rgba(14, 165, 233, 0.4)"/>
+                            <!-- Connecting nodes -->
+                            <line x1="50" y1="5" x2="50" y2="95" stroke="rgba(14, 165, 233, 0.15)"/>
+                            <line x1="5" y1="50" x2="95" y2="50" stroke="rgba(14, 165, 233, 0.15)"/>
+                            <!-- Human Node Schema -->
+                            <circle cx="50" cy="35" r="14" stroke="currentColor" stroke-width="2"/>
+                            <path d="M25 78 C25 60, 75 60, 75 78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <!-- Network nodes on intersections -->
+                            <circle cx="50" cy="14" r="3.5" fill="var(--primary)" stroke="none"/>
+                            <circle cx="21" cy="35" r="3.5" fill="var(--primary)" stroke="none"/>
+                            <circle cx="79" cy="35" r="3.5" fill="var(--primary)" stroke="none"/>
+                            <circle cx="50" cy="86" r="3.5" fill="var(--primary)" stroke="none"/>
+                        </svg>
+                        <div class="avatar-badge">
+                            <span class="pulse-dot" style="width:6px; height:6px;"></span>
+                        </div>
+                    </div>
+                    <h1 class="profile-name">Ilyes Nasr Chatti</h1>
+                    <p class="profile-title">Alternant Systèmes & Réseaux</p>
+                    
+                    <div class="profile-tags">
+                        <span class="tag">SISR</span>
+                        <span class="tag">Réseaux</span>
+                        <span class="tag">Active Directory</span>
+                        <span class="tag">Proxmox</span>
+                        <span class="tag">Sécurité IP</span>
+                        <span class="tag">Linux</span>
+                    </div>
+                </div>
+
+                <table class="info-table">
+                    <tr>
+                        <td class="label">ENTREPRISE</td>
+                        <td class="value">Transports Suma (DSI)</td>
+                    </tr>
+                    <tr>
+                        <td class="label">FORMATION</td>
+                        <td class="value">M2S (Vitrolles) - SIO</td>
+                    </tr>
+                    <tr>
+                        <td class="label">RYTHME</td>
+                        <td class="value">2j Cours / 3j Entreprise</td>
+                    </tr>
+                    <tr>
+                        <td class="label">MOBILITÉ</td>
+                        <td class="value">Permis B + Véhiculé</td>
+                    </tr>
+                    <tr>
+                        <td class="label">LANGUE</td>
+                        <td class="value">Anglais (B2)</td>
+                    </tr>
+                </table>
+
+                <button class="action-button" onclick="openContactDrawer()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    CONTACT DIRECT / CV
+                </button>
+            </div>
+
+            <!-- Sports telemetry decoration -->
+            <div class="telemetry-card">
+                <div class="telemetry-title">
+                    <span>STRESS_CONTROL // ATTR</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <div class="telemetry-value">98% <span>NOMINAL</span></div>
+                <p style="font-size: 0.72rem; color: var(--text-muted); line-height: 1.4;">
+                    3 ans de sports de combat (Lutte, Boxe Thaï) : apport direct en <strong>rigueur</strong>, <strong>discipline</strong> et gestion de crise en production.
+                </p>
+            </div>
+            
+        </section>
+
+        <!-- RIGHT GRID: INTERACTIVE MODULES -->
+        <section class="main-content">
+            
+            <div class="grid-header">
+                <div class="grid-header-title">
+                    <h2>CONSOLE DES LABS & ACTIVITÉS</h2>
+                    <p>Sélectionnez un nœud d'activité pour afficher le détail de l'infrastructure et des compétences associées.</p>
+                </div>
+                <div class="sys-counters">
+                    <div class="counter-box">
+                        <div class="counter-label">NODES</div>
+                        <div class="counter-num">04</div>
+                    </div>
+                    <div class="counter-box">
+                        <div class="counter-label">PROJECTS</div>
+                        <div class="counter-num">02</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modules-grid">
+                
+                <!-- MODULE 01: IMMERSION EN ALTERNANCE -->
+                <article class="module-card" onclick="openDrawer('m01')" id="card-m01">
+                    <div class="card-top">
+                        <div class="module-id"><span></span>SYS_IMMERSION // 01</div>
+                        <h3 class="module-title">Immersion en Alternance</h3>
+                        <p class="module-preview">
+                            Intégration au sein de la DSI de Transports Suma à Rognac. Prise en charge opérationnelle des infrastructures quotidiennes.
+                        </p>
+                        <div class="preview-list">
+                            <span class="preview-bullet">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                Support GLPI
+                            </span>
+                            <span class="preview-bullet">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                Déploiement Postes
+                            </span>
+                            <span class="preview-bullet">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                Supervision LAN/WAN
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="click-action">
+                            Consulter la timeline
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </span>
+                    </div>
+                </article>
+
+                <!-- MODULE 02: PROJET MAJEUR -->
+                <article class="module-card" onclick="openDrawer('m02')" id="card-m02">
+                    <div class="card-top">
+                        <div class="module-id"><span></span>SYS_PROJETS // 02</div>
+                        <h3 class="module-title">Projets Majeurs DSI</h3>
+                        <p class="module-preview">
+                            Administration centralisée et sécurisation active des services de l'entreprise : Workspace collaboratif et Vidéoprotection multi-sites.
+                        </p>
+                        <div class="preview-list">
+                            <span class="preview-bullet">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line></svg>
+                                Google Workspace
+                            </span>
+                            <span class="preview-bullet">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line></svg>
+                                Vidéoprotection IP
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="click-action">
+                            Explorer le workflow
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </span>
+                    </div>
+                </article>
+
+                <!-- MODULE 03: COMPÉTENCES & LABS SIO -->
+                <article class="module-card" onclick="openDrawer('m03')" id="card-m03">
+                    <div class="card-top">
+                        <div class="module-id"><span></span>SYS_LABS // 03</div>
+                        <h3 class="module-title">Compétences & Labs SIO</h3>
+                        <p class="module-preview">
+                            Maîtrise opérationnelle des architectures systèmes & réseaux à travers nos maquettes de laboratoire (Proxmox, Cisco, Samba AD).
+                        </p>
+                        <div class="preview-list">
+                            <span class="preview-bullet">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                                Proxmox VE
+                            </span>
+                            <span class="preview-bullet">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                                Cisco CCNA
+                            </span>
+                            <span class="preview-bullet">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                                DNS Adguard
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="click-action">
+                            Ouvrir le terminal interactif
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </span>
+                    </div>
+                </article>
+
+                <!-- MODULE 04: VEILLE & COMPLÉMENTS -->
+                <article class="module-card" onclick="openDrawer('m04')" id="card-m04">
+                    <div class="card-top">
+                        <div class="module-id"><span></span>SYS_VEILLE // 04</div>
+                        <h3 class="module-title">Veille & Compléments</h3>
+                        <p class="module-preview">
+                            Suivi actif des menaces technologiques et consolidation des atouts comportementaux issus de mon parcours sportif.
+                        </p>
+                        <div class="preview-list">
+                            <span class="preview-bullet">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                Veille Cyber
+                            </span>
+                            <span class="preview-bullet">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                Rigueur & Stress
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="click-action">
+                            Voir la veille & Contact
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </span>
+                    </div>
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- DRAWER OVERLAY -->
+    <div class="drawer-overlay" id="drawerOverlay" onclick="closeAllDrawers()"></div>
+
+    <!-- DETAIL DRAWER 01: IMMERSION EN ALTERNANCE -->
+    <div class="detail-drawer" id="drawer-m01">
+        <div class="drawer-header">
+            <div>
+                <div class="drawer-meta">SYS_IMMERSION // NODE_01</div>
+                <h3 class="drawer-title">Immersion en Alternance</h3>
+            </div>
+            <button class="close-btn" onclick="closeAllDrawers()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+        <div class="drawer-content">
+            <div class="drawer-section">
+                <span class="section-label">Contexte</span>
+                <p class="text-desc">
+                    <strong>Transports Suma</strong> (Siège social à Rognac) – Acteur majeur de la mobilité régionale. Intégration au sein de la DSI pour piloter le support, les postes clients, et la connectivité multi-sites.
+                </p>
+            </div>
+            
+            <div class="drawer-section">
+                <span class="section-label">Missions Quotidiennes (Synthèse)</span>
+                <ul class="bullet-list">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Support utilisateur N1/N2 (Tickets GLPI)</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Provisioning RH (On/Off-boarding collaborateurs)</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Masterisation & Déploiement de parcs de postes</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Administration de téléphonie IP (VoIP)</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Supervision active des liaisons WAN/LAN</li>
+                </ul>
+            </div>
+
+            <div class="drawer-section">
+                <span class="section-label">Timeline d'une Journée Type</span>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="time-badge">08:00</div>
+                        <div class="time-dot"></div>
+                        <div class="time-content">
+                            <h4 class="time-task">Vérification infrastructures & supervision</h4>
+                            <p class="time-subtext">Console GLPI, routeurs WAN, alarmes et serveurs de vidéosurveillance.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-badge">10:00</div>
+                        <div class="time-dot"></div>
+                        <div class="time-content">
+                            <h4 class="time-task">Support & Préparation matériel</h4>
+                            <p class="time-subtext">Résolution d'incidents utilisateurs et préparation des terminaux d'arrivants.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-badge">14:00</div>
+                        <div class="time-dot"></div>
+                        <div class="time-content">
+                            <h4 class="time-task">Projets Infrastructures DSI</h4>
+                            <p class="time-subtext">Pilotage des accès Google Workspace et réajustements Samba.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time-badge">16:30</div>
+                        <div class="time-dot"></div>
+                        <div class="time-content">
+                            <h4 class="time-task">Documentation & Synthèse</h4>
+                            <p class="time-subtext">Rédaction des fiches de résolutions, mise à jour GLPI et archivage.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DETAIL DRAWER 02: PROJET MAJEUR -->
+    <div class="detail-drawer" id="drawer-m02">
+        <div class="drawer-header">
+            <div>
+                <div class="drawer-meta">SYS_PROJETS // NODE_02</div>
+                <h3 class="drawer-title">Projets Majeurs DSI</h3>
+            </div>
+            <button class="close-btn" onclick="closeAllDrawers()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+        <div class="drawer-content">
+            <div class="drawer-section">
+                <span class="section-label">Projet A</span>
+                <div class="sub-project">
+                    <h4>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line></svg>
+                        Administration Google Workspace
+                    </h4>
+                    <p class="text-desc">
+                        Gestion globale du cycle de vie des comptes et des droits d'accès des collaborateurs sous le domaine <strong>@villeton.fr</strong>. 
+                    </p>
+                    <ul class="bullet-list" style="margin-top: 0.5rem; font-size: 0.8rem;">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Provisioning automatisé des nouveaux comptes</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Création et administration d'un Google Sites interne</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Structuration des Groupes & Partages Cloud</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="drawer-section">
+                <span class="section-label">Projet B</span>
+                <div class="sub-project">
+                    <h4>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line></svg>
+                        Centralisation de la Vidéoprotection
+                    </h4>
+                    <p class="text-desc">
+                        Supervision centralisée et sécurisation de l'infrastructure de vidéosurveillance multi-sites.
+                    </p>
+                    <ul class="bullet-list" style="margin-top: 0.5rem; font-size: 0.8rem;">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Configuration des comptes maîtres et sous-comptes</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Application stricte des droits d'accès</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Isolation réseau et principe du moindre privilège</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DETAIL DRAWER 03: COMPÉTENCES & LABS SIO -->
+    <div class="detail-drawer" id="drawer-m03">
+        <div class="drawer-header">
+            <div>
+                <div class="drawer-meta">SYS_LABS // NODE_03</div>
+                <h3 class="drawer-title">Compétences & Labs SIO</h3>
+            </div>
+            <button class="close-btn" onclick="closeAllDrawers()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+        <div class="drawer-content">
+            <div class="drawer-section">
+                <span class="section-label">Compétences Réseaux</span>
+                <p class="text-desc">
+                    Préparation active au cursus <strong>Cisco CCNA</strong>. Routage dynamique, adressage IP (IPv4 subnetting), configuration des passerelles, masques de sous-réseaux et serveurs de résolution DNS/DHCP.
+                </p>
+            </div>
+
+            <div class="drawer-section">
+                <span class="section-label">Environnements Systèmes</span>
+                <p class="text-desc">
+                    Déploiements et maintenance d'infrastructures de laboratoire : hyperviseurs <strong>Proxmox VE</strong> (VM & conteneurs LXC), administration active de serveurs DNS <strong>Adguard Home</strong>, configurations de partages Samba interconnectés à un <strong>Active Directory</strong>, scripts système <strong>Linux</strong>, exploitation de consoles rétro <strong>GameShell</strong>.
+                </p>
+            </div>
+
+            <div class="drawer-section">
+                <span class="section-label">Simulateur de Terminal Actif</span>
+                
+                <div class="terminal-container">
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <span class="terminal-dot red"></span>
+                            <span class="terminal-dot yellow"></span>
+                            <span class="terminal-dot green"></span>
+                        </div>
+                        <div>NODE_TELEMETRY</div>
+                    </div>
+                    <div class="terminal-body" id="terminal-body">
+                        <!-- CLI Lines will append here dynamically via JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DETAIL DRAWER 04: VEILLE & COMPLÉMENTS -->
+    <div class="detail-drawer" id="drawer-m04">
+        <div class="drawer-header">
+            <div>
+                <div class="drawer-meta">SYS_VEILLE // NODE_04</div>
+                <h3 class="drawer-title">Veille & Compléments</h3>
+            </div>
+            <button class="close-btn" onclick="closeAllDrawers()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+        <div class="drawer-content">
+            <div class="drawer-section">
+                <span class="section-label">Veille Technologique</span>
+                <ul class="bullet-list">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> Menaces Cyber & Failles Zero-Day (Anssi, CERT)</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> Évolutions des systèmes hyperconvergés</li>
+                </ul>
+            </div>
+
+            <div class="drawer-section">
+                <span class="section-label">Parcours Sportif & Compétences Comportementales</span>
+                <p class="text-desc">
+                    3 ans de pratique assidue de la <strong>Lutte</strong> et de la <strong>Boxe Thaïlandaise</strong>. Cette formation martiale m'a inculqué une rigueur opérationnelle stricte, une discipline personnelle forte et la capacité de garder un contrôle absolu de mes émotions sous haute tension technique.
+                </p>
+            </div>
+
+            <div class="drawer-section">
+                <span class="section-label">Demande de Contact</span>
+                <form class="contact-form" id="contactForm" onsubmit="handleContactSubmit(event)">
+                    <div class="form-group">
+                        <label for="c_email">Adresse E-mail</label>
+                        <input type="email" id="c_email" required class="form-control" placeholder="dns-admin@entreprise.fr">
+                    </div>
+                    <div class="form-group">
+                        <label for="c_msg">Message / Requête</label>
+                        <textarea id="c_msg" required class="form-control" placeholder="Demande d'entretien ou d'accès au dossier technique..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Exécuter la requête d'envoi</button>
+                    <div class="form-success-msg" id="successMsg">
+                        REQUÊTE ENVOYÉE // STATUT: SUCCESS (Simulation)
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT / CV DRAWER (DRAWER DE REQUÊTE DIRECTE) -->
+    <div class="detail-drawer" id="drawer-contact">
+        <div class="drawer-header">
+            <div>
+                <div class="drawer-meta">SYS_CONNECT // MONITEUR_ACCES</div>
+                <h3 class="drawer-title">Accès Direct & Contact</h3>
+            </div>
+            <button class="close-btn" onclick="closeAllDrawers()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+        <div class="drawer-content">
+            <div class="drawer-section">
+                <span class="section-label">Document Officiel</span>
+                <div class="cv-download-block">
+                    <div class="cv-info-block">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        <div>
+                            <div class="cv-meta-title">CV_Ilyes_Nasr_Chatti.pdf</div>
+                            <div class="cv-meta-sub">Technicien Systèmes & Réseaux</div>
+                        </div>
+                    </div>
+                    <!-- Virtual CV download, falls back to download prompt -->
+                    <a href="#" class="cv-dl-btn" onclick="alert('Téléchargement du CV simulé ! Remplacez le lien href par votre fichier PDF.'); return false;">Télécharger</a>
+                </div>
+            </div>
+
+            <div class="drawer-section">
+                <span class="section-label">Canal de Communication</span>
+                <form class="contact-form" id="mainContactForm" onsubmit="handleMainContactSubmit(event)">
+                    <div class="form-group">
+                        <label for="m_email">Adresse E-mail</label>
+                        <input type="email" id="m_email" required class="form-control" placeholder="examinateur-sio@m2s.fr">
+                    </div>
+                    <div class="form-group">
+                        <label for="m_msg">Message</label>
+                        <textarea id="m_msg" required class="form-control" placeholder="Saisir votre message ici..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Soumettre le message</button>
+                    <div class="form-success-msg" id="mainSuccessMsg">
+                        TRANSMISSION COMPLÈTE // RETOUR PROCHAIN
+                    </div>
+                </form>
+            </div>
+            
+            <div class="drawer-section">
+                <span class="section-label">Coordonnées Directes</span>
+                <table class="info-table">
+                    <tr>
+                        <td class="label">TÉLÉPHONE</td>
+                        <td class="value">+33 6 00 00 00 00</td>
+                    </tr>
+                    <tr>
+                        <td class="label">EMAIL DIRECT</td>
+                        <td class="value">ilyes.nasr.chatti@email.com</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT SYSTEM ENGINE -->
+    <script>
+        // Drawer toggle mechanics
+        function openDrawer(id) {
+            closeAllDrawers();
+            
+            // Highlight the card that opened it
+            const card = document.getElementById(`card-${id}`);
+            if (card) {
+                card.classList.add('active');
+            }
+            
+            const drawer = document.getElementById(`drawer-${id}`);
+            const overlay = document.getElementById('drawerOverlay');
+            if (drawer && overlay) {
+                drawer.classList.add('open');
+                overlay.classList.add('open');
+            }
+
+            // If it's the lab drawer, start the terminal simulation
+            if (id === 'm03') {
+                startTerminalSimulation();
+            }
+        }
+
+        function openContactDrawer() {
+            closeAllDrawers();
+            const drawer = document.getElementById('drawer-contact');
+            const overlay = document.getElementById('drawerOverlay');
+            if (drawer && overlay) {
+                drawer.classList.add('open');
+                overlay.classList.add('open');
+            }
+        }
+
+        function closeAllDrawers() {
+            // Remove active state from all cards
+            document.querySelectorAll('.module-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Close all drawers
+            document.querySelectorAll('.detail-drawer').forEach(drawer => {
+                drawer.classList.remove('open');
+            });
+            
+            const overlay = document.getElementById('drawerOverlay');
+            if (overlay) {
+                overlay.classList.remove('open');
+            }
+            
+            // Clear terminal interval to save CPU when not visible
+            if (terminalInterval) {
+                clearInterval(terminalInterval);
+                terminalInterval = null;
+            }
+        }
+
+        // Form Submit Simulation
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const successMsg = document.getElementById('successMsg');
+            successMsg.style.display = 'block';
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+                e.target.reset();
+            }, 3000);
+        }
+
+        function handleMainContactSubmit(e) {
+            e.preventDefault();
+            const successMsg = document.getElementById('mainSuccessMsg');
+            successMsg.style.display = 'block';
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+                e.target.reset();
+            }, 3000);
+        }
+
+        // Terminal Simulator Logic
+        let terminalInterval = null;
+        const terminalCommands = [
+            { cmd: "ping -c 3 192.168.1.1", delay: 800, output: [
+                "PING 192.168.1.1 (192.168.1.1) 56(84) bytes of data.",
+                "64 bytes from 192.168.1.1: icmp_seq=1 ttl=64 time=1.23 ms",
+                "64 bytes from 192.168.1.1: icmp_seq=2 ttl=64 time=0.98 ms",
+                "64 bytes from 192.168.1.1: icmp_seq=3 ttl=64 time=1.05 ms",
+                "--- 192.168.1.1 ping statistics ---",
+                "3 packets transmitted, 3 received, 0% packet loss",
+                "<span class='cli-success'>STATUS: GATEWAY_REACHABLE (OK)</span>"
+            ]},
+            { cmd: "systemctl status smbd", delay: 1000, output: [
+                "● smbd.service - LSB: Samba AD/DC File Server",
+                "   Loaded: loaded (/etc/init.d/smbd; generated)",
+                "   Active: <span class='cli-success'>active (running)</span> since Tue 2026-05-26 08:00:00 CET",
+                "   Status: \"smbd: ready to serve connections\""
+            ]},
+            { cmd: "proxmox-backup-client status", delay: 1200, output: [
+                "Connection: ilyes@pbs.villeton.fr:8007",
+                "Backup Server: PBS-01 - Active & Encrypted",
+                "Storage Usage: 42% (ZFS Pool: Healthy)",
+                "<span class='cli-success'>BACKUP STATUS: COMPLETED_SUCCESSFULLY</span>"
+            ]},
+            { cmd: "adguard-home --status", delay: 900, output: [
+                "DNS Filter Engine: RUNNING",
+                "Rules Loaded: 145,203 rules active",
+                "Blocked Queries (24h): 12.4% (Malware/Telemetry)",
+                "Status: <span class='cli-success'>SECURE</span>"
+            ]},
+            { cmd: "ip route show", delay: 700, output: [
+                "default via 10.0.10.1 dev eth0 proto static metric 100",
+                "10.0.10.0/24 dev eth0 proto kernel scope link src 10.0.10.15"
+            ]}
+        ];
+
+        function startTerminalSimulation() {
+            const container = document.getElementById('terminal-body');
+            container.innerHTML = ""; // Clear
+            
+            let commandIndex = 0;
+            let lineIndex = 0;
+            let currentCmdObj = null;
+            let typingCmd = false;
+
+            function runCycle() {
+                if (!currentCmdObj) {
+                    currentCmdObj = terminalCommands[commandIndex];
+                    // Append prompt & start typing the command
+                    const promptLine = document.createElement('div');
+                    promptLine.innerHTML = `<span class='cli-prompt'>ilyes@si-node:~$</span> <span class='cmd-text'></span>`;
+                    container.appendChild(promptLine);
+                    container.scrollTop = container.scrollHeight;
+                    
+                    let charIndex = 0;
+                    const cmdTextSpan = promptLine.querySelector('.cmd-text');
+                    
+                    typingCmd = true;
+                    const typingInterval = setInterval(() => {
+                        if (charIndex < currentCmdObj.cmd.length) {
+                            cmdTextSpan.textContent += currentCmdObj.cmd.charAt(charIndex);
+                            charIndex++;
+                            container.scrollTop = container.scrollHeight;
+                        } else {
+                            clearInterval(typingInterval);
+                            typingCmd = false;
+                            lineIndex = 0;
+                            // Wait a short delay, then output lines
+                            setTimeout(printOutputs, 250);
+                        }
+                    }, 40);
+                }
+            }
+
+            function printOutputs() {
+                if (lineIndex < currentCmdObj.output.length) {
+                    const outputLine = document.createElement('div');
+                    outputLine.innerHTML = currentCmdObj.output[lineIndex];
+                    container.appendChild(outputLine);
+                    container.scrollTop = container.scrollHeight;
+                    lineIndex++;
+                    setTimeout(printOutputs, 150);
+                } else {
+                    // Command output finished, wait before next command
+                    currentCmdObj = null;
+                    commandIndex = (commandIndex + 1) % terminalCommands.length;
+                    setTimeout(runCycle, 1500);
+                }
+            }
+
+            runCycle();
+        }
+    </script>
+</body>
+</html>
+```
