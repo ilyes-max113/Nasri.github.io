@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -42,7 +41,7 @@
             --shadow-md: 0 4px 6px -1px rgba(30, 58, 138, 0.05), 0 2px 4px -1px rgba(30, 58, 138, 0.03);
             --shadow-lg: 0 10px 25px -5px rgba(30, 58, 138, 0.08), 0 8px 10px -6px rgba(30, 58, 138, 0.08);
             
-            --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: all 0.2s ease;
         }
 
         /* --- RESET & BASIC STYLES --- */
@@ -70,19 +69,6 @@
                 linear-gradient(90deg, var(--bg-grid-color-major) 1px, transparent 1px);
             background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
             background-position: center center;
-        }
-
-        /* Subtle Blueprint Decorative Elements */
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 100%;
-            background: radial-gradient(circle at 50% 30%, rgba(14, 165, 233, 0.03) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
         }
 
         /* --- HEADER / TOP BAR --- */
@@ -166,199 +152,121 @@
             color: var(--secondary);
         }
 
-        /* --- MAIN LAYOUT CONTAINER --- */
+        /* --- DASHBOARD LAYOUT --- */
         .dashboard-container {
             max-width: 1440px;
             width: 100%;
             margin: 1.5rem auto;
             padding: 0 1.5rem;
             display: grid;
-            grid-template-columns: 340px 1fr;
+            grid-template-columns: 300px 1fr;
             gap: 1.5rem;
             flex-grow: 1;
             z-index: 10;
         }
 
-        /* --- LEFT SIDEBAR (MONITOR PROFILE) --- */
+        /* --- LEFT SIDEBAR: MENU & TELEMETRY --- */
         .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .profile-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-tech);
-            border-radius: 12px;
-            padding: 1.75rem;
-            box-shadow: var(--shadow-md);
-            position: relative;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
             gap: 1.25rem;
         }
 
-        .profile-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background-color: var(--primary);
-        }
-
-        .profile-header {
+        /* Console-like Navigation Menu */
+        .navigation-menu {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-tech);
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: var(--shadow-md);
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
-            border-bottom: 1px solid var(--border-faint);
-            padding-bottom: 1.25rem;
+            gap: 0.5rem;
         }
 
-        /* Custom schematic avatar */
-        .avatar-container {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(30, 58, 138, 0.1) 100%);
-            border: 2px dashed var(--primary);
+        .menu-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+        }
+
+        .nav-tab {
             display: flex;
-            justify-content: center;
             align-items: center;
-            margin-bottom: 1rem;
+            gap: 0.75rem;
+            width: 100%;
+            background: none;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-align: left;
+            cursor: pointer;
+            transition: var(--transition-smooth);
             position: relative;
         }
 
-        .avatar-container svg {
-            width: 40px;
-            height: 40px;
-            color: var(--secondary);
-        }
-
-        .avatar-badge {
-            position: absolute;
-            bottom: 2px;
-            right: 2px;
-            background-color: #ffffff;
-            border: 1px solid var(--border-tech);
-            border-radius: 50%;
-            padding: 2px;
-            display: flex;
-        }
-
-        .profile-name {
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--secondary);
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-        }
-
-        .profile-title {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--text-cyan);
-            margin-top: 0.25rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .profile-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.35rem;
-            justify-content: center;
-            margin-top: 0.75rem;
-        }
-
-        .tag {
+        .nav-tab-id {
             font-family: var(--font-mono);
-            font-size: 0.65rem;
-            font-weight: 700;
-            padding: 0.15rem 0.5rem;
-            background-color: var(--bg-main);
-            color: var(--secondary);
-            border: 1px solid var(--border-faint);
-            border-radius: 4px;
-            transition: var(--transition-smooth);
-        }
-
-        .tag:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            background-color: rgba(14, 165, 233, 0.05);
-        }
-
-        /* Metadata Table */
-        .info-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.8rem;
-        }
-
-        .info-table tr {
-            border-bottom: 1px solid var(--border-faint);
-        }
-
-        .info-table tr:last-child {
-            border-bottom: none;
-        }
-
-        .info-table td {
-            padding: 0.65rem 0;
-            vertical-align: middle;
-        }
-
-        .info-table td.label {
-            font-family: var(--font-mono);
+            font-size: 0.7rem;
             color: var(--text-muted);
-            font-weight: 600;
-            width: 40%;
+            font-weight: 400;
         }
 
-        .info-table td.value {
-            color: var(--secondary);
-            font-weight: 700;
-            text-align: right;
-        }
-
-        /* Action Buttons */
-        .action-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            width: 100%;
-            background-color: var(--secondary);
-            color: #ffffff;
-            border: none;
-            border-radius: 8px;
-            padding: 0.75rem;
-            font-size: 0.85rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            box-shadow: 0 4px 10px rgba(30, 58, 138, 0.15);
-        }
-
-        .action-button:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(14, 165, 233, 0.25);
-        }
-
-        .action-button svg {
+        .nav-tab svg {
             width: 16px;
             height: 16px;
+            color: var(--text-muted);
+            transition: var(--transition-smooth);
         }
 
-        /* Small telemetry monitor block */
+        .nav-tab:hover {
+            background-color: var(--bg-main);
+            color: var(--secondary);
+            border-color: var(--border-faint);
+        }
+
+        .nav-tab:hover svg {
+            color: var(--primary);
+        }
+
+        /* Active Navigation Tab */
+        .nav-tab.active {
+            background-color: rgba(14, 165, 233, 0.06);
+            color: var(--secondary);
+            border: 1px solid var(--border-tech);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-tab.active::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 20%;
+            height: 60%;
+            width: 3px;
+            background-color: var(--primary);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .nav-tab.active svg {
+            color: var(--primary);
+        }
+
+        .nav-tab.active .nav-tab-id {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Telemetry widget bottom of menu */
         .telemetry-card {
             background-color: var(--bg-card);
             border: 1px solid var(--border-tech);
@@ -398,373 +306,267 @@
             font-weight: 400;
         }
 
-        /* --- RIGHT CONTENT AREA (MODULES GRID) --- */
-        .main-content {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .grid-header {
+        /* --- RIGHT MAIN VIEWPORT (ONGLETS DISPLAY) --- */
+        .main-viewport {
             background-color: var(--bg-card);
             border: 1px solid var(--border-tech);
             border-radius: 12px;
-            padding: 1.25rem 1.75rem;
             box-shadow: var(--shadow-md);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            min-height: 520px;
+            overflow: hidden;
+            position: relative;
         }
 
-        .grid-header-title h2 {
-            font-size: 1.1rem;
+        /* Active content wrapper */
+        .tab-content {
+            display: none;
+            padding: 3rem;
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content Headers */
+        .content-header {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
+        }
+
+        .content-meta {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--primary);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .content-title {
+            font-size: 1.75rem;
             font-weight: 800;
             color: var(--secondary);
             letter-spacing: -0.02em;
         }
 
-        .grid-header-title p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 0.15rem;
-        }
-
-        .sys-counters {
+        /* Detailed sections inside tabs */
+        .content-body {
+            width: 100%;
             display: flex;
+            flex-direction: column;
+            align-items: center;
             gap: 2rem;
         }
 
-        .counter-box {
-            text-align: right;
-        }
-
-        .counter-label {
-            font-family: var(--font-mono);
-            font-size: 0.65rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-
-        .counter-num {
-            font-family: var(--font-mono);
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--secondary);
-        }
-
-        /* --- THE 4 INTERACTIVE CARDS --- */
-        .modules-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-
-        .module-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-tech);
-            border-radius: 12px;
-            padding: 1.75rem;
-            box-shadow: var(--shadow-md);
-            cursor: pointer;
-            transition: var(--transition-smooth);
+        .body-section {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            min-height: 250px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .module-card::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(45deg, transparent 45%, rgba(14, 165, 233, 0.1) 46%, var(--primary) 100%);
-            transition: var(--transition-smooth);
-        }
-
-        .module-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary);
-            box-shadow: 0 12px 20px -8px rgba(14, 165, 233, 0.25), var(--shadow-lg);
-        }
-
-        .module-card:hover::after {
-            transform: scale(1.2);
-        }
-
-        .module-card.active {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.3), var(--shadow-lg);
-        }
-
-        .card-top {
-            display: flex;
-            flex-direction: column;
+            align-items: center;
             gap: 1rem;
-        }
-
-        .module-id {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .module-id span {
-            width: 6px;
-            height: 6px;
-            background-color: var(--primary);
-            border-radius: 50%;
-        }
-
-        .module-title {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--secondary);
-            letter-spacing: -0.02em;
-        }
-
-        .module-preview {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-            line-height: 1.5;
-        }
-
-        /* Minimal list/tag design on preview */
-        .preview-list {
-            margin-top: 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-        }
-
-        .preview-bullet {
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 0.25rem 0.5rem;
-            background-color: var(--bg-main);
-            color: var(--secondary);
-            border-radius: 4px;
-            border: 1px solid var(--border-faint);
-            display: flex;
-            align-items: center;
-            gap: 0.35rem;
-        }
-
-        .preview-bullet svg {
-            width: 12px;
-            height: 12px;
-            color: var(--primary);
-        }
-
-        .card-footer {
-            margin-top: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid var(--border-faint);
-            padding-top: 1rem;
-        }
-
-        .click-action {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            display: flex;
-            align-items: center;
-            gap: 0.35rem;
-            transition: var(--transition-smooth);
-        }
-
-        .module-card:hover .click-action {
-            color: var(--secondary);
-            gap: 0.6rem;
-        }
-
-        .click-action svg {
-            width: 12px;
-            height: 12px;
-        }
-
-        /* --- SLIDE-OUT DETAIL PANEL (DRAWER) --- */
-        .detail-drawer {
-            position: fixed;
-            top: 0;
-            right: -520px; /* Hidden initially */
-            width: 500px;
-            height: 100vh;
-            background-color: #ffffff;
-            border-left: 1px solid var(--border-tech);
-            box-shadow: -10px 0 30px rgba(30, 58, 138, 0.15);
-            z-index: 1000;
-            transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .detail-drawer.open {
-            right: 0;
-        }
-
-        .drawer-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: rgba(30, 58, 138, 0.15);
-            backdrop-filter: blur(4px);
-            z-index: 999;
-            opacity: 0;
-            pointer-events: none;
-            transition: var(--transition-smooth);
-        }
-
-        .drawer-overlay.open {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .drawer-header {
-            padding: 1.5rem 2rem;
-            border-bottom: 1px solid var(--border-faint);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: var(--bg-main);
-        }
-
-        .drawer-meta {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: var(--primary);
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .drawer-title {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--secondary);
-            margin-top: 0.25rem;
-        }
-
-        .close-btn {
-            background: none;
-            border: 1px solid var(--border-faint);
-            border-radius: 6px;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: var(--text-muted);
-            transition: var(--transition-smooth);
-        }
-
-        .close-btn:hover {
-            background-color: rgba(226, 232, 240, 0.5);
-            color: var(--secondary);
-            border-color: var(--primary);
-        }
-
-        .close-btn svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        .drawer-content {
-            padding: 2rem;
-            overflow-y: auto;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 1.75rem;
-        }
-
-        /* Detail Typography & Elements */
-        .drawer-section {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
+            width: 100%;
         }
 
         .section-label {
             font-family: var(--font-mono);
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 700;
             color: var(--text-cyan);
             text-transform: uppercase;
-            letter-spacing: 0.05rem;
-            border-bottom: 1px solid rgba(14, 165, 233, 0.15);
-            padding-bottom: 0.25rem;
+            letter-spacing: 0.08rem;
+            border-bottom: 2px solid rgba(14, 165, 233, 0.15);
+            padding-bottom: 0.35rem;
+            width: 50%;
+            max-width: 280px;
+            margin: 0 auto;
         }
 
         .text-desc {
-            font-size: 0.85rem;
-            line-height: 1.6;
+            font-size: 0.95rem;
+            line-height: 1.7;
             color: var(--text-main);
+            max-width: 650px;
+            margin: 0 auto;
         }
 
         .bullet-list {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 0.65rem;
+            align-items: center;
+            gap: 0.8rem;
+            width: 100%;
         }
 
         .bullet-list li {
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--secondary);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            justify-content: center;
+            gap: 0.6rem;
+            text-align: center;
         }
 
         .bullet-list li svg {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             color: var(--primary);
             flex-shrink: 0;
         }
 
-        /* Timeline style (Module 01) */
+        /* --- SPECIFIC TAB LAYOUTS --- */
+
+        /* --- TAB: PROFIL --- */
+        .avatar-container {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(30, 58, 138, 0.1) 100%);
+            border: 2px dashed var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .avatar-container svg {
+            width: 42px;
+            height: 42px;
+            color: var(--secondary);
+        }
+
+        .avatar-badge {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            background-color: #ffffff;
+            border: 1px solid var(--border-tech);
+            border-radius: 50%;
+            padding: 2px;
+            display: flex;
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            letter-spacing: -0.02em;
+        }
+
+        .profile-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .profile-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        .tag {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            background-color: var(--bg-main);
+            color: var(--secondary);
+            border: 1px solid var(--border-faint);
+            border-radius: 4px;
+        }
+
+        .info-table {
+            width: 100%;
+            max-width: 450px;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin: 0.5rem auto;
+        }
+
+        .info-table tr {
+            border-bottom: 1px solid var(--border-faint);
+        }
+
+        .info-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .info-table td {
+            padding: 0.75rem 0;
+            vertical-align: middle;
+        }
+
+        .info-table td.label {
+            font-family: var(--font-mono);
+            color: var(--text-muted);
+            font-weight: 600;
+            text-align: center;
+            width: 50%;
+        }
+
+        .info-table td.value {
+            color: var(--secondary);
+            font-weight: 700;
+            text-align: center;
+            width: 50%;
+        }
+
+        /* --- TAB: IMMERSION ALTERNANCE (TIMELINE) --- */
         .timeline {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-            margin-top: 0.5rem;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            width: 100%;
+            max-width: 550px;
+            position: relative;
         }
 
         .timeline-item {
             display: flex;
-            gap: 1rem;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 0.5rem;
+            width: 100%;
             position: relative;
+            padding-bottom: 0.5rem;
         }
 
         .timeline-item::before {
             content: "";
             position: absolute;
-            left: 55px;
-            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 35px;
             bottom: -20px;
             width: 2px;
             background-color: var(--border-faint);
+            z-index: 1;
         }
 
         .timeline-item:last-child::before {
@@ -778,11 +580,9 @@
             color: var(--primary);
             background-color: rgba(14, 165, 233, 0.08);
             border: 1px solid rgba(14, 165, 233, 0.15);
-            padding: 0.15rem 0.4rem;
+            padding: 0.2rem 0.6rem;
             border-radius: 4px;
-            height: fit-content;
-            width: 55px;
-            text-align: center;
+            z-index: 2;
         }
 
         .time-dot {
@@ -791,44 +591,48 @@
             background-color: #ffffff;
             border: 2.5px solid var(--primary);
             border-radius: 50%;
-            margin-top: 4px;
             z-index: 2;
         }
 
         .time-content {
-            flex-grow: 1;
+            z-index: 2;
         }
 
         .time-task {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 700;
             color: var(--secondary);
         }
 
         .time-subtext {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
-            margin-top: 0.1rem;
+            margin-top: 0.15rem;
         }
 
-        /* Mini Sub-sections (Module 02) */
+        /* --- TAB: PROJET MAJEUR --- */
         .sub-project {
             background-color: var(--bg-main);
             border: 1px solid var(--border-faint);
             border-radius: 8px;
-            padding: 1.25rem;
-            margin-bottom: 0.5rem;
+            padding: 1.5rem;
+            width: 100%;
+            max-width: 600px;
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            align-items: center;
+            text-align: center;
+            gap: 0.75rem;
+            margin: 0 auto;
         }
 
         .sub-project h4 {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 800;
             color: var(--secondary);
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
         }
 
@@ -838,7 +642,35 @@
             color: var(--primary);
         }
 
-        /* Terminal Simulator (Module 03) */
+        /* --- TAB: LABS SIO (TERMINAL) --- */
+        .labs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .lab-category {
+            background-color: var(--bg-main);
+            border: 1px solid var(--border-faint);
+            border-radius: 8px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .lab-category h4 {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--secondary);
+            border-bottom: 1px solid var(--border-faint);
+            padding-bottom: 0.25rem;
+            margin-bottom: 0.25rem;
+        }
+
         .terminal-container {
             background-color: var(--bg-dark-console);
             border: 1px solid var(--border-faint);
@@ -849,10 +681,14 @@
             line-height: 1.4;
             color: var(--secondary);
             height: 180px;
+            width: 100%;
+            max-width: 650px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
             box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+            text-align: left;
+            margin: 0 auto;
         }
 
         .terminal-header {
@@ -897,15 +733,70 @@
             font-weight: 600;
         }
 
-        .cli-info {
+        /* --- TAB: VEILLE & ACCES --- */
+        .cv-download-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(14, 165, 233, 0.05);
+            border: 1px dashed var(--border-tech);
+            border-radius: 8px;
+            padding: 1.25rem;
+            width: 100%;
+            max-width: 500px;
+            gap: 0.75rem;
+            margin: 0 auto;
+        }
+
+        .cv-info-block {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cv-info-block svg {
+            width: 22px;
+            height: 22px;
+            color: var(--primary);
+        }
+
+        .cv-meta-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .cv-meta-sub {
+            font-size: 0.75rem;
             color: var(--text-muted);
         }
 
-        /* Form styling (Module 04 / Contact modal) */
+        .cv-dl-btn {
+            background-color: var(--secondary);
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.4rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .cv-dl-btn:hover {
+            background-color: var(--primary);
+        }
+
         .contact-form {
             display: flex;
             flex-direction: column;
             gap: 0.85rem;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
         }
 
         .form-group {
@@ -943,7 +834,7 @@
 
         textarea.form-control {
             resize: none;
-            height: 80px;
+            height: 70px;
         }
 
         .submit-btn {
@@ -958,7 +849,7 @@
             text-transform: uppercase;
             letter-spacing: 0.05em;
             transition: var(--transition-smooth);
-            margin-top: 0.5rem;
+            text-align: center;
         }
 
         .submit-btn:hover {
@@ -973,105 +864,28 @@
             text-align: center;
             background-color: rgba(16, 185, 129, 0.08);
             border: 1px solid rgba(16, 185, 129, 0.2);
-            padding: 0.75rem;
+            padding: 0.6rem;
             border-radius: 6px;
-            margin-top: 0.5rem;
-        }
-
-        /* CV Download block inside Contact Modal */
-        .cv-download-block {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: rgba(14, 165, 233, 0.05);
-            border: 1px dashed var(--border-tech);
-            border-radius: 8px;
-            padding: 1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .cv-info-block {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .cv-info-block svg {
-            width: 24px;
-            height: 24px;
-            color: var(--primary);
-        }
-
-        .cv-meta-title {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--secondary);
-        }
-
-        .cv-meta-sub {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-        }
-
-        .cv-dl-btn {
-            background-color: var(--secondary);
-            color: #ffffff;
-            border: none;
-            border-radius: 6px;
-            padding: 0.4rem 0.8rem;
-            font-size: 0.75rem;
-            font-weight: 700;
-            cursor: pointer;
-            text-decoration: none;
-            transition: var(--transition-smooth);
-        }
-
-        .cv-dl-btn:hover {
-            background-color: var(--primary);
+            margin-top: 0.25rem;
         }
 
         /* --- RESPONSIVE ADJUSTMENTS --- */
-        @media (max-width: 1024px) {
+        @media (max-width: 900px) {
             .dashboard-container {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
             .sidebar {
-                flex-direction: row;
-                flex-wrap: wrap;
-            }
-            .profile-card {
-                flex: 1 1 500px;
-            }
-            .telemetry-card {
-                flex: 1 1 200px;
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding-bottom: 2rem;
-            }
-            .top-bar {
-                padding: 0.75rem 1rem;
-            }
-            .sys-metrics {
-                display: none;
-            }
-            .sidebar {
-                flex-direction: column;
-            }
-            .profile-card, .telemetry-card {
-                flex: none;
                 width: 100%;
             }
-            .modules-grid {
+            .labs-grid {
                 grid-template-columns: 1fr;
             }
-            .detail-drawer {
-                width: 100%;
-                right: -100%;
+            .tab-content {
+                padding: 1.5rem;
+            }
+            .section-label {
+                width: 80%;
             }
         }
     </style>
@@ -1097,27 +911,79 @@
         </div>
     </header>
 
-    <!-- DASHBOARD WORKSPACE -->
+    <!-- DASHBOARD CONTAINER -->
     <main class="dashboard-container">
         
-        <!-- LEFT SIDEBAR: PROFILE & GENERAL METRICS -->
-        <section class="sidebar">
+        <!-- LEFT COLUMN: NAVIGATION RACK & QUICK TELEMETRY -->
+        <aside class="sidebar">
             
-            <div class="profile-card">
-                <div class="profile-header">
+            <nav class="navigation-menu">
+                <div class="menu-label">CONSOLE_NAV</div>
+                
+                <button class="nav-tab active" onclick="switchTab('t-profil')" id="btn-t-profil">
+                    <span class="nav-tab-id">[PRO-01]</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    Profil Moniteur
+                </button>
+                
+                <button class="nav-tab" onclick="switchTab('t-immersion')" id="btn-t-immersion">
+                    <span class="nav-tab-id">[SYS-02]</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                    Immersion Alternance
+                </button>
+                
+                <button class="nav-tab" onclick="switchTab('t-projet')" id="btn-t-projet">
+                    <span class="nav-tab-id">[PRJ-03]</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line></svg>
+                    Projet Majeur
+                </button>
+                
+                <button class="nav-tab" onclick="switchTab('t-labs')" id="btn-t-labs">
+                    <span class="nav-tab-id">[LAB-04]</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                    Labs SIO
+                </button>
+                
+                <button class="nav-tab" onclick="switchTab('t-veille')" id="btn-t-veille">
+                    <span class="nav-tab-id">[CYB-05]</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    Veille IT
+                </button>
+            </nav>
+
+            <!-- Quick Telemetry Monitor -->
+            <div class="telemetry-card">
+                <div class="telemetry-title">
+                    <span>STRESS_CONTROL // ATTR</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <div class="telemetry-value">98% <span>NOMINAL</span></div>
+                <p style="font-size: 0.72rem; color: var(--text-muted); line-height: 1.4;">
+                    3 ans de sports de combat (Lutte, Boxe Thaï) : apport direct en <strong>rigueur</strong>, <strong>discipline</strong> et gestion de crise en production.
+                </p>
+            </div>
+            
+        </aside>
+
+        <!-- RIGHT COLUMN: MAIN VIEWPORT CONTAINER -->
+        <section class="main-viewport">
+            
+            <!-- TAB 01: PROFIL MONITEUR -->
+            <article class="tab-content active" id="t-profil">
+                <div class="content-header">
+                    <span class="content-meta">MONITEUR_SYSTEM // PRO-01</span>
+                    <h2 class="content-title">Profil & Coordonnées</h2>
+                </div>
+                
+                <div class="content-body">
                     <div class="avatar-container">
-                        <!-- Technical blueprint schematic avatar -->
                         <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <!-- Circular grids -->
                             <circle cx="50" cy="50" r="45" stroke="rgba(14, 165, 233, 0.2)" stroke-dasharray="2,2"/>
                             <circle cx="50" cy="50" r="38" stroke="rgba(14, 165, 233, 0.4)"/>
-                            <!-- Connecting nodes -->
                             <line x1="50" y1="5" x2="50" y2="95" stroke="rgba(14, 165, 233, 0.15)"/>
                             <line x1="5" y1="50" x2="95" y2="50" stroke="rgba(14, 165, 233, 0.15)"/>
-                            <!-- Human Node Schema -->
                             <circle cx="50" cy="35" r="14" stroke="currentColor" stroke-width="2"/>
                             <path d="M25 78 C25 60, 75 60, 75 78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            <!-- Network nodes on intersections -->
                             <circle cx="50" cy="14" r="3.5" fill="var(--primary)" stroke="none"/>
                             <circle cx="21" cy="35" r="3.5" fill="var(--primary)" stroke="none"/>
                             <circle cx="79" cy="35" r="3.5" fill="var(--primary)" stroke="none"/>
@@ -1127,8 +993,9 @@
                             <span class="pulse-dot" style="width:6px; height:6px;"></span>
                         </div>
                     </div>
-                    <h1 class="profile-name">Ilyes Nasr Chatti</h1>
-                    <p class="profile-title">Alternant Systèmes & Réseaux</p>
+                    
+                    <h3 class="profile-name">Ilyes Nasr Chatti</h3>
+                    <p class="profile-title">Technicien Systèmes et Réseaux en Alternance</p>
                     
                     <div class="profile-tags">
                         <span class="tag">SISR</span>
@@ -1138,527 +1005,271 @@
                         <span class="tag">Sécurité IP</span>
                         <span class="tag">Linux</span>
                     </div>
+
+                    <table class="info-table">
+                        <tr>
+                            <td class="label">STATUT</td>
+                            <td class="value">Alternant Technicien</td>
+                        </tr>
+                        <tr>
+                            <td class="label">ENTREPRISE</td>
+                            <td class="value">Transports Suma (DSI Rognac)</td>
+                        </tr>
+                        <tr>
+                            <td class="label">FORMATION</td>
+                            <td class="value">BTS SIO option SISR (M2s Vitrolles)</td>
+                        </tr>
+                        <tr>
+                            <td class="label">MOBILITÉ</td>
+                            <td class="value">Permis B + Véhiculé</td>
+                        </tr>
+                        <tr>
+                            <td class="label">LANGUE</td>
+                            <td class="value">Anglais (Niveau B2)</td>
+                        </tr>
+                    </table>
                 </div>
+            </article>
 
-                <table class="info-table">
-                    <tr>
-                        <td class="label">ENTREPRISE</td>
-                        <td class="value">Transports Suma (DSI)</td>
-                    </tr>
-                    <tr>
-                        <td class="label">FORMATION</td>
-                        <td class="value">M2S (Vitrolles) - SIO</td>
-                    </tr>
-                    <tr>
-                        <td class="label">RYTHME</td>
-                        <td class="value">2j Cours / 3j Entreprise</td>
-                    </tr>
-                    <tr>
-                        <td class="label">MOBILITÉ</td>
-                        <td class="value">Permis B + Véhiculé</td>
-                    </tr>
-                    <tr>
-                        <td class="label">LANGUE</td>
-                        <td class="value">Anglais (B2)</td>
-                    </tr>
-                </table>
-
-                <button class="action-button" onclick="openContactDrawer()">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    CONTACT DIRECT / CV
-                </button>
-            </div>
-
-            <!-- Sports telemetry decoration -->
-            <div class="telemetry-card">
-                <div class="telemetry-title">
-                    <span>STRESS_CONTROL // ATTR</span>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <!-- TAB 02: IMMERSION ALTERNANCE -->
+            <article class="tab-content" id="t-immersion">
+                <div class="content-header">
+                    <span class="content-meta">MONITEUR_SYSTEM // SYS-02</span>
+                    <h2 class="content-title">Immersion en Alternance</h2>
                 </div>
-                <div class="telemetry-value">98% <span>NOMINAL</span></div>
-                <p style="font-size: 0.72rem; color: var(--text-muted); line-height: 1.4;">
-                    3 ans de sports de combat (Lutte, Boxe Thaï) : apport direct en <strong>rigueur</strong>, <strong>discipline</strong> et gestion de crise en production.
-                </p>
-            </div>
-            
-        </section>
-
-        <!-- RIGHT GRID: INTERACTIVE MODULES -->
-        <section class="main-content">
-            
-            <div class="grid-header">
-                <div class="grid-header-title">
-                    <h2>CONSOLE DES LABS & ACTIVITÉS</h2>
-                    <p>Sélectionnez un nœud d'activité pour afficher le détail de l'infrastructure et des compétences associées.</p>
-                </div>
-                <div class="sys-counters">
-                    <div class="counter-box">
-                        <div class="counter-label">NODES</div>
-                        <div class="counter-num">04</div>
-                    </div>
-                    <div class="counter-box">
-                        <div class="counter-label">PROJECTS</div>
-                        <div class="counter-num">02</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modules-grid">
                 
-                <!-- MODULE 01: IMMERSION EN ALTERNANCE -->
-                <article class="module-card" onclick="openDrawer('m01')" id="card-m01">
-                    <div class="card-top">
-                        <div class="module-id"><span></span>SYS_IMMERSION // 01</div>
-                        <h3 class="module-title">Immersion en Alternance</h3>
-                        <p class="module-preview">
-                            Intégration au sein de la DSI de Transports Suma à Rognac. Prise en charge opérationnelle des infrastructures quotidiennes.
+                <div class="content-body">
+                    <div class="body-section">
+                        <span class="section-label">Structure</span>
+                        <p class="text-desc">
+                            DSI du Siège Social de <strong>Transports Suma</strong> à Rognac. Administration, maintenance et déploiement d'un parc de serveurs et de terminaux multi-sites.
                         </p>
-                        <div class="preview-list">
-                            <span class="preview-bullet">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Support GLPI
-                            </span>
-                            <span class="preview-bullet">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Déploiement Postes
-                            </span>
-                            <span class="preview-bullet">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Supervision LAN/WAN
-                            </span>
+                    </div>
+
+                    <div class="body-section">
+                        <span class="section-label">Missions Quotidiennes</span>
+                        <ul class="bullet-list">
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Support utilisateur et tickets GLPI</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> On-boarding/Off-boarding RH des collaborateurs</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Déploiement et masterisation de parcs</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Administration de la téléphonie IP</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Supervision active réseaux LAN/WAN</li>
+                        </ul>
+                    </div>
+
+                    <div class="body-section">
+                        <span class="section-label">Timeline d'une Journée Type</span>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="time-badge">08:00</div>
+                                <div class="time-dot"></div>
+                                <div class="time-content">
+                                    <h4 class="time-task">Vérification infrastructures & supervision</h4>
+                                    <p class="time-subtext">Console GLPI, routeurs WAN, alarmes et serveurs de vidéosurveillance.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="time-badge">10:00</div>
+                                <div class="time-dot"></div>
+                                <div class="time-content">
+                                    <h4 class="time-task">Support & Préparation matériel</h4>
+                                    <p class="time-subtext">Résolution d'incidents utilisateurs et préparation des terminaux d'arrivants.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="time-badge">14:00</div>
+                                <div class="time-dot"></div>
+                                <div class="time-content">
+                                    <h4 class="time-task">Projets Infrastructures DSI</h4>
+                                    <p class="time-subtext">Pilotage des accès Google Workspace et réajustements Samba.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="time-badge">16:30</div>
+                                <div class="time-dot"></div>
+                                <div class="time-content">
+                                    <h4 class="time-task">Documentation & Synthèse</h4>
+                                    <p class="time-subtext">Rédaction des fiches de résolutions, mise à jour GLPI et archivage.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-footer">
-                        <span class="click-action">
-                            Consulter la timeline
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </span>
-                    </div>
-                </article>
+                </div>
+            </article>
 
-                <!-- MODULE 02: PROJET MAJEUR -->
-                <article class="module-card" onclick="openDrawer('m02')" id="card-m02">
-                    <div class="card-top">
-                        <div class="module-id"><span></span>SYS_PROJETS // 02</div>
-                        <h3 class="module-title">Projets Majeurs DSI</h3>
-                        <p class="module-preview">
-                            Administration centralisée et sécurisation active des services de l'entreprise : Workspace collaboratif et Vidéoprotection multi-sites.
-                        </p>
-                        <div class="preview-list">
-                            <span class="preview-bullet">
+            <!-- TAB 03: PROJET MAJEUR -->
+            <article class="tab-content" id="t-projet">
+                <div class="content-header">
+                    <span class="content-meta">MONITEUR_SYSTEM // PRJ-03</span>
+                    <h2 class="content-title">Projets Majeurs DSI</h2>
+                </div>
+                
+                <div class="content-body">
+                    <div class="body-section">
+                        <span class="section-label">Google Workspace</span>
+                        <div class="sub-project">
+                            <h4>
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line></svg>
-                                Google Workspace
-                            </span>
-                            <span class="preview-bullet">
+                                Administration de la console Google Workspace
+                            </h4>
+                            <p class="text-desc">
+                                Gestion complète du cycle de vie des comptes et droits d'accès des collaborateurs sous le domaine <strong>@villeton.fr</strong>.
+                            </p>
+                            <ul class="bullet-list" style="font-size: 0.85rem;">
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Provisioning RH des nouveaux arrivants</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Conception d'un Google Sites collaboratif interne</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Déploiement des politiques de sécurité cloud</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="body-section">
+                        <span class="section-label">Vidéoprotection</span>
+                        <div class="sub-project">
+                            <h4>
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line></svg>
-                                Vidéoprotection IP
-                            </span>
+                                Centralisation du système de vidéoprotection
+                            </h4>
+                            <p class="text-desc">
+                                Supervision centralisée multi-sites et contrôle strict des flux et accès vidéo.
+                            </p>
+                            <ul class="bullet-list" style="font-size: 0.85rem;">
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Configuration des comptes maîtres et sous-comptes</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Application stricte des accès du moindre privilège</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Isolation réseau et configuration d'accès distants sécurisés</li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="card-footer">
-                        <span class="click-action">
-                            Explorer le workflow
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </span>
-                    </div>
-                </article>
+                </div>
+            </article>
 
-                <!-- MODULE 03: COMPÉTENCES & LABS SIO -->
-                <article class="module-card" onclick="openDrawer('m03')" id="card-m03">
-                    <div class="card-top">
-                        <div class="module-id"><span></span>SYS_LABS // 03</div>
-                        <h3 class="module-title">Compétences & Labs SIO</h3>
-                        <p class="module-preview">
-                            Maîtrise opérationnelle des architectures systèmes & réseaux à travers nos maquettes de laboratoire (Proxmox, Cisco, Samba AD).
-                        </p>
-                        <div class="preview-list">
-                            <span class="preview-bullet">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
-                                Proxmox VE
-                            </span>
-                            <span class="preview-bullet">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
-                                Cisco CCNA
-                            </span>
-                            <span class="preview-bullet">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
-                                DNS Adguard
-                            </span>
+            <!-- TAB 04: LABS SIO -->
+            <article class="tab-content" id="t-labs">
+                <div class="content-header">
+                    <span class="content-meta">MONITEUR_SYSTEM // LAB-04</span>
+                    <h2 class="content-title">Compétences & Labs SIO</h2>
+                </div>
+                
+                <div class="content-body">
+                    <div class="labs-grid">
+                        <div class="lab-category">
+                            <h4>RÉSEAUX</h4>
+                            <ul class="bullet-list" style="font-size: 0.8rem; gap: 0.4rem;">
+                                <li>Cisco CCNA (en préparation)</li>
+                                <li>Routage IP & Passerelles</li>
+                                <li>Calcul de masques de sous-réseau</li>
+                                <li>Services DHCP et résolutions DNS</li>
+                            </ul>
+                        </div>
+                        <div class="lab-category">
+                            <h4>SYSTÈMES</h4>
+                            <ul class="bullet-list" style="font-size: 0.8rem; gap: 0.4rem;">
+                                <li>Proxmox VE (VM, Conteneurs CT)</li>
+                                <li>Adguard Home (filtrage DNS local)</li>
+                                <li>Samba AD (liens Active Directory)</li>
+                                <li>Linux (bash/scripts) & GameShell</li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="card-footer">
-                        <span class="click-action">
-                            Ouvrir le terminal interactif
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </span>
-                    </div>
-                </article>
 
-                <!-- MODULE 04: VEILLE & COMPLÉMENTS -->
-                <article class="module-card" onclick="openDrawer('m04')" id="card-m04">
-                    <div class="card-top">
-                        <div class="module-id"><span></span>SYS_VEILLE // 04</div>
-                        <h3 class="module-title">Veille & Compléments</h3>
-                        <p class="module-preview">
-                            Suivi actif des menaces technologiques et consolidation des atouts comportementaux issus de mon parcours sportif.
-                        </p>
-                        <div class="preview-list">
-                            <span class="preview-bullet">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                                Veille Cyber
-                            </span>
-                            <span class="preview-bullet">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                                Rigueur & Stress
-                            </span>
+                    <div class="body-section" style="width: 100%;">
+                        <span class="section-label" style="margin-bottom: 0.5rem;">Console de Télémétrie Active</span>
+                        <div class="terminal-container">
+                            <div class="terminal-header">
+                                <div class="terminal-controls">
+                                    <span class="terminal-dot red"></span>
+                                    <span class="terminal-dot yellow"></span>
+                                    <span class="terminal-dot green"></span>
+                                </div>
+                                <div>LAB_TELEMETRY</div>
+                            </div>
+                            <div class="terminal-body" id="terminal-body">
+                                <!-- Appends via JS -->
+                            </div>
                         </div>
                     </div>
-                    <div class="card-footer">
-                        <span class="click-action">
-                            Voir la veille & Contact
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </span>
-                    </div>
-                </article>
+                </div>
+            </article>
 
-            </div>
+            <!-- TAB 05: VEILLE IT -->
+            <article class="tab-content" id="t-veille">
+                <div class="content-header">
+                    <span class="content-meta">MONITEUR_SYSTEM // CYB-05</span>
+                    <h2 class="content-title">Veille & Compléments</h2>
+                </div>
+                
+                <div class="content-body">
+                    <div class="body-section">
+                        <span class="section-label">Veille Technologique</span>
+                        <ul class="bullet-list">
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> Menaces en Cybersécurité (ANSSI, CERT-FR)</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> Suivi des vulnérabilités logicielles majeures</li>
+                        </ul>
+                    </div>
+
+                    <div class="body-section">
+                        <span class="section-label">Document Officiel</span>
+                        <div class="cv-download-block">
+                            <div class="cv-info-block">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                                <div>
+                                    <div class="cv-meta-title">CV_Ilyes_Nasr_Chatti.pdf</div>
+                                    <div class="cv-meta-sub">Technicien Systèmes & Réseaux</div>
+                                </div>
+                            </div>
+                            <a href="#" class="cv-dl-btn" onclick="alert('Téléchargement du CV simulé !'); return false;">Télécharger le CV</a>
+                        </div>
+                    </div>
+
+                    <div class="body-section" style="width: 100%;">
+                        <span class="section-label">Requête de Contact</span>
+                        <form class="contact-form" id="contactForm" onsubmit="handleContactSubmit(event)">
+                            <div class="form-group">
+                                <label for="c_email">Adresse E-mail</label>
+                                <input type="email" id="c_email" required class="form-control" placeholder="examinateur-sio@m2s.fr">
+                            </div>
+                            <div class="form-group">
+                                <label for="c_msg">Message / Requête</label>
+                                <textarea id="c_msg" required class="form-control" placeholder="Demande de renseignements..."></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Transmettre la requête</button>
+                            <div class="form-success-msg" id="successMsg">
+                                REQUÊTE ENVOYÉE // STATUT: SUCCESS (Simulation)
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </article>
 
         </section>
 
     </main>
 
-    <!-- DRAWER OVERLAY -->
-    <div class="drawer-overlay" id="drawerOverlay" onclick="closeAllDrawers()"></div>
-
-    <!-- DETAIL DRAWER 01: IMMERSION EN ALTERNANCE -->
-    <div class="detail-drawer" id="drawer-m01">
-        <div class="drawer-header">
-            <div>
-                <div class="drawer-meta">SYS_IMMERSION // NODE_01</div>
-                <h3 class="drawer-title">Immersion en Alternance</h3>
-            </div>
-            <button class="close-btn" onclick="closeAllDrawers()">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </button>
-        </div>
-        <div class="drawer-content">
-            <div class="drawer-section">
-                <span class="section-label">Contexte</span>
-                <p class="text-desc">
-                    <strong>Transports Suma</strong> (Siège social à Rognac) – Acteur majeur de la mobilité régionale. Intégration au sein de la DSI pour piloter le support, les postes clients, et la connectivité multi-sites.
-                </p>
-            </div>
-            
-            <div class="drawer-section">
-                <span class="section-label">Missions Quotidiennes (Synthèse)</span>
-                <ul class="bullet-list">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Support utilisateur N1/N2 (Tickets GLPI)</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Provisioning RH (On/Off-boarding collaborateurs)</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Masterisation & Déploiement de parcs de postes</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Administration de téléphonie IP (VoIP)</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Supervision active des liaisons WAN/LAN</li>
-                </ul>
-            </div>
-
-            <div class="drawer-section">
-                <span class="section-label">Timeline d'une Journée Type</span>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="time-badge">08:00</div>
-                        <div class="time-dot"></div>
-                        <div class="time-content">
-                            <h4 class="time-task">Vérification infrastructures & supervision</h4>
-                            <p class="time-subtext">Console GLPI, routeurs WAN, alarmes et serveurs de vidéosurveillance.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="time-badge">10:00</div>
-                        <div class="time-dot"></div>
-                        <div class="time-content">
-                            <h4 class="time-task">Support & Préparation matériel</h4>
-                            <p class="time-subtext">Résolution d'incidents utilisateurs et préparation des terminaux d'arrivants.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="time-badge">14:00</div>
-                        <div class="time-dot"></div>
-                        <div class="time-content">
-                            <h4 class="time-task">Projets Infrastructures DSI</h4>
-                            <p class="time-subtext">Pilotage des accès Google Workspace et réajustements Samba.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="time-badge">16:30</div>
-                        <div class="time-dot"></div>
-                        <div class="time-content">
-                            <h4 class="time-task">Documentation & Synthèse</h4>
-                            <p class="time-subtext">Rédaction des fiches de résolutions, mise à jour GLPI et archivage.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- DETAIL DRAWER 02: PROJET MAJEUR -->
-    <div class="detail-drawer" id="drawer-m02">
-        <div class="drawer-header">
-            <div>
-                <div class="drawer-meta">SYS_PROJETS // NODE_02</div>
-                <h3 class="drawer-title">Projets Majeurs DSI</h3>
-            </div>
-            <button class="close-btn" onclick="closeAllDrawers()">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </button>
-        </div>
-        <div class="drawer-content">
-            <div class="drawer-section">
-                <span class="section-label">Projet A</span>
-                <div class="sub-project">
-                    <h4>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line></svg>
-                        Administration Google Workspace
-                    </h4>
-                    <p class="text-desc">
-                        Gestion globale du cycle de vie des comptes et des droits d'accès des collaborateurs sous le domaine <strong>@villeton.fr</strong>. 
-                    </p>
-                    <ul class="bullet-list" style="margin-top: 0.5rem; font-size: 0.8rem;">
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Provisioning automatisé des nouveaux comptes</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Création et administration d'un Google Sites interne</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Structuration des Groupes & Partages Cloud</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="drawer-section">
-                <span class="section-label">Projet B</span>
-                <div class="sub-project">
-                    <h4>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line></svg>
-                        Centralisation de la Vidéoprotection
-                    </h4>
-                    <p class="text-desc">
-                        Supervision centralisée et sécurisation de l'infrastructure de vidéosurveillance multi-sites.
-                    </p>
-                    <ul class="bullet-list" style="margin-top: 0.5rem; font-size: 0.8rem;">
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Configuration des comptes maîtres et sous-comptes</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Application stricte des droits d'accès</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Isolation réseau et principe du moindre privilège</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- DETAIL DRAWER 03: COMPÉTENCES & LABS SIO -->
-    <div class="detail-drawer" id="drawer-m03">
-        <div class="drawer-header">
-            <div>
-                <div class="drawer-meta">SYS_LABS // NODE_03</div>
-                <h3 class="drawer-title">Compétences & Labs SIO</h3>
-            </div>
-            <button class="close-btn" onclick="closeAllDrawers()">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </button>
-        </div>
-        <div class="drawer-content">
-            <div class="drawer-section">
-                <span class="section-label">Compétences Réseaux</span>
-                <p class="text-desc">
-                    Préparation active au cursus <strong>Cisco CCNA</strong>. Routage dynamique, adressage IP (IPv4 subnetting), configuration des passerelles, masques de sous-réseaux et serveurs de résolution DNS/DHCP.
-                </p>
-            </div>
-
-            <div class="drawer-section">
-                <span class="section-label">Environnements Systèmes</span>
-                <p class="text-desc">
-                    Déploiements et maintenance d'infrastructures de laboratoire : hyperviseurs <strong>Proxmox VE</strong> (VM & conteneurs LXC), administration active de serveurs DNS <strong>Adguard Home</strong>, configurations de partages Samba interconnectés à un <strong>Active Directory</strong>, scripts système <strong>Linux</strong>, exploitation de consoles rétro <strong>GameShell</strong>.
-                </p>
-            </div>
-
-            <div class="drawer-section">
-                <span class="section-label">Simulateur de Terminal Actif</span>
-                
-                <div class="terminal-container">
-                    <div class="terminal-header">
-                        <div class="terminal-controls">
-                            <span class="terminal-dot red"></span>
-                            <span class="terminal-dot yellow"></span>
-                            <span class="terminal-dot green"></span>
-                        </div>
-                        <div>NODE_TELEMETRY</div>
-                    </div>
-                    <div class="terminal-body" id="terminal-body">
-                        <!-- CLI Lines will append here dynamically via JS -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- DETAIL DRAWER 04: VEILLE & COMPLÉMENTS -->
-    <div class="detail-drawer" id="drawer-m04">
-        <div class="drawer-header">
-            <div>
-                <div class="drawer-meta">SYS_VEILLE // NODE_04</div>
-                <h3 class="drawer-title">Veille & Compléments</h3>
-            </div>
-            <button class="close-btn" onclick="closeAllDrawers()">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </button>
-        </div>
-        <div class="drawer-content">
-            <div class="drawer-section">
-                <span class="section-label">Veille Technologique</span>
-                <ul class="bullet-list">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> Menaces Cyber & Failles Zero-Day (Anssi, CERT)</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> Évolutions des systèmes hyperconvergés</li>
-                </ul>
-            </div>
-
-            <div class="drawer-section">
-                <span class="section-label">Parcours Sportif & Compétences Comportementales</span>
-                <p class="text-desc">
-                    3 ans de pratique assidue de la <strong>Lutte</strong> et de la <strong>Boxe Thaïlandaise</strong>. Cette formation martiale m'a inculqué une rigueur opérationnelle stricte, une discipline personnelle forte et la capacité de garder un contrôle absolu de mes émotions sous haute tension technique.
-                </p>
-            </div>
-
-            <div class="drawer-section">
-                <span class="section-label">Demande de Contact</span>
-                <form class="contact-form" id="contactForm" onsubmit="handleContactSubmit(event)">
-                    <div class="form-group">
-                        <label for="c_email">Adresse E-mail</label>
-                        <input type="email" id="c_email" required class="form-control" placeholder="dns-admin@entreprise.fr">
-                    </div>
-                    <div class="form-group">
-                        <label for="c_msg">Message / Requête</label>
-                        <textarea id="c_msg" required class="form-control" placeholder="Demande d'entretien ou d'accès au dossier technique..."></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Exécuter la requête d'envoi</button>
-                    <div class="form-success-msg" id="successMsg">
-                        REQUÊTE ENVOYÉE // STATUT: SUCCESS (Simulation)
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- CONTACT / CV DRAWER (DRAWER DE REQUÊTE DIRECTE) -->
-    <div class="detail-drawer" id="drawer-contact">
-        <div class="drawer-header">
-            <div>
-                <div class="drawer-meta">SYS_CONNECT // MONITEUR_ACCES</div>
-                <h3 class="drawer-title">Accès Direct & Contact</h3>
-            </div>
-            <button class="close-btn" onclick="closeAllDrawers()">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </button>
-        </div>
-        <div class="drawer-content">
-            <div class="drawer-section">
-                <span class="section-label">Document Officiel</span>
-                <div class="cv-download-block">
-                    <div class="cv-info-block">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                        <div>
-                            <div class="cv-meta-title">CV_Ilyes_Nasr_Chatti.pdf</div>
-                            <div class="cv-meta-sub">Technicien Systèmes & Réseaux</div>
-                        </div>
-                    </div>
-                    <!-- Virtual CV download, falls back to download prompt -->
-                    <a href="#" class="cv-dl-btn" onclick="alert('Téléchargement du CV simulé ! Remplacez le lien href par votre fichier PDF.'); return false;">Télécharger</a>
-                </div>
-            </div>
-
-            <div class="drawer-section">
-                <span class="section-label">Canal de Communication</span>
-                <form class="contact-form" id="mainContactForm" onsubmit="handleMainContactSubmit(event)">
-                    <div class="form-group">
-                        <label for="m_email">Adresse E-mail</label>
-                        <input type="email" id="m_email" required class="form-control" placeholder="examinateur-sio@m2s.fr">
-                    </div>
-                    <div class="form-group">
-                        <label for="m_msg">Message</label>
-                        <textarea id="m_msg" required class="form-control" placeholder="Saisir votre message ici..."></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Soumettre le message</button>
-                    <div class="form-success-msg" id="mainSuccessMsg">
-                        TRANSMISSION COMPLÈTE // RETOUR PROCHAIN
-                    </div>
-                </form>
-            </div>
-            
-            <div class="drawer-section">
-                <span class="section-label">Coordonnées Directes</span>
-                <table class="info-table">
-                    <tr>
-                        <td class="label">TÉLÉPHONE</td>
-                        <td class="value">+33 6 00 00 00 00</td>
-                    </tr>
-                    <tr>
-                        <td class="label">EMAIL DIRECT</td>
-                        <td class="value">ilyes.nasr.chatti@email.com</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-
     <!-- JAVASCRIPT SYSTEM ENGINE -->
     <script>
-        // Drawer toggle mechanics
-        function openDrawer(id) {
-            closeAllDrawers();
-            
-            // Highlight the card that opened it
-            const card = document.getElementById(`card-${id}`);
-            if (card) {
-                card.classList.add('active');
-            }
-            
-            const drawer = document.getElementById(`drawer-${id}`);
-            const overlay = document.getElementById('drawerOverlay');
-            if (drawer && overlay) {
-                drawer.classList.add('open');
-                overlay.classList.add('open');
-            }
+        // Tab switching controller
+        function switchTab(tabId) {
+            // Remove active class from all tabs & contents
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
 
-            // If it's the lab drawer, start the terminal simulation
-            if (id === 'm03') {
+            // Add active class to target tab & content
+            document.getElementById(`btn-${tabId}`).classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+
+            // If the labs tab is selected, trigger CLI simulation
+            if (tabId === 't-labs') {
                 startTerminalSimulation();
-            }
-        }
-
-        function openContactDrawer() {
-            closeAllDrawers();
-            const drawer = document.getElementById('drawer-contact');
-            const overlay = document.getElementById('drawerOverlay');
-            if (drawer && overlay) {
-                drawer.classList.add('open');
-                overlay.classList.add('open');
-            }
-        }
-
-        function closeAllDrawers() {
-            // Remove active state from all cards
-            document.querySelectorAll('.module-card').forEach(card => {
-                card.classList.remove('active');
-            });
-            
-            // Close all drawers
-            document.querySelectorAll('.detail-drawer').forEach(drawer => {
-                drawer.classList.remove('open');
-            });
-            
-            const overlay = document.getElementById('drawerOverlay');
-            if (overlay) {
-                overlay.classList.remove('open');
-            }
-            
-            // Clear terminal interval to save CPU when not visible
-            if (terminalInterval) {
-                clearInterval(terminalInterval);
-                terminalInterval = null;
+            } else {
+                // Clear simulation interval when tab changes to preserve cycles
+                if (terminalInterval) {
+                    clearInterval(terminalInterval);
+                    terminalInterval = null;
+                }
             }
         }
 
@@ -1673,65 +1284,49 @@
             }, 3000);
         }
 
-        function handleMainContactSubmit(e) {
-            e.preventDefault();
-            const successMsg = document.getElementById('mainSuccessMsg');
-            successMsg.style.display = 'block';
-            setTimeout(() => {
-                successMsg.style.display = 'none';
-                e.target.reset();
-            }, 3000);
-        }
-
         // Terminal Simulator Logic
         let terminalInterval = null;
         const terminalCommands = [
-            { cmd: "ping -c 3 192.168.1.1", delay: 800, output: [
+            { cmd: "ping -c 3 192.168.1.1", output: [
                 "PING 192.168.1.1 (192.168.1.1) 56(84) bytes of data.",
                 "64 bytes from 192.168.1.1: icmp_seq=1 ttl=64 time=1.23 ms",
                 "64 bytes from 192.168.1.1: icmp_seq=2 ttl=64 time=0.98 ms",
-                "64 bytes from 192.168.1.1: icmp_seq=3 ttl=64 time=1.05 ms",
                 "--- 192.168.1.1 ping statistics ---",
                 "3 packets transmitted, 3 received, 0% packet loss",
                 "<span class='cli-success'>STATUS: GATEWAY_REACHABLE (OK)</span>"
             ]},
-            { cmd: "systemctl status smbd", delay: 1000, output: [
+            { cmd: "systemctl status smbd", output: [
                 "● smbd.service - LSB: Samba AD/DC File Server",
                 "   Loaded: loaded (/etc/init.d/smbd; generated)",
                 "   Active: <span class='cli-success'>active (running)</span> since Tue 2026-05-26 08:00:00 CET",
                 "   Status: \"smbd: ready to serve connections\""
             ]},
-            { cmd: "proxmox-backup-client status", delay: 1200, output: [
+            { cmd: "proxmox-backup-client status", output: [
                 "Connection: ilyes@pbs.villeton.fr:8007",
                 "Backup Server: PBS-01 - Active & Encrypted",
                 "Storage Usage: 42% (ZFS Pool: Healthy)",
                 "<span class='cli-success'>BACKUP STATUS: COMPLETED_SUCCESSFULLY</span>"
             ]},
-            { cmd: "adguard-home --status", delay: 900, output: [
+            { cmd: "adguard-home --status", output: [
                 "DNS Filter Engine: RUNNING",
                 "Rules Loaded: 145,203 rules active",
                 "Blocked Queries (24h): 12.4% (Malware/Telemetry)",
                 "Status: <span class='cli-success'>SECURE</span>"
-            ]},
-            { cmd: "ip route show", delay: 700, output: [
-                "default via 10.0.10.1 dev eth0 proto static metric 100",
-                "10.0.10.0/24 dev eth0 proto kernel scope link src 10.0.10.15"
             ]}
         ];
 
         function startTerminalSimulation() {
             const container = document.getElementById('terminal-body');
+            if (!container) return;
             container.innerHTML = ""; // Clear
             
             let commandIndex = 0;
             let lineIndex = 0;
             let currentCmdObj = null;
-            let typingCmd = false;
 
             function runCycle() {
                 if (!currentCmdObj) {
                     currentCmdObj = terminalCommands[commandIndex];
-                    // Append prompt & start typing the command
                     const promptLine = document.createElement('div');
                     promptLine.innerHTML = `<span class='cli-prompt'>ilyes@si-node:~$</span> <span class='cmd-text'></span>`;
                     container.appendChild(promptLine);
@@ -1740,7 +1335,6 @@
                     let charIndex = 0;
                     const cmdTextSpan = promptLine.querySelector('.cmd-text');
                     
-                    typingCmd = true;
                     const typingInterval = setInterval(() => {
                         if (charIndex < currentCmdObj.cmd.length) {
                             cmdTextSpan.textContent += currentCmdObj.cmd.charAt(charIndex);
@@ -1748,9 +1342,7 @@
                             container.scrollTop = container.scrollHeight;
                         } else {
                             clearInterval(typingInterval);
-                            typingCmd = false;
                             lineIndex = 0;
-                            // Wait a short delay, then output lines
                             setTimeout(printOutputs, 250);
                         }
                     }, 40);
@@ -1766,10 +1358,10 @@
                     lineIndex++;
                     setTimeout(printOutputs, 150);
                 } else {
-                    // Command output finished, wait before next command
                     currentCmdObj = null;
                     commandIndex = (commandIndex + 1) % terminalCommands.length;
-                    setTimeout(runCycle, 1500);
+                    // Wait before starting next command cycle
+                    terminalInterval = setTimeout(runCycle, 1500);
                 }
             }
 
@@ -1778,4 +1370,3 @@
     </script>
 </body>
 </html>
-```
