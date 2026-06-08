@@ -3,643 +3,724 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio professionnel de Ilyes Nasr Chatti - Étudiant en BTS SIO Option SISR">
-    <title>Ilyes Nasr Chatti - Portfolio Professionnel</title>
+    <meta name="description" content="Soutenance de BTS SIO Option SISR - Ilyes Nasr Chatti. Portfolio de présentation orale.">
+    <title>Ilyes Nasr Chatti - Présentation BTS SIO SISR</title>
     
-    <!-- Google Fonts: Inter -->
+    <!-- Google Fonts: Playfair Display (Serif) & Inter (Sans-Serif) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
     
     <style>
-        /* Variables de couleur corporate */
+        /* Variables de couleurs et typographie */
         :root {
-            --bg-page: #f8fafc;
-            --bg-card: #ffffff;
-            --color-primary: #1e3a8a; /* Bleu Marine */
-            --color-primary-light: #eff6ff; /* Bleu Très Clair */
-            --color-text-main: #0f172a; /* Gris Anthracite */
-            --color-text-muted: #475569; /* Gris Moyen */
-            --color-border: #e2e8f0; /* Gris Clair de bordure */
-            --color-accent: #2563eb; /* Bleu Royal */
-            --transition-smooth: all 0.25s ease-in-out;
+            --color-dark: #0f172a;        /* Bleu Nuit profond */
+            --color-light: #ffffff;       /* Blanc pur */
+            --color-gray-light: #f8fafc;  /* Gris très clair */
+            --color-accent: #9e1b1b;      /* Rouge Bordeaux */
+            --color-blue-accent: #38bdf8; /* Bleu ciel d'accentuation */
+            --font-title: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', sans-serif;
         }
 
-        /* Styles de base */
+        /* Réinitialisation de base */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            background-color: var(--bg-page);
-            color: var(--color-text-main);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            font-size: 1rem;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            font-family: var(--font-body);
+            background-color: var(--color-dark);
+            scroll-behavior: smooth;
         }
 
-        /* Conteneur principal */
-        .container {
-            max-width: 1200px;
-            width: 100%;
-            margin: 40px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 30px;
-            flex: 1;
+        /* Conteneur principal de présentation */
+        .presentation-container {
+            height: 100vh;
+            width: 100vw;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
         }
 
-        /* Colonne de Gauche (Profil & Navigation) */
-        .sidebar {
-            background-color: var(--bg-card);
-            border: 1px solid var(--color-border);
-            border-radius: 12px;
-            padding: 30px 24px;
-            height: fit-content;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            position: sticky;
-            top: 40px;
-        }
-
-        .profile-header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .profile-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background-color: var(--color-primary-light);
-            color: var(--color-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin: 0 auto 15px auto;
-            border: 2px solid var(--color-border);
-        }
-
-        .profile-name {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--color-text-main);
-            line-height: 1.2;
-            margin-bottom: 6px;
-        }
-
-        .profile-title {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--color-accent);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .profile-details {
-            border-top: 1px solid var(--color-border);
-            border-bottom: 1px solid var(--color-border);
-            padding: 20px 0;
-            margin-bottom: 25px;
-        }
-
-        .detail-item {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 12px;
-            font-size: 0.9rem;
-        }
-
-        .detail-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .detail-label {
-            color: var(--color-text-muted);
-            font-weight: 500;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            margin-bottom: 2px;
-        }
-
-        .detail-value {
-            color: var(--color-text-main);
-            font-weight: 600;
-        }
-
-        /* Menu de Navigation Sobres */
-        .nav-menu {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .nav-item {
-            display: block;
-            width: 100%;
-            padding: 12px 16px;
-            border: none;
-            background: none;
-            text-align: left;
-            font-family: inherit;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--color-text-muted);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            border-left: 3px solid transparent;
-        }
-
-        .nav-item:hover {
-            background-color: var(--color-primary-light);
-            color: var(--color-primary);
-        }
-
-        .nav-item.active {
-            background-color: var(--color-primary-light);
-            color: var(--color-primary);
-            border-left: 3px solid var(--color-primary);
-            font-weight: 600;
-        }
-
-        /* Colonne de Droite (Contenus) */
-        .content-area {
-            background-color: var(--bg-card);
-            border: 1px solid var(--color-border);
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            min-height: 500px;
-        }
-
-        /* Sections d'Onglets */
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.4s ease;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Éléments de mise en page */
-        h2 {
-            font-size: 1.8rem;
-            color: var(--color-primary);
-            margin-bottom: 20px;
-            font-weight: 700;
-            border-bottom: 2px solid var(--color-primary-light);
-            padding-bottom: 10px;
-        }
-
-        h3 {
-            font-size: 1.25rem;
-            color: var(--color-text-main);
-            margin: 25px 0 12px 0;
-            font-weight: 600;
-        }
-
-        p {
-            color: var(--color-text-muted);
-            margin-bottom: 20px;
-            font-size: 1.05rem;
-            line-height: 1.7;
-        }
-
-        /* Listes à puces corporatives */
-        .list-clean {
-            list-style: none;
-            margin-bottom: 25px;
-        }
-
-        .list-clean-item {
+        /* Structure commune de chaque Slide */
+        .slide {
+            height: 100vh;
+            width: 100vw;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
             position: relative;
-            padding-left: 24px;
-            margin-bottom: 12px;
-            color: var(--color-text-muted);
-            font-size: 1.02rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 10% 40px 10%;
+            overflow: hidden;
         }
 
-        .list-clean-item::before {
-            content: "•";
+        /* --- THEMATISATION DES SLIDES --- */
+
+        /* Thème Sombre */
+        .slide.theme-dark {
+            background-color: var(--color-dark);
+            color: #ffffff;
+        }
+
+        .slide.theme-dark .section-label {
+            color: #ef4444; /* Rouge clair pour fond sombre */
+        }
+
+        .slide.theme-dark .keyword-highlight {
+            color: var(--color-blue-accent);
+        }
+
+        /* Thème Clair */
+        .slide.theme-light {
+            background-color: var(--color-light);
+            color: var(--color-dark);
+        }
+
+        .slide.theme-light .section-label {
+            color: var(--color-accent); /* Rouge Bordeaux pour fond clair */
+        }
+
+        .slide.theme-light .keyword-highlight {
             color: var(--color-accent);
-            font-weight: bold;
-            font-size: 1.3rem;
-            position: absolute;
-            left: 8px;
-            top: -2px;
         }
 
-        /* Boîtes d'informations spécifiques */
-        .info-box {
-            background-color: var(--color-primary-light);
-            border-left: 4px solid var(--color-primary);
-            padding: 20px;
-            border-radius: 0 8px 8px 0;
-            margin-bottom: 25px;
+        /* Thème Alternatif (Gris Clair) */
+        .slide.theme-gray {
+            background-color: var(--color-gray-light);
+            color: var(--color-dark);
         }
 
-        .info-box p {
-            margin-bottom: 0;
-            font-weight: 500;
-            color: var(--color-primary);
+        .slide.theme-gray .section-label {
+            color: var(--color-accent);
         }
 
-        /* Structure de mise en valeur des projets */
-        .project-block {
-            border: 1px solid var(--color-border);
-            border-radius: 8px;
-            padding: 24px;
-            margin-bottom: 25px;
-            background-color: #ffffff;
-            transition: var(--transition-smooth);
-        }
-
-        .project-block:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-            border-color: #cbd5e1;
-        }
-
-        .project-header {
+        /* --- MENU DE NAVIGATION FIXE --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 10%;
+            z-index: 100;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
+            transition: all 0.3s ease;
         }
 
-        .project-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--color-primary);
-            margin: 0;
+        /* Changement dynamique de couleur de l'en-tête selon la slide */
+        header.header-light-mode {
+            color: var(--color-dark);
         }
 
-        .project-badge {
-            font-size: 0.75rem;
-            font-weight: 600;
-            background-color: var(--color-primary-light);
-            color: var(--color-primary);
-            padding: 4px 10px;
-            border-radius: 20px;
-            border: 1px solid rgba(30, 58, 138, 0.1);
+        header.header-light-mode a {
+            color: var(--color-dark);
         }
 
-        /* Blocs avec logos */
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            background-color: #fafafa;
-            border: 1px solid var(--color-border);
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 30px;
+        header.header-light-mode .nav-link::after {
+            background-color: var(--color-dark);
         }
 
-        .logo-placeholder {
-            flex-shrink: 0;
+        header.header-dark-mode {
+            color: #ffffff;
+        }
+
+        header.header-dark-mode a {
+            color: #ffffff;
+        }
+
+        header.header-dark-mode .nav-link::after {
             background-color: #ffffff;
-            border: 1px dashed #cbd5e1;
-            border-radius: 6px;
-            padding: 15px;
+        }
+
+        .header-logo {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
             display: flex;
-            align-items: center;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 4px;
+            transition: opacity 0.2s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* --- STYLES DE TEXTE GENERAUX --- */
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .slide-title {
+            font-family: var(--font-title);
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 35px;
+        }
+
+        /* --- SLIDE 1 : ACCUEIL --- */
+        #slide-accueil {
             justify-content: center;
         }
 
-        .logo-text-details {
+        .hero-name {
+            font-family: var(--font-title);
+            font-size: 6.5rem;
+            font-weight: 800;
+            line-height: 1.05;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: #94a3b8;
+            margin-bottom: 40px;
+        }
+
+        .hero-keywords {
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* --- SLIDE 2 : ENTREPRISE --- */
+        .layout-two-cols {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .company-logo {
+            max-height: 90px;
+            width: auto;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        .keyword-list {
+            list-style: none;
             display: flex;
             flex-direction: column;
+            gap: 15px;
         }
 
-        .logo-title-company {
+        .keyword-item {
+            font-size: 1.5rem;
             font-weight: 700;
-            font-size: 1.05rem;
-            color: var(--color-text-main);
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .logo-caption {
-            font-size: 0.85rem;
-            color: var(--color-text-muted);
-            margin-bottom: 0;
-        }
-
-        /* Bouton d'action */
-        .btn-contact {
-            display: inline-block;
-            background-color: var(--color-primary);
-            color: #ffffff;
-            padding: 12px 24px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: var(--transition-smooth);
-            border: 1px solid transparent;
-            margin-top: 10px;
-        }
-
-        .btn-contact:hover {
+        .keyword-item::before {
+            content: "";
+            width: 8px;
+            height: 8px;
             background-color: var(--color-accent);
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+            border-radius: 50%;
         }
 
-        /* Footer */
-        footer {
-            margin-top: auto;
+        .slide.theme-dark .keyword-item::before {
+            background-color: var(--color-blue-accent);
+        }
+
+        /* Galerie d'images terrain */
+        .gallery-grid {
+            display: grid;
+            grid-template-rows: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .photo-card {
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--color-gray-light);
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            border: 2px dashed #cbd5e1;
+            transition: all 0.3s ease;
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0; /* Cachée par défaut tant que l'utilisateur ne l'a pas ajoutée */
+        }
+
+        .photo-card-placeholder {
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            color: #64748b;
             text-align: center;
             padding: 20px;
-            border-top: 1px solid var(--color-border);
-            background-color: #ffffff;
-            font-size: 0.85rem;
-            color: var(--color-text-muted);
+            font-style: italic;
+        }
+
+        .photo-card-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #94a3b8;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        /* --- SLIDE 3 : PROJETS --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+        }
+
+        .project-card {
+            border-left: 2px solid rgba(255,255,255,0.1);
+            padding-left: 30px;
+        }
+
+        .project-category {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-blue-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .project-headline {
+            font-family: var(--font-title);
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .project-bullets {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .project-bullet {
+            font-size: 1.15rem;
+            color: #cbd5e1;
+        }
+
+        /* --- SLIDE 4 : VEILLE --- */
+        .veille-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #e2e8f0;
+            border-radius: 12px;
+            padding: 80px 40px;
+            background-color: var(--color-light);
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .veille-status {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            color: #64748b;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Animation de pulsation douce pour signifier le travail en cours */
+        .veille-status::before {
+            content: "";
+            width: 12px;
+            height: 12px;
+            background-color: var(--color-accent);
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 1.8s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.8); opacity: 0.5; }
+        }
+
+        /* --- SLIDE 5 : SOFT SKILLS --- */
+        .skills-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .skills-stat-box {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .massive-number {
+            font-family: var(--font-title);
+            font-size: 14rem;
+            font-weight: 800;
+            color: #ef4444; /* Rouge bordeaux lumineux */
+            line-height: 0.8;
+        }
+
+        .stat-description {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .stat-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .stat-subtitle {
+            font-size: 1.15rem;
+            color: #94a3b8;
+        }
+
+        .skills-list-box {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .skill-word {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .skill-sub-caption {
+            font-size: 1rem;
+            color: #94a3b8;
+            margin-top: 5px;
         }
 
         /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 992px) {
-            .container {
+        @media (max-width: 1024px) {
+            .hero-name {
+                font-size: 4.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.8rem;
+            }
+            .slide-title {
+                font-size: 2.8rem;
+            }
+            .layout-two-cols,
+            .projects-grid,
+            .skills-layout {
                 grid-template-columns: 1fr;
-                margin: 20px auto;
+                gap: 40px;
             }
-
-            .sidebar {
-                position: static;
-                width: 100%;
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: 1fr;
             }
-
-            .nav-menu {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 8px;
-                margin-top: 15px;
+            .photo-card {
+                height: 150px;
             }
-
-            .nav-item {
-                padding: 10px 14px;
-                font-size: 0.9rem;
-                border-left: none;
-                border-bottom: 2px solid transparent;
-                text-align: center;
+            header {
+                padding: 20px 5%;
             }
-
-            .nav-item.active {
-                border-left: none;
-                border-bottom: 2px solid var(--color-primary);
+            .nav-links {
+                gap: 20px;
             }
         }
 
-        @media (max-width: 600px) {
-            .nav-menu {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
+        @media (max-width: 768px) {
+            .hero-name {
+                font-size: 3.2rem;
             }
-
-            .nav-item {
-                padding: 8px 5px;
-                font-size: 0.85rem;
+            .hero-subtitle {
+                font-size: 1.4rem;
             }
-
-            .content-area {
-                padding: 24px;
+            .slide-title {
+                font-size: 2.2rem;
+                margin-bottom: 25px;
             }
-
-            .logo-section {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
+            .slide {
+                padding: 100px 5% 40px 5%;
+            }
+            .header-logo {
+                font-size: 1.2rem;
+            }
+            .nav-links {
+                display: none; /* Cache la navigation sur mobile pour simplifier l'écran */
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .massive-number {
+                font-size: 9rem;
+            }
+            .stat-title {
+                font-size: 1.2rem;
+            }
+            .skill-word {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <!-- Barre de Navigation Fixe -->
+    <header class="header-dark-mode" id="main-header">
+        <a href="#accueil" class="header-logo">Ilyes Nasr Chatti.</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#accueil" class="nav-link active" onclick="scrollToSlide('accueil')">Accueil</a></li>
+                <li><a href="#perso" class="nav-link" onclick="scrollToSlide('perso')">Perso</a></li>
+                <li><a href="#entreprise" class="nav-link" onclick="scrollToSlide('entreprise')">Entreprise</a></li>
+                <li><a href="#projets" class="nav-link" onclick="scrollToSlide('projets')">Projets</a></li>
+                <li><a href="#veille" class="nav-link" onclick="scrollToSlide('veille')">Veille</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteneur global de présentation -->
+    <main class="presentation-container" id="presentation-container">
         
-        <!-- Colonne de Gauche : Menu et Profil -->
-        <aside class="sidebar">
-            <div class="profile-header">
-                <div class="profile-avatar">IN</div>
-                <h1 class="profile-name">Ilyes Nasr Chatti</h1>
-                <div class="profile-title">Étudiant BTS SIO SISR</div>
+        <!-- Slide 1 : Accueil -->
+        <section class="slide theme-dark" id="accueil">
+            <div class="section-label">BIENVENUE SUR MON ESPACE</div>
+            <h1 class="hero-name">Ilyes Nasr Chatti</h1>
+            <div class="hero-subtitle">Étudiant BTS SIO - Option SISR</div>
+            <div class="hero-keywords">
+                <span class="keyword-highlight">Infrastructures</span> &nbsp;|&nbsp; 
+                <span class="keyword-highlight">Cybersécurité</span> &nbsp;|&nbsp; 
+                <span class="keyword-highlight">Support</span>
             </div>
+        </section>
 
-            <div class="profile-details">
-                <div class="detail-item">
-                    <span class="detail-label">Parcours</span>
-                    <span class="detail-value">Alternance (2j cours / 3j entreprise)</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Entreprise</span>
-                    <span class="detail-value">Transports Suma</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Mobilité</span>
-                    <span class="detail-value">Permis B + Véhiculé</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Langue</span>
-                    <span class="detail-value">Anglais (Niveau B2)</span>
-                </div>
-            </div>
-
-            <!-- Navigation par onglets -->
-            <nav>
-                <div class="nav-menu">
-                    <button class="nav-item active" onclick="switchTab('tab-accueil', this)">Accueil</button>
-                    <button class="nav-item" onclick="switchTab('tab-entreprise', this)">Entreprise</button>
-                    <button class="nav-item" onclick="switchTab('tab-projets', this)">Projets</button>
-                    <button class="nav-item" onclick="switchTab('tab-veille', this)">Veille</button>
-                    <button class="nav-item" onclick="switchTab('tab-perso', this)">Perso</button>
-                </div>
-            </nav>
-        </aside>
-
-        <!-- Colonne de Droite : Contenus dynamiques -->
-        <main class="content-area">
+        <!-- Slide 2 : Perso -->
+        <section class="slide theme-light" id="perso">
+            <div class="section-label">01. Parcours & Soft Skills</div>
+            <h2 class="slide-title">Spécialisation Infrastructures</h2>
             
-            <!-- Onglet 1: Accueil -->
-            <section class="tab-content active" id="tab-accueil">
-                <h2>Présentation générale</h2>
-                <p>
-                    Bienvenue sur mon portfolio professionnel. Actuellement étudiant en première année de BTS SIO (Services Informatiques aux Organisations) option SISR (Solutions d'Infrastructure, Systèmes et Réseaux) au sein de M2s formation à Vitrolles, je prépare mon diplôme en alternance.
-                </p>
-                <p>
-                    J'effectue ma formation pratique au sein du service informatique de l'entreprise Transports Suma, située à Rognac. Passionné par l'administration système, la gestion des infrastructures réseaux et la cybersécurité, ce portfolio présente mon parcours, mes compétences et mes projets majeurs.
-                </p>
+            <div class="skills-layout">
+                <!-- Colonne de gauche : Objectifs -->
+                <div>
+                    <h3 style="font-size: 1.8rem; font-weight: 600; line-height: 1.3; margin-bottom: 20px;">
+                        Développer des solutions d'infrastructure robustes et sécurisées.
+                    </h3>
+                    <ul class="keyword-list" style="margin-top: 30px;">
+                        <li class="keyword-item">Administration Systèmes & Virtualisation</li>
+                        <li class="keyword-item">Sécurisation et adressage réseau Cisco</li>
+                        <li class="keyword-item">Gestion de parc et résolution d'incidents</li>
+                    </ul>
+                </div>
                 
-                <div class="info-box">
-                    <p>Statut : À la recherche d'opportunités d'apprentissage continu et de nouveaux challenges techniques en systèmes et réseaux.</p>
-                </div>
-
-                <div class="logo-section">
-                    <div class="logo-placeholder">
-                        <img src="logo-suma.png" alt="Logo Transports Suma" style="max-width: 150px; height: auto;">
-                    </div>
-                    <div class="logo-text-details">
-                        <span class="logo-title-company">Transports Suma</span>
-                        <p class="logo-caption">Partenaire d'alternance - Service Informatique (Rognac)</p>
+                <!-- Colonne de droite : Chiffre Statologique -->
+                <div class="skills-stat-box">
+                    <div class="massive-number">3</div>
+                    <div class="stat-description">
+                        <span class="stat-title">Ans de sports de combat</span>
+                        <span class="stat-subtitle">Lutte & Boxe Thaïlandaise</span>
+                        <p style="font-size: 0.95rem; color: #475569; margin-top: 10px; line-height: 1.4;">
+                            Rigueur, discipline et gestion du stress appliquées directement en production IT.
+                        </p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Onglet 2: Entreprise -->
-            <section class="tab-content" id="tab-entreprise">
-                <h2>Mon immersion chez Transports Suma</h2>
-                <p>
-                    Intégré au service informatique au siège social de l'entreprise Transports Suma à Rognac, j'évolue dans un cadre professionnel dynamique. Mon rythme d'alternance comprend 2 jours de cours pour 3 jours passés en entreprise, me permettant d'allier théorie et pratique terrain de façon fluide.
-                </p>
+        <!-- Slide 3 : Entreprise -->
+        <section class="slide theme-gray" id="entreprise">
+            <div class="section-label">02. Immersion Professionnelle</div>
+            <h2 class="slide-title">Immersion DSI : Transports Suma</h2>
+            
+            <div class="layout-two-cols">
+                <!-- Colonne de gauche : Missions -->
+                <div>
+                    <img src="logo-suma.png" alt="Logo Suma" class="company-logo">
+                    
+                    <ul class="keyword-list">
+                        <li class="keyword-item">Support utilisateurs N1 / N2</li>
+                        <li class="keyword-item">Masterisation et déploiement de postes</li>
+                        <li class="keyword-item">Configuration de la téléphonie IP (VoIP)</li>
+                    </ul>
+                </div>
                 
-                <h3>Missions quotidiennes</h3>
-                <ul class="list-clean">
-                    <li class="list-clean-item">Assurer le support utilisateur de niveau 1 et 2 pour l'ensemble des collaborateurs du siège et des dépôts externes.</li>
-                    <li class="list-clean-item">Gérer les processus d'accueil et d'intégration (on-boarding) ainsi que de départ (off-boarding) des collaborateurs.</li>
-                    <li class="list-clean-item">Procéder au déploiement, au paramétrage et à la masterisation des nouveaux postes de travail.</li>
-                    <li class="list-clean-item">Installer et configurer la téléphonie IP (VoIP) sur les différents sites.</li>
-                    <li class="list-clean-item">Effectuer les diagnostics d'incidents réseaux LAN et WAN sur nos différents sites géographiquement distants.</li>
-                </ul>
-
-                <div class="logo-section">
-                    <div class="logo-placeholder">
-                        <img src="logo-suma.png" alt="Logo Transports Suma" style="max-width: 150px; height: auto;">
+                <!-- Colonne de droite : Galerie terrain vide à remplir -->
+                <div class="gallery-grid">
+                    <div class="photo-card">
+                        <img src="baie-brassage.jpg" alt="Remise au propre Baie de Brassage">
+                        <div class="photo-card-placeholder">
+                            Photos terrain
+                            <div class="photo-card-label">Baie de Brassage</div>
+                        </div>
                     </div>
-                    <div class="logo-text-details">
-                        <span class="logo-title-company">Transports Suma</span>
-                        <p class="logo-caption">Administration & support informatique opérationnel</p>
+                    <div class="photo-card">
+                        <img src="tel-ip.jpg" alt="Configuration Téléphonie">
+                        <div class="photo-card-placeholder">
+                            Photos terrain
+                            <div class="photo-card-label">Configuration Téléphonie IP</div>
+                        </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Onglet 3: Projets -->
-            <section class="tab-content" id="tab-projets">
-                <h2>Projets d'infrastructures majeurs</h2>
-                <p>
-                    Durant mon alternance, j'ai eu l'opportunité de prendre en charge des projets structurants pour l'entreprise, alliant gestion des accès, sécurité et services collaboratifs.
-                </p>
-
-                <div class="project-block">
-                    <div class="project-header">
-                        <h3 class="project-title">Administration de la Console Google Workspace</h3>
-                        <span class="project-badge">Systèmes & Droits</span>
-                    </div>
-                    <p>
-                        J'assure la gestion globale et l'administration des accès de la console Google Workspace de l'entreprise sous le domaine <strong>@villeton.fr</strong>.
-                    </p>
-                    <ul class="list-clean">
-                        <li class="list-clean-item">Création et configuration personnalisée des comptes collaborateurs.</li>
-                        <li class="list-clean-item">Gestion stricte des droits d'accès, habilitations et groupes de diffusion.</li>
-                        <li class="list-clean-item">Création d'un site Google Sites interne (Intranet) servant de base documentaire commune pour les collaborateurs du groupe.</li>
+        <!-- Slide 4 : Projets -->
+        <section class="slide theme-dark" id="projets">
+            <div class="section-label">03. Projets Majeurs</div>
+            <h2 class="slide-title">Administration & Sécurisation</h2>
+            
+            <div class="projects-grid">
+                <!-- Projet 1 -->
+                <div class="project-card">
+                    <div class="project-category">Systèmes & Accès</div>
+                    <h3 class="project-headline">Google Workspace</h3>
+                    <ul class="project-bullets">
+                        <li class="project-bullet">Administration du domaine @villeton.fr</li>
+                        <li class="project-bullet">Provisioning complet des comptes</li>
+                        <li class="project-bullet">Gestion des droits et des groupes d'accès</li>
+                        <li class="project-bullet">Déploiement d'un Google Sites interne</li>
                     </ul>
                 </div>
 
-                <div class="project-block">
-                    <div class="project-header">
-                        <h3 class="project-title">Centralisation Sécurisée de la Vidéoprotection</h3>
-                        <span class="project-badge">Infrastructures & Sécurité IP</span>
-                    </div>
-                    <p>
-                        Mise en conformité et gestion centralisée du réseau de vidéosurveillance sur l'ensemble des dépôts physiques de l'entreprise.
-                    </p>
-                    <ul class="list-clean">
-                        <li class="list-clean-item">Configuration d'un compte maître pour l'administration globale et centralisée des flux vidéo IP.</li>
-                        <li class="list-clean-item">Création de sous-comptes restreints pour les directeurs de sites.</li>
-                        <li class="list-clean-item">Application rigoureuse de règles de restriction (droits limités aux flux caméras de leur propre site pour garantir la confidentialité et la sécurité).</li>
+                <!-- Projet 2 -->
+                <div class="project-card">
+                    <div class="project-category">Sécurité IP</div>
+                    <h3 class="project-headline">Vidéoprotection</h3>
+                    <ul class="project-bullets">
+                        <li class="project-bullet">Centralisation multi-sites sécurisée</li>
+                        <li class="project-bullet">Segmentation logique et filtrage d'accès</li>
+                        <li class="project-bullet">Attribution de comptes maîtres et sous-comptes</li>
+                        <li class="project-bullet">Supervision centralisée des flux réseau</li>
                     </ul>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Onglet 4: Veille -->
-            <section class="tab-content" id="tab-veille">
-                <h2>Veille technologique active</h2>
-                <p>
-                    Dans le domaine de l'informatique et plus particulièrement dans l'option SISR, la veille technologique permet de maintenir les infrastructures à un niveau optimal de sécurité et d'efficacité.
+        <!-- Slide 5 : Veille -->
+        <section class="slide theme-light" id="veille">
+            <div class="section-label">04. Horizon Numérique</div>
+            <h2 class="slide-title">Veille & Cybersécurité</h2>
+            
+            <!-- Structure d'accueil pour la veille -->
+            <div class="veille-wrapper">
+                <div class="veille-status">En cours d'élaboration...</div>
+                <p style="color: #64748b; font-size: 1rem; margin-top: 15px; font-weight: 500; font-family: var(--font-body);">
+                    Problématiques étudiées : Filtrage DNS local, Sécurisation Active Directory / Samba, Veille des alertes CVE critiques.
                 </p>
+            </div>
+        </section>
 
-                <h3>Axes principaux de veille en Cybersécurité</h3>
-                <p>
-                    Mes recherches et ma veille quotidienne se concentrent sur la sécurisation des architectures d'entreprise :
-                </p>
-                <ul class="list-clean">
-                    <li class="list-clean-item"><strong>Vulnérabilités d'infrastructure :</strong> Suivi des alertes de sécurité système (correctifs OS, failles Zero-Day).</li>
-                    <li class="list-clean-item"><strong>Filtrage réseau local :</strong> Étude de solutions de filtrage de contenu DNS (comme Adguard Home) pour prévenir les menaces web.</li>
-                    <li class="list-clean-item"><strong>Services de domaine :</strong> Suivi des bonnes pratiques pour l'implémentation et la sécurisation d'Active Directory et des contrôleurs de domaine Samba.</li>
-                    <li class="list-clean-item"><strong>Liaisons distantes :</strong> Analyse des techniques de protection des tunnels VPN et du chiffrement des flux réseau inter-sites.</li>
-                </ul>
-            </section>
+    </main>
 
-            <!-- Onglet 5: Perso -->
-            <section class="tab-content" id="tab-perso">
-                <h2>Profil personnel & Soft Skills</h2>
-                <p>
-                    Les compétences techniques s'accompagnent nécessairement de qualités comportementales facilitant l'intégration en équipe et la gestion des imprévus.
-                </p>
-
-                <h3>Discipline sportive et gestion du stress</h3>
-                <p>
-                    Je pratique les <strong>sports de combat depuis 3 ans (Lutte et Boxe Thaïlandaise)</strong>. Cet entraînement régulier m'apporte une rigueur physique et mentale, m'enseigne la discipline et favorise une excellente maîtrise de moi-même.
-                </p>
-                <p>
-                    En milieu professionnel, cette pratique sportive se traduit par une <strong>gestion du stress accrue</strong>, particulièrement utile lors d'incidents critiques sur les infrastructures ou lors d'interventions de support complexes.
-                </p>
-
-                <h3>Mes soft skills clés</h3>
-                <ul class="list-clean">
-                    <li class="list-clean-item"><strong>Rigueur opérationnelle :</strong> Clarté dans l'application des procédures d'infrastructure.</li>
-                    <li class="list-clean-item"><strong>Sens du service :</strong> Une écoute attentive et bienveillante des utilisateurs lors des demandes de support.</li>
-                    <li class="list-clean-item"><strong>Esprit d'analyse :</strong> Méthodologie rigoureuse pour identifier l'origine des dysfonctionnements système et réseau.</li>
-                </ul>
-
-                <a href="mailto:ilyesnasrchatti@gmail.com" class="btn-contact">Me contacter par email</a>
-            </section>
-
-        </main>
-
-    </div>
-
-    <!-- Pied de page -->
-    <footer>
-        <p>Ilyes Nasr Chatti &copy; 2026. Tous droits réservés. Étudiant en BTS SIO option SISR.</p>
-    </footer>
-
-    <!-- JavaScript simple pour gérer les onglets -->
+    <!-- JavaScript interactif pour la gestion du header et du scrolling -->
     <script>
-        function switchTab(tabId, element) {
-            // Cacher tous les onglets
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => {
-                content.classList.remove('active');
-            });
+        const container = document.getElementById('presentation-container');
+        const header = document.getElementById('main-header');
+        const slides = document.querySelectorAll('.slide');
+        const navLinks = document.querySelectorAll('.nav-link');
 
-            // Désactiver tous les boutons du menu
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(item => {
-                item.classList.remove('active');
-            });
-
-            // Activer l'onglet sélectionné
-            document.getElementById(tabId).classList.add('active');
-
-            // Mettre en surbrillance le bouton cliqué
-            element.classList.add('active');
+        // Détecte le défilement pour adapter dynamiquement le menu
+        container.addEventListener('scroll', () => {
+            let currentSlideId = '';
             
-            // Scroll fluide vers le haut de la zone de contenu sur mobile
-            if (window.innerWidth <= 992) {
-                document.querySelector('.content-area').scrollIntoView({ behavior: 'smooth' });
+            slides.forEach(slide => {
+                const slideTop = slide.offsetTop;
+                const slideHeight = slide.clientHeight;
+                
+                // Si la slide occupe plus de la moitié de l'écran visible
+                if (container.scrollTop >= (slideTop - slideHeight / 2)) {
+                    currentSlideId = slide.id;
+                }
+            });
+
+            // Met à jour la classe active sur les liens
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSlideId}`) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Adapte la couleur du header selon le thème de la slide active
+            const activeSlide = document.getElementById(currentSlideId);
+            if (activeSlide) {
+                if (activeSlide.classList.contains('theme-dark')) {
+                    header.className = 'header-dark-mode';
+                } else {
+                    header.className = 'header-light-mode';
+                }
+            }
+        });
+
+        // Fonction de scroll vers la slide demandée
+        function scrollToSlide(slideId) {
+            const targetSlide = document.getElementById(slideId);
+            if (targetSlide) {
+                event.preventDefault();
+                container.scrollTo({
+                    top: targetSlide.offsetTop,
+                    behavior: 'smooth'
+                });
             }
         }
     </script>
