@@ -162,6 +162,10 @@
         /* --- SLIDE 1 : ACCUEIL --- */
         .hero-box {
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .hero-name {
@@ -287,72 +291,6 @@
             content: "→";
             color: var(--color-cyan);
             font-weight: bold;
-        }
-
-        /* Galerie d'images terrain */
-        .preuves-terrain-title {
-            font-family: var(--font-title);
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--color-text-muted);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-        }
-
-        .gallery-row {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .gallery-card {
-            border: 1px solid var(--color-border);
-            border-radius: 8px;
-            overflow: hidden;
-            background-color: var(--bg-main);
-            height: 180px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            border: 2px dashed #cbd5e1;
-            transition: border-color 0.25s ease;
-        }
-
-        .gallery-card:hover {
-            border-color: var(--color-cyan);
-        }
-
-        .gallery-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0; /* À alimenter par l'utilisateur */
-        }
-
-        .gallery-placeholder {
-            text-align: center;
-            padding: 15px;
-        }
-
-        .gallery-label {
-            font-family: var(--font-title);
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--color-text-muted);
-        }
-
-        .gallery-sub {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #94a3b8;
-            text-transform: uppercase;
-            margin-top: 4px;
         }
 
         /* --- SLIDE 4 : PROJETS --- */
@@ -539,12 +477,6 @@
             .veille-grid {
                 grid-template-columns: 1fr;
             }
-            .gallery-row {
-                grid-template-columns: 1fr;
-            }
-            .gallery-card {
-                height: 140px;
-            }
         }
     </style>
 </head>
@@ -570,11 +502,13 @@
         <!-- Slide 1 : Accueil -->
         <section class="slide" id="accueil">
             <div class="hero-box">
+                <img src="Suma_Logo.png" alt="Logo Suma" style="max-height: 80px; margin-bottom: 20px;">
                 <h1 class="hero-name">Ilyes Nasr Chatti</h1>
                 <div class="hero-title">Étudiant BTS SIO - Option SISR</div>
                 <div class="hero-keywords">
                     Infrastructures &nbsp;•&nbsp; Cybersécurité &nbsp;•&nbsp; Support
                 </div>
+                <img src="batiment-suma.png" alt="Locaux Transports Suma" style="max-width: 400px; border-radius: 12px; margin-top: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.2);">
             </div>
         </section>
 
@@ -610,34 +544,19 @@
             <div class="entreprise-layout">
                 <!-- Missions -->
                 <div>
-                    <img src="logo-suma.png" alt="Logo Suma" class="company-logo">
+                    <img src="Suma_Logo.png" alt="Logo Suma" class="company-logo">
                     
                     <ul class="entreprise-keywords">
                         <li class="ent-keyword"><span>Support N1/N2</span></li>
                         <li class="ent-keyword"><span>Masterisation & Déploiement</span></li>
-                        <li class="ent-keyword"><span>Téléphonie IP (VoIP)</span></li>
+                        <li class="ent-keyword"><span>Centralisation du système de vidéoprotection multi-sites (Solution Eufy).</span></li>
+                        <li class="ent-keyword"><span>Gestion fine des accès (Compte Admin & sous-comptes par dépôt).</span></li>
                     </ul>
                 </div>
                 
-                <!-- Galerie Preuves Terrain -->
+                <!-- Zone de droite mise à jour -->
                 <div>
-                    <div class="preuves-terrain-title">Preuves Terrain</div>
-                    <div class="gallery-row">
-                        <div class="gallery-card">
-                            <img src="baie-avant.jpg" alt="Avant">
-                            <div class="gallery-placeholder">
-                                <div class="gallery-label">Avant</div>
-                                <div class="gallery-sub">Baie de Brassage</div>
-                            </div>
-                        </div>
-                        <div class="gallery-card">
-                            <img src="baie-apres.jpg" alt="Après">
-                            <div class="gallery-placeholder">
-                                <div class="gallery-label">Après</div>
-                                <div class="gallery-sub">Baie de Brassage</div>
-                            </div>
-                        </div>
-                    </div>
+                    <img src="eufy-home.png" alt="Accueil Eufy" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border: 2px solid #e2e8f0;">
                 </div>
             </div>
         </section>
@@ -660,11 +579,11 @@
 
                 <!-- Projet 2 -->
                 <div class="projet-block">
-                    <h3 class="projet-name">Vidéoprotection</h3>
+                    <h3 class="projet-name">Vidéoprotection Globale (Eufy)</h3>
                     <ul class="projet-bullets">
-                        <li class="projet-keyword-item"><span>Supervision IP multi-sites</span></li>
-                        <li class="projet-keyword-item"><span>Segmentation logique du réseau</span></li>
-                        <li class="projet-keyword-item"><span>Matrice d'accès (Comptes directeurs)</span></li>
+                        <li class="projet-keyword-item"><span>Supervision centralisée de l'ensemble des dépôts régionaux.</span></li>
+                        <li class="projet-keyword-item"><span>Application stricte de la politique du moindre privilège.</span></li>
+                        <li class="projet-keyword-item"><span>Isolation logique des flux vidéo pour sécuriser les accès.</span></li>
                     </ul>
                 </div>
             </div>
