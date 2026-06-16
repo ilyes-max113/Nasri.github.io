@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,20 +11,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome pour les icônes modernes de la veille et du réseau -->
+    <!-- FontAwesome pour les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         /* Variables de couleurs et polices */
         :root {
             --bg-main: #ffffff;
-            --bg-alt: #f9fafb;
-            --color-text: #1e293b;
-            --color-text-muted: #64748b;
+            --bg-alt: #f8fafc;
+            --color-text: #0f172a;
+            --color-text-muted: #475569;
             --color-cyan: #0ea5e9;
+            --color-cyan-hover: #0284c7;
             --color-border: #e2e8f0;
             --font-title: 'Montserrat', sans-serif;
             --font-body: 'Inter', sans-serif;
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-card: 0 4px 20px rgba(15, 23, 42, 0.05);
+            --shadow-card-hover: 0 10px 30px rgba(15, 23, 42, 0.08);
         }
 
         /* Base & Reset */
@@ -44,7 +47,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Conteneur principal Snapping */
+        /* Conteneur principal Snapping (TikTok style) */
         .presentation-container {
             height: 100vh;
             width: 100vw;
@@ -63,723 +66,567 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 100px 10% 40px 10%;
+            align-items: center;
+            padding: 60px 8%;
+            box-sizing: border-box;
+            background-color: var(--bg-main);
             overflow: hidden;
         }
 
-        /* Alternance douce de fond pour chaque Slide */
         .slide:nth-child(even) {
             background-color: var(--bg-alt);
         }
 
-        /* --- EN-TÊTE DE NAVIGATION FIXE --- */
-        header {
+        /* Menu de navigation fixe */
+        .nav-bar {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 25px 10%;
-            z-index: 100;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .logo {
-            font-family: var(--font-title);
-            font-weight: 800;
-            font-size: 1.3rem;
-            text-decoration: none;
-            color: var(--color-text);
-            letter-spacing: -0.5px;
-        }
-
-        .logo span {
-            color: var(--color-cyan);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 6px 12px;
+            border-radius: 40px;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 4px 25px rgba(15, 23, 42, 0.04);
         }
 
         .nav-link {
             text-decoration: none;
-            font-family: var(--font-title);
-            font-size: 0.85rem;
-            font-weight: 700;
             color: var(--color-text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            padding-bottom: 4px;
-            transition: color 0.25s ease;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            color: var(--color-text);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--color-cyan);
-            transition: width 0.25s ease;
-        }
-
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
-
-        /* --- STYLES GENERAUX DES DIAPOS --- */
-        .slide-label {
-            font-family: var(--font-title);
             font-size: 0.75rem;
             font-weight: 700;
-            color: var(--color-cyan);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 12px;
-        }
-
-        .slide-title {
             font-family: var(--font-title);
-            font-size: 2.8rem;
-            font-weight: 900;
-            line-height: 1.15;
-            color: var(--color-text);
-            margin-bottom: 30px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: var(--transition-smooth);
             text-transform: uppercase;
-            letter-spacing: -0.5px;
+            letter-spacing: 0.05em;
         }
 
-        /* --- SLIDE 1 : ACCUEIL --- */
-        .hero-box {
+        .nav-link:hover {
+            color: var(--color-cyan);
+        }
+
+        .nav-link.active {
+            color: #ffffff;
+            background-color: var(--color-cyan);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25);
+        }
+
+        /* Titres de Section */
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--color-text);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            position: relative;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--color-cyan);
+            margin: 8px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Cartes & Tuiles */
+        .card {
+            background: #ffffff;
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: var(--shadow-card);
+            transition: var(--transition-smooth);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card-hover);
+            border-color: rgba(14, 165, 233, 0.3);
+        }
+
+        /* Tags Technologiques */
+        .tech-tag {
+            display: inline-block;
+            background: rgba(14, 165, 233, 0.08);
+            color: var(--color-cyan);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            font-family: var(--font-title);
+            margin-right: 6px;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        /* Timeline / Listes à puces premium */
+        ul {
+            list-style: none;
+        }
+
+        li {
+            font-size: 0.92rem;
+            color: var(--color-text-muted);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.5;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--color-cyan);
+            font-weight: bold;
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+
+        /* Layouts Spécifiques */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            width: 100%;
+            max-width: 1150px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 1150px;
+        }
+
+        /* --- ACCUEIL --- */
+        .accueil-content {
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            max-width: 800px;
         }
 
-        .hero-name {
+        .accueil-title {
             font-family: var(--font-title);
-            font-size: 5.5rem;
+            font-size: 3rem;
             font-weight: 900;
             color: var(--color-text);
-            line-height: 1;
-            margin-bottom: 10px;
-            letter-spacing: -2px;
-        }
-
-        .hero-title {
-            font-size: 2rem;
-            font-weight: 500;
-            color: var(--color-text-muted);
-            margin-bottom: 35px;
-        }
-
-        .hero-keywords {
-            font-family: var(--font-title);
-            font-size: 1.1rem;
-            font-weight: 700;
-            letter-spacing: 2.5px;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
             text-transform: uppercase;
-            color: var(--color-cyan);
         }
 
-        /* --- SLIDE 2 : PERSO --- */
-        .perso-grid {
+        .accueil-subtitle {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-cyan);
+            margin-bottom: 20px;
+            letter-spacing: 0.02em;
+        }
+
+        .accueil-meta {
+            font-size: 0.92rem;
+            color: var(--color-text-muted);
+            font-weight: 500;
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        /* --- PERSO / PROFIL --- */
+        .profile-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .perso-stat {
-            display: flex;
-            align-items: center;
             gap: 30px;
-        }
-
-        .stat-number {
-            font-family: var(--font-title);
-            font-size: 12rem;
-            font-weight: 900;
-            color: var(--color-cyan);
-            line-height: 0.8;
-            letter-spacing: -5px;
-        }
-
-        .stat-label {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--color-text);
-            line-height: 1.3;
-        }
-
-        .skills-bullets {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .skill-item {
-            font-family: var(--font-title);
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: var(--color-text);
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-transform: uppercase;
-        }
-
-        .skill-item::before {
-            content: "";
-            width: 8px;
-            height: 24px;
-            background-color: var(--color-cyan);
-            display: inline-block;
-        }
-
-        /* --- SLIDE 3 : ENTREPRISE --- */
-        .entreprise-layout {
-            display: grid;
-            grid-template-columns: 1fr 1.1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .company-logo {
-            max-height: 80px;
-            width: auto;
-            margin-bottom: 25px;
-            display: block;
-        }
-
-        .entreprise-keywords {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 10px;
-        }
-
-        .ent-keyword {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--color-text-muted);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .ent-keyword span {
-            color: var(--color-text);
-        }
-
-        .ent-keyword::before {
-            content: "→";
-            color: var(--color-cyan);
-            font-weight: bold;
-        }
-
-        /* --- SLIDE 4 : JOURNÉE TYPE --- */
-        .journee-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
             width: 100%;
-            margin-top: 20px;
+            max-width: 1000px;
         }
 
-        .journee-card {
-            border: 1px solid var(--color-border);
-            background-color: var(--bg-main);
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
-            border-left: 4px solid var(--color-cyan);
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            transition: transform 0.25s ease, border-color 0.25s ease;
-        }
-
-        .journee-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--color-cyan);
-        }
-
-        .journee-icon {
-            font-size: 2.2rem;
-            color: var(--color-cyan);
-            flex-shrink: 0;
-            margin-top: 5px;
-        }
-
-        .journee-content {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .journee-card-title {
-            font-family: var(--font-title);
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--color-text);
-            text-transform: uppercase;
-            letter-spacing: -0.5px;
-        }
-
-        .journee-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .journee-item {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--color-text-muted);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .journee-item span {
-            color: var(--color-text);
-        }
-
-        .journee-item::before {
-            content: "•";
-            color: var(--color-cyan);
-            font-size: 1.5rem;
-            line-height: 1;
-        }
-
-        /* --- SLIDE 5 : PROJETS --- */
-        .projets-layout {
+        /* --- ENTREPRISE --- */
+        .entreprise-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1.1fr 0.9fr;
             gap: 40px;
+            width: 100%;
+            max-width: 1100px;
+            align-items: center;
         }
 
-        .projet-block {
-            border: 1px solid var(--color-border);
-            background-color: var(--bg-main);
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
-            border-left: 4px solid var(--color-cyan);
-        }
-
-        .projet-name {
-            font-family: var(--font-title);
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--color-text);
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: -0.5px;
-        }
-
-        .projet-keywords {
-            list-style: none;
+        .entreprise-images {
             display: flex;
             flex-direction: column;
             gap: 15px;
-        }
-
-        .projet-keyword-item {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--color-text-muted);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .projet-keyword-item span {
-            color: var(--color-text);
-        }
-
-        .projet-keyword-item::before {
-            content: "•";
-            color: var(--color-cyan);
-            font-size: 1.8rem;
-            line-height: 1;
-        }
-
-        /* --- SLIDE 6 : VEILLE --- */
-        /* Grille Détaillée Veille Technologique */
-        .veille-grid-detail {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 50px;
             width: 100%;
         }
 
-        .veille-detail-card {
-            border: 1px solid var(--color-border);
-            background-color: var(--bg-main);
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
-            border-left: 4px solid var(--color-cyan);
-            transition: transform 0.25s ease, border-color 0.25s ease;
-        }
-
-        .veille-detail-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--color-cyan);
-        }
-
-        .veille-detail-title {
-            font-family: var(--font-title);
-            font-size: 1.15rem;
-            font-weight: 800;
-            color: var(--color-text);
-            text-transform: uppercase;
-            letter-spacing: -0.5px;
-        }
-
-        .veille-detail-list {
-            list-style: none;
+        /* --- JOURNÉE TYPE --- */
+        .journee-card {
+            text-align: center;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-top: 15px;
-        }
-
-        .veille-detail-item {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--color-text-muted);
-            display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
-        .veille-detail-item span {
+        .journee-card i {
+            font-size: 2.2rem;
+            color: var(--color-cyan);
+            margin-bottom: 4px;
+        }
+
+        .journee-card h3 {
+            font-family: var(--font-title);
+            font-size: 0.95rem;
+            font-weight: 700;
             color: var(--color-text);
         }
 
-        .veille-detail-item::before {
-            content: "•";
+        .journee-card p {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            line-height: 1.4;
+        }
+
+        /* --- PROJETS --- */
+        .projet-card h3 {
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 12px;
+            border-left: 3px solid var(--color-cyan);
+            padding-left: 10px;
+        }
+
+        /* --- VEILLE --- */
+        .veille-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 14px;
+            padding: 24px;
+            height: 100%;
+        }
+
+        .veille-card i {
+            font-size: 2.2rem;
             color: var(--color-cyan);
-            font-size: 1.5rem;
-            line-height: 1;
         }
 
-        /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 1024px) {
-            .hero-name {
-                font-size: 4rem;
-            }
-            .hero-title {
-                font-size: 1.6rem;
-            }
-            .slide-title {
-                font-size: 2.2rem;
-            }
-            .perso-grid,
-            .entreprise-layout,
-            .projets-layout {
-                grid-template-columns: 1fr;
-                gap: 35px;
-            }
-            .journee-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .veille-grid-detail {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            header {
-                padding: 20px 5%;
-            }
-            .nav-links {
-                gap: 20px;
-            }
+        .veille-card h3 {
+            font-family: var(--font-title);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 4px;
         }
 
-        @media (max-width: 768px) {
-            .hero-name {
-                font-size: 2.8rem;
-                letter-spacing: -1px;
+        .veille-card ul {
+            text-align: left;
+            width: 100%;
+        }
+
+        .veille-card li {
+            font-size: 0.82rem;
+            margin-bottom: 6px;
+        }
+
+        .veille-img {
+            margin-top: 8px;
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 4px 10px rgba(15, 23, 42, 0.04);
+        }
+
+        /* Footer Coordonnées fixe en bas */
+        .contact-footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.78rem;
+            color: var(--color-text-muted);
+            font-family: var(--font-title);
+            font-weight: 600;
+            display: flex;
+            gap: 15px;
+            white-space: nowrap;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .nav-bar {
+                top: 10px;
+                padding: 4px 8px;
+                gap: 4px;
+                max-width: 95%;
+                overflow-x: auto;
             }
-            .hero-title {
-                font-size: 1.3rem;
-                margin-bottom: 25px;
-            }
-            .slide-title {
-                font-size: 1.8rem;
-                margin-bottom: 20px;
+            .nav-link {
+                padding: 6px 10px;
+                font-size: 0.65rem;
             }
             .slide {
-                padding: 90px 5% 30px 5%;
+                padding: 80px 20px 40px 20px;
             }
-            .nav-links {
-                display: none; /* Cache sur mobiles pour épurer */
+            .grid-2, .grid-3, .grid-4, .profile-container, .entreprise-grid {
+                grid-template-columns: 1fr !important;
+                gap: 15px;
             }
-            .stat-number {
-                font-size: 8rem;
+            .entreprise-images {
+                flex-direction: row;
             }
-            .skill-item {
-                font-size: 1.6rem;
+            .accueil-title {
+                font-size: 2rem;
             }
-            .journee-grid {
-                grid-template-columns: 1fr;
-            }
-            .veille-grid-detail {
-                grid-template-columns: 1fr;
+            .accueil-subtitle {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Menu Fixe de Navigation -->
-    <header>
-        <a href="#accueil" class="logo" onclick="scrollToSlide('accueil')">Ilyes Nasr Chatti<span>.</span></a>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#accueil" class="nav-link active" onclick="scrollToSlide('accueil')">Accueil</a></li>
-                <li><a href="#perso" class="nav-link" onclick="scrollToSlide('perso')">Perso</a></li>
-                <li><a href="#entreprise" class="nav-link" onclick="scrollToSlide('entreprise')">Entreprise</a></li>
-                <li><a href="#journee" class="nav-link" onclick="scrollToSlide('journee')">Journée</a></li>
-                <li><a href="#projets" class="nav-link" onclick="scrollToSlide('projets')">Projets</a></li>
-                <li><a href="#veille" class="nav-link" onclick="scrollToSlide('veille')">Veille</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Barre de Navigation Globale -->
+    <nav class="nav-bar">
+        <a href="#accueil" class="nav-link active" onclick="scrollToSlide('accueil')">Accueil</a>
+        <a href="#competences" class="nav-link" onclick="scrollToSlide('competences')">COMPÉTENCES TECHNIQUES</a>
+        <a href="#entreprise" class="nav-link" onclick="scrollToSlide('entreprise')">Entreprise</a>
+        <a href="#journee" class="nav-link" onclick="scrollToSlide('journee')">Journée</a>
+        <a href="#projets" class="nav-link" onclick="scrollToSlide('projets')">Projets</a>
+        <a href="#veille" class="nav-link" onclick="scrollToSlide('veille')">Veille</a>
+    </nav>
 
-    <!-- Conteneur Global de Présentation -->
+    <!-- Conteneur Principal pour le TikTok Snap Scrolling -->
     <main class="presentation-container" id="presentation-container">
-        
+
         <!-- Slide 1 : Accueil -->
-        <section class="slide" id="accueil">
-            <div class="hero-box">
+        <section id="accueil" class="slide">
+            <div class="accueil-content">
                 <img src="Suma_Logo.png" alt="Logo Suma" style="max-height: 80px; margin-bottom: 20px;">
-                <h1 class="hero-name">Ilyes Nasr Chatti</h1>
-                <div class="hero-title">Étudiant BTS SIO - Option SISR</div>
-                <div class="hero-keywords">
-                    Infrastructures &nbsp;•&nbsp; Cybersécurité &nbsp;•&nbsp; Support
+                <h1 class="accueil-title">Ilyes Nasr Chatti</h1>
+                <p class="accueil-subtitle">Technicien Systèmes et Réseaux en Alternance</p>
+                <div class="accueil-meta">
+                    <span><i class="fa-solid fa-graduation-cap"></i> BTS SIO SISR (1ère Année)</span>
+                    <span><i class="fa-solid fa-briefcase"></i> Transports Suma</span>
                 </div>
                 <img src="batiment-suma.png" alt="Locaux Transports Suma" style="max-width: 400px; border-radius: 12px; margin-top: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.2);">
             </div>
-        </section>
-
-        <!-- Slide 2 : Perso -->
-        <section class="slide" id="perso">
-            <div class="slide-label">01. Profil Personnel</div>
-            <h2 class="slide-title">Soft Skills & Discipline</h2>
-            
-            <div class="perso-grid">
-                <!-- Stat Box Lutte/Boxe -->
-                <div class="perso-stat">
-                    <div class="stat-number">3</div>
-                    <div class="stat-label">
-                        Ans de sports de combat<br>
-                        <span style="font-weight:500; font-size:1.1rem; color:var(--color-text-muted);">Lutte & Boxe Thaïlandaise</span>
-                    </div>
-                </div>
-                
-                <!-- Mots-clés comportementaux -->
-                <ul class="skills-bullets">
-                    <li class="skill-item">Rigueur</li>
-                    <li class="skill-item">Discipline</li>
-                    <li class="skill-item">Gestion du stress</li>
-                </ul>
+            <div class="contact-footer">
+                <span><i class="fa-solid fa-envelope"></i> ilyeschatti13@icloud.com</span>
+                <span>|</span>
+                <span><i class="fa-solid fa-phone"></i> 07 48 61 38 99</span>
+                <span>|</span>
+                <span><i class="fa-solid fa-location-dot"></i> Vitrolles, France</span>
             </div>
         </section>
 
-        <!-- Slide 3 : Entreprise -->
-        <section class="slide" id="entreprise">
-            <div class="slide-label">02. Immersion en Alternance</div>
-            <h2 class="slide-title">Alternance DSI : Transports Suma</h2>
-            
-            <div class="entreprise-layout">
-                <!-- Missions -->
-                <div>
-                    <img src="Suma_Logo.png" alt="Logo Suma" class="company-logo">
-                    
-                    <ul class="entreprise-keywords">
-                        <li class="ent-keyword"><span>Support N1/N2</span></li>
-                        <li class="ent-keyword"><span>Masterisation & Déploiement</span></li>
-                        <li class="ent-keyword"><span>Centralisation du système de vidéoprotection multi-sites (Solution Eufy).</span></li>
-                        <li class="ent-keyword"><span>Gestion fine des accès (Compte Admin & sous-comptes par dépôt).</span></li>
+        <!-- Slide 2 : Compétences Techniques -->
+        <section id="competences" class="slide">
+            <h2 class="section-title">01. COMPÉTENCES TECHNIQUES</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3 style="font-family: var(--font-title); font-size: 1.15rem; font-weight: 700; margin-bottom: 15px; color: var(--color-cyan);"><i class="fa-solid fa-server"></i> Systèmes & Administration</h3>
+                    <ul>
+                        <li><strong>Active Directory :</strong> Gestion des comptes utilisateurs, attributions des droits d'accès et stratégies de sécurité.</li>
+                        <li><strong>Console SaaS :</strong> Administration et configuration de la console Google Workspace (gestion des comptes, règles).</li>
+                        <li><strong>Systèmes Clients/Serveurs :</strong> Installation, déploiement et maintenance (Windows 10/11, Windows Server).</li>
                     </ul>
                 </div>
-                
-                <!-- Zone de droite mise à jour -->
-                <div>
+                <div class="card">
+                    <h3 style="font-family: var(--font-title); font-size: 1.15rem; font-weight: 700; margin-bottom: 15px; color: var(--color-cyan);"><i class="fa-solid fa-network-wired"></i> Réseaux & Infrastructure</h3>
+                    <ul>
+                        <li><strong>Réseau LAN/VLAN :</strong> Création et configuration de réseaux locaux virtuels pour l'isolation logique des flux.</li>
+                        <li><strong>Câblage & Brassage :</strong> Brassage physique RJ45 dans les baies de brassage et maintenance du câblage réseau.</li>
+                        <li><strong>Équipements actifs :</strong> Configuration d'adresses IP statiques, plans d'adressage et routeurs/switchs.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 style="font-family: var(--font-title); font-size: 1.15rem; font-weight: 700; margin-bottom: 15px; color: var(--color-cyan);"><i class="fa-solid fa-headset"></i> Support N1 & N2</h3>
+                    <ul>
+                        <li><strong>Support Utilisateurs :</strong> Prise en charge des tickets d'incidents matériels et logiciels (GLPI).</li>
+                        <li><strong>Déploiement & Masterisation :</strong> Configuration initiale et déploiement de postes utilisateurs.</li>
+                        <li><strong>Diagnostic & Maintenance :</strong> Dépannage réseau, résolution des pannes courantes et assistance à distance.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="contact-footer">
+                <span><i class="fa-solid fa-envelope"></i> ilyeschatti13@icloud.com</span>
+                <span>|</span>
+                <span><i class="fa-solid fa-phone"></i> 07 48 61 38 99</span>
+            </div>
+        </section>
+
+        <!-- Slide 3 : Immersion en Alternance -->
+        <section id="entreprise" class="slide">
+            <h2 class="section-title">02. Immersion en Alternance</h2>
+            <div class="entreprise-grid">
+                <div class="card">
+                    <img src="Suma_Logo.png" alt="Logo Suma" style="max-height: 60px; margin-bottom: 15px;">
+                    <h3 style="font-family: var(--font-title); font-size: 1.1rem; font-weight: 700; margin-bottom: 15px; color: var(--color-text);">Missions au Service Informatique (DSI)</h3>
+                    <ul style="font-size: 0.88rem;">
+                        <li>Support utilisateur & gestion des incidents de N1 à N2 (Tickets GLPI).</li>
+                        <li>Préparation, masterisation et déploiement des postes de travail.</li>
+                        <li>Gestion des entrées/sorties (création de comptes AD, Google Workspace).</li>
+                        <li>Centralisation du système de vidéoprotection multi-sites (Solution Eufy).</li>
+                        <li>Gestion fine des accès (Compte Admin & sous-comptes par dépôt).</li>
+                    </ul>
+                </div>
+                <div class="entreprise-images">
+                    <img src="batiment-suma.png" alt="Locaux Transports Suma" style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
                     <img src="eufy-home.png" alt="Accueil Eufy" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border: 2px solid #e2e8f0;">
                 </div>
             </div>
-        </section>
-
-        <!-- Slide 4 : Journée Type -->
-        <section class="slide" id="journee">
-            <div class="slide-label">03. Ma Journée Type</div>
-            <h2 class="slide-title">Ma Journée Type</h2>
-            
-            <div class="journee-grid">
-                <!-- Tuile 1 -->
-                <div class="journee-card">
-                    <i class="fa-solid fa-envelope-open-text journee-icon"></i>
-                    <div class="journee-content">
-                        <h3 class="journee-card-title">08h00 - Accueil & Planification</h3>
-                        <ul class="journee-list">
-                            <li class="journee-item"><span>Ouverture des mails.</span></li>
-                            <li class="journee-item"><span>Consultation des missions de la journée.</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Tuile 2 -->
-                <div class="journee-card">
-                    <i class="fa-solid fa-headset journee-icon"></i>
-                    <div class="journee-content">
-                        <h3 class="journee-card-title">09h30 - Support Proactif (7 Dépôts)</h3>
-                        <ul class="journee-list">
-                            <li class="journee-item"><span>Appels de contrôle aux 7 sites.</span></li>
-                            <li class="journee-item"><span>Diagnostic et installation de logiciels à distance.</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Tuile 3 -->
-                <div class="journee-card">
-                    <i class="fa-solid fa-laptop-code journee-icon"></i>
-                    <div class="journee-content">
-                        <h3 class="journee-card-title">11h30 - Préparation Matériel</h3>
-                        <ul class="journee-list">
-                            <li class="journee-item"><span>Configuration de nouveaux postes.</span></li>
-                            <li class="journee-item"><span>Création compte local 'User' & Pack Office.</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Tuile 4 -->
-                <div class="journee-card">
-                    <i class="fa-solid fa-server journee-icon"></i>
-                    <div class="journee-content">
-                        <h3 class="journee-card-title">14h00 - Gestion Applicative</h3>
-                        <ul class="journee-list">
-                            <li class="journee-item"><span>Logiciel ABC : Support de niveau 1 et escalade prestataire.</span></li>
-                            <li class="journee-item"><span>Logiciel Solid : Administration directe sur le serveur.</span></li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="contact-footer">
+                <span>Transports Suma - Rognac (DSI)</span>
             </div>
         </section>
 
-        <!-- Slide 5 : Projets -->
-        <section class="slide" id="projets">
-            <div class="slide-label">04. Activités Pratiques</div>
-            <h2 class="slide-title">Projets Majeurs</h2>
-            
-            <div class="projets-layout">
-                <!-- Projet 1 -->
-                <div class="projet-block">
-                    <h3 class="projet-name">Google Workspace</h3>
-                    <ul class="projet-bullets">
-                        <li class="projet-keyword-item"><span>Provisioning des comptes</span></li>
-                        <li class="projet-keyword-item"><span>Gestion fine des droits d'accès</span></li>
-                        <li class="projet-keyword-item"><span>Création de Google Sites (Intranet)</span></li>
-                    </ul>
+        <!-- Slide 4 : Ma Journée Type -->
+        <section id="journee" class="slide">
+            <h2 class="section-title">03. Ma Journée Type</h2>
+            <div class="grid-4">
+                <div class="card journee-card">
+                    <i class="fa-solid fa-envelope-open-text"></i>
+                    <h3>08h00 - Accueil & Planification</h3>
+                    <p>Ouverture des mails. Consultation des missions de la journée.</p>
                 </div>
-
-                <!-- Projet 2 -->
-                <div class="projet-block">
-                    <h3 class="projet-name">Vidéoprotection Globale (Eufy)</h3>
-                    <ul class="projet-bullets">
-                        <li class="projet-keyword-item"><span>Supervision centralisée de l'ensemble des dépôts régionaux.</span></li>
-                        <li class="projet-keyword-item"><span>Application stricte de la politique du moindre privilège.</span></li>
-                        <li class="projet-keyword-item"><span>Isolation logique des flux vidéo pour sécuriser les accès.</span></li>
-                    </ul>
+                <div class="card journee-card">
+                    <i class="fa-solid fa-headset"></i>
+                    <h3>09h30 - Support Proactif (7 Dépôts)</h3>
+                    <p>Appels de contrôle aux 7 sites. Diagnostic et installation de logiciels à distance.</p>
                 </div>
+                <div class="card journee-card">
+                    <i class="fa-solid fa-laptop-code"></i>
+                    <h3>11h30 - Préparation Matériel</h3>
+                    <p>Configuration de nouveaux postes. Création compte local 'User' & Pack Office.</p>
+                </div>
+                <div class="card journee-card">
+                    <i class="fa-solid fa-server"></i>
+                    <h3>14h00 - Gestion Applicative</h3>
+                    <p>Logiciel ABC : Support de niveau 1 et escalade prestataire. Logiciel Solid : Administration directe sur le serveur.</p>
+                </div>
+            </div>
+            <div class="contact-footer">
+                <span>Organisation quotidienne du service de support</span>
             </div>
         </section>
 
-        <!-- Slide 6 : Veille -->
-        <section class="slide" id="veille">
-            <div class="slide-label">05. Protection & Recherche</div>
-            <h2 class="slide-title">Veille Technologique</h2>
-            
-            <!-- Grille Détaillée Veille Technologique -->
-            <div class="veille-grid-detail">
-                <!-- Carte 1 : Sources -->
-                <div class="veille-detail-card">
-                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
-                        <i class="fa-solid fa-rss" style="color: #0ea5e9; font-size: 30px;"></i>
-                        <h3 class="veille-detail-title">Sources d'Information</h3>
+        <!-- Slide 5 : Projets Majeurs -->
+        <section id="projets" class="slide">
+            <h2 class="section-title">04. Projets Majeurs</h2>
+            <div class="grid-2">
+                <div class="card projet-card">
+                    <h3>Administration Google Workspace</h3>
+                    <ul style="font-size: 0.88rem; margin-top: 10px;">
+                        <li>Création et cycle de vie des comptes sous le domaine @villeton.fr.</li>
+                        <li>Création d'un Google Sites collaboratif pour l'on-boarding RH.</li>
+                        <li>Déploiement des stratégies de sécurité et de filtrage cloud.</li>
+                    </ul>
+                    <div style="margin-top: 15px;">
+                        <span class="tech-tag">SaaS</span>
+                        <span class="tech-tag">Sécurité</span>
                     </div>
-                    <ul class="veille-detail-list">
-                        <li class="veille-detail-item"><span>Flux RSS (Feedly)</span></li>
-                        <li class="veille-detail-item"><span>Alertes CERT-FR</span></li>
-                        <li class="veille-detail-item"><span>ANSSI</span></li>
-                        <li class="veille-detail-item"><span>The Hacker News</span></li>
+                </div>
+                <div class="card projet-card">
+                    <h3>Vidéoprotection Globale (Eufy)</h3>
+                    <ul style="font-size: 0.88rem; margin-top: 10px;">
+                        <li>Supervision centralisée de l'ensemble des dépôts régionaux.</li>
+                        <li>Application stricte de la politique du moindre privilège.</li>
+                        <li>Isolation logique des flux vidéo pour sécuriser les accès.</li>
+                    </ul>
+                    <div style="margin-top: 15px;">
+                        <span class="tech-tag">Vidéoprotection</span>
+                        <span class="tech-tag">Sécurité</span>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-footer">
+                <span>Réalisations techniques en entreprise</span>
+            </div>
+        </section>
+
+        <!-- Slide 6 : Veille Technologique (05. PROTECTION & RECHERCHE) -->
+        <section id="veille" class="slide">
+            <h2 class="section-title">05. Protection & Recherche</h2>
+            <div class="grid-3">
+                
+                <!-- Carte 1 : Reconnaissance & Shodan -->
+                <div class="card veille-card">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <h3>Reconnaissance & Shodan</h3>
+                    <ul>
+                        <li><strong>Ciblage IoT :</strong> Identification des équipements connectés vulnérables exposés sur le web avec Shodan.</li>
+                        <li><strong>Recherche de ports exposés :</strong> Ciblage des caméras IP ayant des ports ouverts par erreur (ex: port RTSP 554).</li>
+                        <li><strong>Flux de veille continue :</strong> Suivi proactif des vulnérabilités émergentes (Flux RSS, alertes CERT-FR et ANSSI).</li>
+                    </ul>
+                    <img src="shodan-capture.png" alt="Reconnaissance Shodan (Port 554)" class="veille-img shodan-capture-img">
+                </div>
+
+                <!-- Carte 2 : Mouvement Latéral -->
+                <div class="card veille-card">
+                    <i class="fa-solid fa-bug"></i>
+                    <h3>Mouvement Latéral</h3>
+                    <ul>
+                        <li><strong>Tête de pont :</strong> La caméra vulnérable compromise sert de point d'entrée initial et d'ancrage dans l'infrastructure de l'entreprise.</li>
+                        <li><strong>Rebond et Scan LAN :</strong> Pivotement depuis l'appareil compromis pour scanner le réseau local (LAN) et identifier des cibles internes.</li>
+                        <li><strong>Infiltration système :</strong> Exploitation de failles internes pour compromettre les serveurs critiques et étendre les privilèges.</li>
                     </ul>
                 </div>
 
-                <!-- Carte 2 : Vulnérabilités -->
-                <div class="veille-detail-card">
-                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
-                        <i class="fa-solid fa-bug" style="color: #0ea5e9; font-size: 30px;"></i>
-                        <h3 class="veille-detail-title">Vulnérabilités Caméras IP</h3>
-                    </div>
-                    <ul class="veille-detail-list">
-                        <li class="veille-detail-item"><span>Failles critiques (CVE) fréquentes</span></li>
-                        <li class="veille-detail-item"><span>Exploitation en réseaux Botnet (ex: Mirai)</span></li>
-                        <li class="veille-detail-item"><span>Risques d'intrusion sur le réseau LAN</span></li>
+                <!-- Carte 3 : Solutions d'Infrastructure -->
+                <div class="card veille-card">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h3>Solutions Réseau</h3>
+                    <ul>
+                        <li>Isolation logique stricte dans un VLAN dédié aux caméras IP.</li>
+                        <li>Filtrage des flux (Pare-feu local) bloquant tout accès non initié vers le LAN.</li>
+                        <li>Désactivation de l'UPnP et mises à jour régulières des firmwares.</li>
                     </ul>
                 </div>
 
-                <!-- Carte 3 : Remédiations -->
-                <div class="veille-detail-card">
-                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
-                        <i class="fa-solid fa-shield-halved" style="color: #0ea5e9; font-size: 30px;"></i>
-                        <h3 class="veille-detail-title">Solutions d'Infrastructure</h3>
-                    </div>
-                    <ul class="veille-detail-list">
-                        <li class="veille-detail-item"><span>Isolation stricte dans un VLAN dédié</span></li>
-                        <li class="veille-detail-item"><span>Blocage des flux sortants (Pare-feu)</span></li>
-                        <li class="veille-detail-item"><span>Désactivation UPnP</span></li>
-                        <li class="veille-detail-item"><span>Mises à jour firmware</span></li>
-                    </ul>
-                </div>
+            </div>
+            <div class="contact-footer">
+                <span>Veille Technologique SIO SISR - Sécurité des Objets Connectés</span>
             </div>
         </section>
 
     </main>
 
-    <!-- JavaScript Simple de Gestion active du Scroll et de l'Ancre -->
+    <!-- JavaScript de Gestion du Scroll et de la Navigation -->
     <script>
         const container = document.getElementById('presentation-container');
         const slides = document.querySelectorAll('.slide');
         const navLinks = document.querySelectorAll('.nav-link');
 
-        // Écouter le défilement pour mettre en surbrillance l'onglet actif
+        // Mettre en surbrillance l'onglet actif au défilement
         container.addEventListener('scroll', () => {
             let activeSlideId = '';
             
@@ -816,4 +663,3 @@
     </script>
 </body>
 </html>
-```
