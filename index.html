@@ -1,665 +1,785 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Présentation orale BTS SIO Option SISR - Ilyes Nasr Chatti. Portfolio diaporama.">
-    <title>Ilyes Nasr Chatti - Diaporama BTS SIO SISR</title>
-    
-    <!-- Google Fonts: Montserrat (Titres & Accent) et Inter (Texte de base) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome pour les icônes -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* Variables de couleurs et polices */
-        :root {
-            --bg-main: #ffffff;
-            --bg-alt: #f8fafc;
-            --color-text: #0f172a;
-            --color-text-muted: #475569;
-            --color-cyan: #0ea5e9;
-            --color-cyan-hover: #0284c7;
-            --color-border: #e2e8f0;
-            --font-title: 'Montserrat', sans-serif;
-            --font-body: 'Inter', sans-serif;
-            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --shadow-card: 0 4px 20px rgba(15, 23, 42, 0.05);
-            --shadow-card-hover: 0 10px 30px rgba(15, 23, 42, 0.08);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Portfolio BTS SIO SISR d'Ilyes Nasr Chatti — Technicien Systèmes & Réseaux en alternance chez Suma.">
+<title>Ilyes Nasr Chatti — BTS SIO SISR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+  --cyan:#0ea5e9; --cyan-fonce:#0369a1; --indigo:#4f46e5;
+  --encre:#0f172a; --ardoise:#334155; --ardoise-clair:#475569;
+  --bord:#dbe3ec; --fond:#ffffff; --fond-alt:#f4f7fb;
+  --vert:#15803d; --vert-bg:#dcfce7; --orange:#c2410c;
+  --titre:'Montserrat',sans-serif; --corps:'Inter',sans-serif; --mono:'JetBrains Mono',monospace;
+  --ombre:0 4px 18px rgba(15,23,42,.06); --ombre-h:0 12px 32px rgba(15,23,42,.12);
+  --rapide:all .25s cubic-bezier(.4,0,.2,1);
+  --grad:linear-gradient(135deg,var(--cyan),var(--indigo));
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-padding-top:90px}
+body{font-family:var(--corps);background:var(--fond);color:var(--encre);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+h1,h2,h3,h4{font-family:var(--titre);letter-spacing:-.02em;line-height:1.15}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
 
-        /* Base & Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--bord)}
+.nav-in{max-width:1180px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-family:var(--titre);font-weight:800;font-size:1.15rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap;cursor:pointer}
+.menu{display:flex;align-items:center;gap:4px;list-style:none}
+.menu>li{position:relative}
+.menu a.lk{display:flex;align-items:center;gap:7px;padding:9px 14px;border-radius:30px;font-weight:600;font-size:.9rem;color:var(--ardoise);cursor:pointer;transition:var(--rapide);white-space:nowrap}
+.menu a.lk:hover{color:var(--cyan-fonce);background:rgba(14,165,233,.08)}
+.menu a.lk.on{color:#fff;background:var(--grad);box-shadow:0 5px 16px rgba(79,70,229,.28)}
+.caret{font-size:.65rem;transition:transform .25s}
+.has-sub:hover .caret{transform:rotate(180deg)}
+.sub{position:absolute;top:calc(100% + 8px);left:0;min-width:240px;background:#fff;border:1px solid var(--bord);border-radius:14px;box-shadow:var(--ombre-h);padding:8px;list-style:none;opacity:0;visibility:hidden;transform:translateY(8px);transition:var(--rapide)}
+.has-sub:hover .sub,.has-sub:focus-within .sub{opacity:1;visibility:visible;transform:none}
+.sub a{display:flex;gap:11px;align-items:flex-start;padding:10px 12px;border-radius:10px;cursor:pointer;transition:var(--rapide)}
+.sub a:hover{background:var(--fond-alt)}
+.sub .ic{width:34px;height:34px;flex:none;border-radius:9px;background:var(--grad);color:#fff;display:grid;place-items:center;font-size:.9rem}
+.sub b{display:block;font-family:var(--titre);font-size:.9rem;color:var(--encre)}
+.sub span.t{font-size:.78rem;color:var(--ardoise-clair)}
+.burger{display:none;background:#fff;border:1px solid var(--bord);border-radius:10px;width:44px;height:44px;font-size:1.2rem;color:var(--encre);cursor:pointer}
 
-        html, body {
-            height: 100%;
-            overflow: hidden;
-            font-family: var(--font-body);
-            background-color: var(--bg-main);
-            color: var(--color-text);
-            scroll-behavior: smooth;
-        }
+/* PAGES */
+.page{display:none;animation:in .4s ease}
+.page.show{display:block}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+section.band{padding:70px 0}
+section.band.alt{background:var(--fond-alt)}
+.eyebrow{font-family:var(--titre);font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan-fonce);margin-bottom:10px}
+.h-sec{font-size:2rem;font-weight:800;margin-bottom:8px}
+.lead{color:var(--ardoise);max-width:640px;font-size:1.02rem}
+.txt{color:var(--ardoise);margin-bottom:14px}
 
-        /* Conteneur principal Snapping (TikTok style) */
-        .presentation-container {
-            height: 100vh;
-            width: 100vw;
-            overflow-y: scroll;
-            scroll-snap-type: y mandatory;
-            scroll-behavior: smooth;
-        }
+/* HERO clair */
+.hero{background:radial-gradient(900px 500px at 85% 0%,rgba(14,165,233,.14),transparent 60%),radial-gradient(700px 400px at 0% 100%,rgba(79,70,229,.08),transparent 60%),#fff;position:relative;overflow:hidden;border-bottom:1px solid var(--bord)}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(15,23,42,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(15,23,42,.045) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(900px 500px at 70% 20%,#000,transparent 75%);-webkit-mask-image:radial-gradient(900px 500px at 70% 20%,#000,transparent 75%)}
+.hero-in{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;padding:84px 0}
+.hero h1{font-size:3.3rem;font-weight:900;line-height:1.05;margin-bottom:8px;color:var(--encre)}
+.hero .role{font-size:1.3rem;font-weight:700;color:var(--cyan-fonce);margin-bottom:4px;font-family:var(--titre)}
+.hero .school{color:var(--ardoise-clair);font-weight:600;margin-bottom:18px}
+.hero .pitch{color:var(--ardoise);max-width:480px;margin-bottom:26px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:12px;font-weight:700;font-family:var(--titre);font-size:.92rem;cursor:pointer;border:none;transition:var(--rapide)}
+.btn-p{background:var(--grad);color:#fff;box-shadow:0 8px 22px rgba(79,70,229,.3)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(79,70,229,.4)}
+.btn-o{background:#fff;color:var(--encre);border:1px solid var(--bord)}
+.btn-o:hover{border-color:var(--cyan);color:var(--cyan-fonce)}
+.hero-meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--ardoise);font-size:.92rem;font-weight:500}
+.hero-meta a:hover{color:var(--cyan-fonce)}
+.hero-meta i{color:var(--cyan)}
 
-        /* Structure Slides */
-        .slide {
-            height: 100vh;
-            width: 100vw;
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 60px 8%;
-            box-sizing: border-box;
-            background-color: var(--bg-main);
-            overflow: hidden;
-        }
+/* Terminal clair */
+.term{background:#fff;border:1px solid var(--bord);border-radius:16px;box-shadow:var(--ombre-h);overflow:hidden}
+.term-bar{display:flex;align-items:center;gap:7px;padding:12px 15px;background:var(--fond-alt);border-bottom:1px solid var(--bord)}
+.term-bar span{width:12px;height:12px;border-radius:50%}
+.r{background:#ff5f57}.y{background:#febc2e}.g{background:#28c840}
+.term-bar b{margin-left:8px;color:var(--ardoise-clair);font-family:var(--mono);font-size:.82rem;font-weight:600}
+.term-body{padding:20px;font-family:var(--mono);font-size:.92rem;color:var(--encre);min-height:150px}
+.pr{color:var(--vert);font-weight:600}.cm{color:var(--cyan-fonce);font-weight:600}
+.cursor{display:inline-block;width:9px;height:1.1em;background:var(--cyan);vertical-align:text-bottom;animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+.infra{margin-top:16px;border-top:1px solid var(--bord);padding-top:16px}
+.infra h4{color:var(--cyan-fonce);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.infra-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.infra-grid div{display:flex;align-items:center;gap:9px;color:var(--ardoise);font-size:.85rem;font-family:var(--corps);font-weight:500}
+.infra-grid i{color:var(--cyan);font-size:.6rem}
 
-        .slide:nth-child(even) {
-            background-color: var(--bg-alt);
-        }
+/* Cartes */
+.grid{display:grid;gap:22px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:#fff;border:1px solid var(--bord);border-radius:16px;padding:24px;box-shadow:var(--ombre);transition:var(--rapide)}
+.hov:hover{transform:translateY(-4px);box-shadow:var(--ombre-h);border-color:rgba(14,165,233,.45)}
+.card h3{font-size:1.15rem;font-weight:700;margin-bottom:12px}
+.ic-top{width:46px;height:46px;border-radius:12px;background:var(--grad);color:#fff;display:grid;place-items:center;font-size:1.15rem;margin-bottom:14px}
+.ul{list-style:none}
+.ul li{display:flex;gap:10px;align-items:flex-start;color:var(--ardoise);font-size:.93rem;margin-bottom:9px}
+.ul li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--cyan);margin-top:9px;flex:none}
+.tag{display:inline-block;background:#e0f2fe;color:var(--cyan-fonce);padding:4px 11px;border-radius:7px;font-size:.75rem;font-weight:700;font-family:var(--titre);margin:4px 6px 0 0}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border-radius:30px;background:#fff;border:1px solid var(--bord);font-size:.85rem;font-weight:600;color:var(--ardoise)}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:30px;font-size:.75rem;font-weight:700;font-family:var(--titre);white-space:nowrap}
+.ok{background:var(--vert-bg);color:var(--vert)}
+.cur{background:#e0f2fe;color:var(--cyan-fonce)}
 
-        /* Menu de navigation fixe */
-        .nav-bar {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            display: flex;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 6px 12px;
-            border-radius: 40px;
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            box-shadow: 0 4px 25px rgba(15, 23, 42, 0.04);
-        }
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--bord);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--ombre)}
+.stats>div{padding:26px 18px;text-align:center;border-right:1px solid var(--bord)}
+.stats>div:last-child{border-right:none}
+.stats .n{font-family:var(--titre);font-size:2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stats .l{font-size:.82rem;color:var(--ardoise-clair);text-transform:uppercase;letter-spacing:.06em;margin-top:4px;font-weight:600}
 
-        .nav-link {
-            text-decoration: none;
-            color: var(--color-text-muted);
-            font-size: 0.75rem;
-            font-weight: 700;
-            font-family: var(--font-title);
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: var(--transition-smooth);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
+/* Infos */
+.info-row{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--bord);font-size:.93rem}
+.info-row:last-child{border:none}
+.info-row .k{color:var(--ardoise-clair);font-weight:600}
+.info-row .v{font-weight:600;text-align:right}
 
-        .nav-link:hover {
-            color: var(--color-cyan);
-        }
+/* Timeline */
+.tl{position:relative;padding-left:28px;max-width:720px;margin-top:28px}
+.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--bord)}
+.tl-item{position:relative;padding-bottom:26px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:"";position:absolute;left:-28px;top:4px;width:16px;height:16px;border-radius:50%;background:#fff;border:3px solid var(--cyan)}
+.tl-item .top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:3px}
+.tl-item h4{font-size:1.05rem}
+.tl-item .org{color:var(--ardoise);font-size:.9rem}
+.tl-item .dt{font-size:.8rem;color:var(--cyan-fonce);font-family:var(--titre);font-weight:700;letter-spacing:.04em}
 
-        .nav-link.active {
-            color: #ffffff;
-            background-color: var(--color-cyan);
-            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25);
-        }
+/* Projets numérotés */
+.proj{display:flex;background:#fff;border:1px solid var(--bord);border-radius:16px;overflow:hidden;box-shadow:var(--ombre);margin-bottom:22px;transition:var(--rapide)}
+.proj:hover{box-shadow:var(--ombre-h);border-color:rgba(14,165,233,.45)}
+.proj .num{flex:none;width:92px;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--titre);font-weight:800;font-size:1.7rem}
+.proj .body{padding:24px;flex:1}
+.proj .meta{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ardoise-clair);font-weight:700;margin-bottom:5px}
+.proj h3{font-size:1.2rem;margin-bottom:10px}
+.proj .head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.proj .desc{color:var(--ardoise);margin:4px 0 10px}
 
-        /* Titres de Section */
-        .section-title {
-            font-family: var(--font-title);
-            font-size: 1.85rem;
-            font-weight: 800;
-            color: var(--color-text);
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            letter-spacing: -0.02em;
-            position: relative;
-            display: inline-block;
-            text-align: center;
-        }
+/* Procédure */
+.pcard{background:#fff;border:1px solid var(--bord);border-radius:16px;overflow:hidden;box-shadow:var(--ombre);display:flex;flex-direction:column;transition:var(--rapide)}
+.pcard .cap{height:120px;background:var(--grad);color:#fff;display:grid;place-items:center;font-family:var(--titre);font-weight:800;font-size:1.4rem;letter-spacing:.04em;position:relative}
+.pcard .cap .badge{position:absolute;top:12px;left:12px;background:#fff}
+.pcard .pb{padding:20px;display:flex;flex-direction:column;flex:1}
+.pcard h3{font-size:1.08rem;margin-bottom:6px}
+.pcard .yr{font-size:.85rem;color:var(--ardoise-clair);margin-bottom:10px}
+.pcard .d{font-size:.9rem;color:var(--ardoise);margin-bottom:12px;flex:1}
+.dl{display:flex;align-items:center;justify-content:center;gap:9px;padding:11px;border-radius:10px;border:1px solid var(--bord);font-weight:700;font-family:var(--titre);font-size:.86rem;color:var(--cyan-fonce);transition:var(--rapide)}
+.dl:hover{background:#e0f2fe;border-color:var(--cyan)}
 
-        .section-title::after {
-            content: "";
-            display: block;
-            width: 60px;
-            height: 4px;
-            background-color: var(--color-cyan);
-            margin: 8px auto 0 auto;
-            border-radius: 2px;
-        }
+/* Journée */
+.jcard{text-align:center}
+.jcard .ic-top{margin:0 auto 14px}
+.jcard .hr{font-family:var(--titre);font-weight:800;color:var(--cyan-fonce);font-size:.95rem;margin-bottom:4px}
+.jcard h3{font-size:1rem;margin-bottom:8px}
+.jcard p{font-size:.87rem;color:var(--ardoise)}
 
-        /* Cartes & Tuiles */
-        .card {
-            background: #ffffff;
-            border: 1px solid var(--color-border);
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: var(--shadow-card);
-            transition: var(--transition-smooth);
-        }
+/* Veille */
+.vcard{border-left:5px solid var(--cyan)}
+.vcard.jur{border-left-color:#b91c1c}
+.vcode{font-family:var(--mono);font-size:.8rem;color:var(--ardoise-clair);font-weight:600}
+.vcard h3{font-size:1.25rem;margin:4px 0 2px}
+.vsrc{font-size:.88rem;color:var(--ardoise)}
+.vdate{float:right;text-align:center;font-family:var(--titre);background:var(--fond-alt);border:1px solid var(--bord);border-radius:10px;padding:8px 14px;font-weight:800;color:var(--cyan-fonce);margin-left:12px}
+.vdate.jur{color:#b91c1c}
+.vdate small{display:block;font-size:.62rem;font-weight:700;color:var(--ardoise-clair);letter-spacing:.08em}
+.vsub{font-family:var(--titre);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ardoise-clair);font-weight:700;margin:18px 0 10px}
+.vint{margin-top:16px;padding-top:14px;border-top:1px solid var(--bord);font-size:.9rem;color:var(--ardoise);font-style:italic}
+.tbl{overflow-x:auto;margin-top:14px}
+table.suivi{width:100%;border-collapse:collapse;font-size:.88rem;min-width:560px}
+table.suivi th{background:var(--grad);color:#fff;text-align:left;padding:11px 14px;font-family:var(--titre);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase}
+table.suivi.jur th{background:linear-gradient(135deg,#dc2626,#991b1b)}
+table.suivi td{padding:11px 14px;border-bottom:1px solid var(--bord);color:var(--ardoise);background:#fff}
 
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-card-hover);
-            border-color: rgba(14, 165, 233, 0.3);
-        }
+/* TCS */
+.docbox{border:2px dashed var(--bord);border-radius:16px;padding:40px;text-align:center;background:var(--fond-alt);margin-top:30px}
+.docbox .ic-top{margin:0 auto 14px;width:58px;height:58px;font-size:1.5rem}
 
-        /* Tags Technologiques */
-        .tech-tag {
-            display: inline-block;
-            background: rgba(14, 165, 233, 0.08);
-            color: var(--color-cyan);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.72rem;
-            font-weight: 700;
-            font-family: var(--font-title);
-            margin-right: 6px;
-            margin-top: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-        }
+/* BTS clair */
+.bts-hero{background:var(--fond-alt);border:1px solid var(--bord);border-radius:18px;padding:40px;text-align:center;position:relative;overflow:hidden}
+.bts-hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(15,23,42,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(15,23,42,.04) 1px,transparent 1px);background-size:40px 40px}
+.bts-hero>*{position:relative}
+.bts-hero .cmd{font-family:var(--mono);color:var(--vert);font-weight:600;margin-bottom:18px;font-size:.92rem}
+.bts-hero h2{font-family:var(--mono);font-size:3rem;color:var(--cyan-fonce);margin-bottom:6px}
+.bts-hero p{color:var(--ardoise);font-weight:600;margin-bottom:18px}
+.bts-tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:26px 0}
+.bts-tab{padding:9px 18px;border-radius:30px;border:1px solid var(--bord);background:#fff;font-weight:700;font-family:var(--titre);font-size:.86rem;color:var(--ardoise);cursor:pointer;transition:var(--rapide)}
+.bts-tab.on{background:var(--grad);color:#fff;border-color:transparent}
+.bts-panel{display:none}.bts-panel.on{display:block}
 
-        /* Timeline / Listes à puces premium */
-        ul {
-            list-style: none;
-        }
+/* Footer clair */
+footer{background:var(--fond-alt);border-top:1px solid var(--bord);color:var(--ardoise);padding:46px 0 30px;text-align:center}
+footer .brand{font-size:1.4rem;display:inline-block;margin-bottom:8px}
+footer .fmeta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:14px 0;font-size:.92rem;font-weight:500}
+footer .fmeta i{color:var(--cyan)}
+footer .cp{color:var(--ardoise-clair);font-size:.82rem;margin-top:10px}
 
-        li {
-            font-size: 0.92rem;
-            color: var(--color-text-muted);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            line-height: 1.5;
-        }
+a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
 
-        li::before {
-            content: "•";
-            color: var(--color-cyan);
-            font-weight: bold;
-            font-size: 1.1rem;
-            line-height: 1;
-        }
-
-        /* Layouts Spécifiques */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            width: 100%;
-            max-width: 1100px;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            width: 100%;
-            max-width: 1150px;
-        }
-
-        .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            width: 100%;
-            max-width: 1150px;
-        }
-
-        /* --- ACCUEIL --- */
-        .accueil-content {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 800px;
-        }
-
-        .accueil-title {
-            font-family: var(--font-title);
-            font-size: 3rem;
-            font-weight: 900;
-            color: var(--color-text);
-            letter-spacing: -0.03em;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-
-        .accueil-subtitle {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--color-cyan);
-            margin-bottom: 20px;
-            letter-spacing: 0.02em;
-        }
-
-        .accueil-meta {
-            font-size: 0.92rem;
-            color: var(--color-text-muted);
-            font-weight: 500;
-            display: flex;
-            gap: 15px;
-            margin-bottom: 10px;
-        }
-
-        /* --- PERSO / PROFIL --- */
-        .profile-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            width: 100%;
-            max-width: 1000px;
-        }
-
-        /* --- ENTREPRISE --- */
-        .entreprise-grid {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 40px;
-            width: 100%;
-            max-width: 1100px;
-            align-items: center;
-        }
-
-        .entreprise-images {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 100%;
-        }
-
-        /* --- JOURNÉE TYPE --- */
-        .journee-card {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .journee-card i {
-            font-size: 2.2rem;
-            color: var(--color-cyan);
-            margin-bottom: 4px;
-        }
-
-        .journee-card h3 {
-            font-family: var(--font-title);
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--color-text);
-        }
-
-        .journee-card p {
-            font-size: 0.8rem;
-            color: var(--color-text-muted);
-            line-height: 1.4;
-        }
-
-        /* --- PROJETS --- */
-        .projet-card h3 {
-            font-family: var(--font-title);
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--color-text);
-            margin-bottom: 12px;
-            border-left: 3px solid var(--color-cyan);
-            padding-left: 10px;
-        }
-
-        /* --- VEILLE --- */
-        .veille-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 14px;
-            padding: 24px;
-            height: 100%;
-        }
-
-        .veille-card i {
-            font-size: 2.2rem;
-            color: var(--color-cyan);
-        }
-
-        .veille-card h3 {
-            font-family: var(--font-title);
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--color-text);
-            margin-bottom: 4px;
-        }
-
-        .veille-card ul {
-            text-align: left;
-            width: 100%;
-        }
-
-        .veille-card li {
-            font-size: 0.82rem;
-            margin-bottom: 6px;
-        }
-
-        .veille-img {
-            margin-top: 8px;
-            width: 100%;
-            border-radius: 8px;
-            border: 1px solid var(--color-border);
-            box-shadow: 0 4px 10px rgba(15, 23, 42, 0.04);
-        }
-
-        /* Footer Coordonnées fixe en bas */
-        .contact-footer {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.78rem;
-            color: var(--color-text-muted);
-            font-family: var(--font-title);
-            font-weight: 600;
-            display: flex;
-            gap: 15px;
-            white-space: nowrap;
-        }
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            .nav-bar {
-                top: 10px;
-                padding: 4px 8px;
-                gap: 4px;
-                max-width: 95%;
-                overflow-x: auto;
-            }
-            .nav-link {
-                padding: 6px 10px;
-                font-size: 0.65rem;
-            }
-            .slide {
-                padding: 80px 20px 40px 20px;
-            }
-            .grid-2, .grid-3, .grid-4, .profile-container, .entreprise-grid {
-                grid-template-columns: 1fr !important;
-                gap: 15px;
-            }
-            .entreprise-images {
-                flex-direction: row;
-            }
-            .accueil-title {
-                font-size: 2rem;
-            }
-            .accueil-subtitle {
-                font-size: 1rem;
-            }
-        }
-    </style>
+/* Responsive */
+@media(max-width:960px){
+  .hero-in{grid-template-columns:1fr;gap:36px;padding:56px 0}
+  .hero h1{font-size:2.5rem}
+  .g3,.g4{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stats>div:nth-child(2){border-right:none}
+  .stats>div:nth-child(-n+2){border-bottom:1px solid var(--bord)}
+  .about{grid-template-columns:1fr !important}
+}
+@media(max-width:720px){
+  .burger{display:block}
+  .menu{position:fixed;top:0;right:0;bottom:0;width:min(84vw,340px);flex-direction:column;align-items:stretch;gap:2px;background:#fff;padding:80px 16px 24px;box-shadow:-10px 0 40px rgba(0,0,0,.15);transform:translateX(100%);transition:transform .3s;overflow-y:auto}
+  .menu.open{transform:none}
+  .menu a.lk{font-size:1rem;padding:13px 16px}
+  .sub{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;border-left:2px solid var(--bord);border-radius:0;margin:2px 0 6px 18px;padding:2px}
+  .caret{display:none}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .proj{flex-direction:column}
+  .proj .num{width:100%;height:56px}
+  .proj .head{flex-direction:column}
+  .hero h1{font-size:2.1rem}
+  .bts-hero h2{font-size:2rem}
+  .h-sec{font-size:1.6rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+.scrim{display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:90}
+.scrim.show{display:block}
+</style>
 </head>
 <body>
 
-    <!-- Barre de Navigation Globale -->
-    <nav class="nav-bar">
-        <a href="#accueil" class="nav-link active" onclick="scrollToSlide('accueil')">Accueil</a>
-        <a href="#competences" class="nav-link" onclick="scrollToSlide('competences')">COMPÉTENCES TECHNIQUES</a>
-        <a href="#entreprise" class="nav-link" onclick="scrollToSlide('entreprise')">Entreprise</a>
-        <a href="#journee" class="nav-link" onclick="scrollToSlide('journee')">Journée</a>
-        <a href="#projets" class="nav-link" onclick="scrollToSlide('projets')">Projets</a>
-        <a href="#veille" class="nav-link" onclick="scrollToSlide('veille')">Veille</a>
-    </nav>
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" onclick="go('accueil')">Ilyes Nasr Chatti</a>
+    <button class="burger" aria-label="Menu" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
+    <ul class="menu" id="menu">
+      <li><a class="lk" data-p="accueil" onclick="go('accueil')"><i class="fa-solid fa-house"></i>Accueil</a></li>
+      <li class="has-sub">
+        <a class="lk" data-p="apropos" tabindex="0"><i class="fa-solid fa-user"></i>À propos<i class="fa-solid fa-chevron-down caret"></i></a>
+        <ul class="sub">
+          <li><a onclick="go('apropos')"><span class="ic"><i class="fa-solid fa-id-card"></i></span><span><b>À propos de moi</b><span class="t">Parcours & compétences</span></span></a></li>
+          <li><a onclick="go('entreprise')"><span class="ic"><i class="fa-solid fa-building"></i></span><span><b>Mon alternance</b><span class="t">Suma · service informatique</span></span></a></li>
+        </ul>
+      </li>
+      <li><a class="lk" data-p="bts" onclick="go('bts')"><i class="fa-solid fa-graduation-cap"></i>BTS SIO</a></li>
+      <li><a class="lk" data-p="tcs" onclick="go('tcs')"><i class="fa-solid fa-shield-halved"></i>TCS</a></li>
+      <li class="has-sub">
+        <a class="lk" data-p="projets" tabindex="0"><i class="fa-solid fa-folder-open"></i>Projets<i class="fa-solid fa-chevron-down caret"></i></a>
+        <ul class="sub">
+          <li><a onclick="go('projets')"><span class="ic"><i class="fa-solid fa-briefcase"></i></span><span><b>En entreprise</b><span class="t">Réalisations chez Suma</span></span></a></li>
+          <li><a onclick="go('procedures')"><span class="ic"><i class="fa-solid fa-file-lines"></i></span><span><b>Procédures techniques</b><span class="t">Documents à télécharger</span></span></a></li>
+        </ul>
+      </li>
+      <li class="has-sub">
+        <a class="lk" data-p="veilles" tabindex="0"><i class="fa-solid fa-eye"></i>Veilles<i class="fa-solid fa-chevron-down caret"></i></a>
+        <ul class="sub">
+          <li><a onclick="go('veille-tech')"><span class="ic"><i class="fa-solid fa-microchip"></i></span><span><b>Veille technologique</b><span class="t">Sécurité des caméras IP</span></span></a></li>
+          <li><a onclick="go('veille-jur')"><span class="ic"><i class="fa-solid fa-scale-balanced"></i></span><span><b>Veille juridique</b><span class="t">RGPD & vidéoprotection</span></span></a></li>
+        </ul>
+      </li>
+      <li><a class="lk" data-p="contact" onclick="go('contact')"><i class="fa-solid fa-envelope"></i>Contact</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="scrim" id="scrim" onclick="toggleMenu()"></div>
 
-    <!-- Conteneur Principal pour le TikTok Snap Scrolling -->
-    <main class="presentation-container" id="presentation-container">
+<main>
 
-        <!-- Slide 1 : Accueil -->
-        <section id="accueil" class="slide">
-            <div class="accueil-content">
-                <img src="Suma_Logo.png" alt="Logo Suma" style="max-height: 80px; margin-bottom: 20px;">
-                <h1 class="accueil-title">Ilyes Nasr Chatti</h1>
-                <p class="accueil-subtitle">Technicien Systèmes et Réseaux en Alternance</p>
-                <div class="accueil-meta">
-                    <span><i class="fa-solid fa-graduation-cap"></i> BTS SIO SISR (1ère Année)</span>
-                    <span><i class="fa-solid fa-briefcase"></i> Transports Suma</span>
-                </div>
-                <img src="batiment-suma.png" alt="Locaux Transports Suma" style="max-width: 400px; border-radius: 12px; margin-top: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.2);">
+<!-- ACCUEIL -->
+<div class="page show" id="accueil">
+  <section class="hero">
+    <div class="wrap hero-in">
+      <div>
+        <h1>Ilyes Nasr&nbsp;Chatti</h1>
+        <div class="role">Technicien Systèmes &amp; Réseaux</div>
+        <div class="school">BTS SIO option SISR · Session 2027 · en alternance</div>
+        <p class="pitch">Passionné par l'infrastructure, les systèmes et les réseaux, je mets en pratique au quotidien l'administration système, la sécurité réseau et le support utilisateur au sein du service informatique des Transports Suma.</p>
+        <div class="cta-row">
+          <button class="btn btn-p" onclick="go('projets')">Mes réalisations <i class="fa-solid fa-arrow-right"></i></button>
+          <button class="btn btn-o" onclick="go('contact')"><i class="fa-solid fa-envelope"></i> Me contacter</button>
+        </div>
+        <div class="hero-meta">
+          <span><i class="fa-solid fa-location-dot"></i> Vitrolles, France</span>
+          <a href="mailto:ilyeschatti13@icloud.com"><i class="fa-solid fa-envelope"></i> ilyeschatti13@icloud.com</a>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-bar"><span class="r"></span><span class="y"></span><span class="g"></span><b>ilyes@suma: ~</b></div>
+        <div class="term-body">
+          <div><span class="pr">ilyes@suma</span>:<span class="cm">~</span>$ <span id="typed"></span><span class="cursor"></span></div>
+          <div class="infra">
+            <h4><i class="fa-solid fa-sitemap"></i> Environnement SISR</h4>
+            <div class="infra-grid">
+              <div><i class="fa-solid fa-circle"></i> Active Directory</div>
+              <div><i class="fa-solid fa-circle"></i> VLAN &amp; brassage</div>
+              <div><i class="fa-solid fa-circle"></i> GLPI (tickets N1/N2)</div>
+              <div><i class="fa-solid fa-circle"></i> Google Workspace</div>
+              <div><i class="fa-solid fa-circle"></i> Vidéoprotection Eufy</div>
+              <div><i class="fa-solid fa-circle"></i> pfSense</div>
             </div>
-            <div class="contact-footer">
-                <span><i class="fa-solid fa-envelope"></i> ilyeschatti13@icloud.com</span>
-                <span>|</span>
-                <span><i class="fa-solid fa-phone"></i> 07 48 61 38 99</span>
-                <span>|</span>
-                <span><i class="fa-solid fa-location-dot"></i> Vitrolles, France</span>
-            </div>
-        </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="band">
+    <div class="wrap">
+      <div class="stats">
+        <div><div class="n">7</div><div class="l">Dépôts suivis</div></div>
+        <div><div class="n">2</div><div class="l">Années d'alternance</div></div>
+        <div><div class="n">SUMA</div><div class="l">Entreprise</div></div>
+        <div><div class="n">SISR</div><div class="l">Spécialité</div></div>
+      </div>
+    </div>
+  </section>
+</div>
 
-        <!-- Slide 2 : Compétences Techniques -->
-        <section id="competences" class="slide">
-            <h2 class="section-title">01. COMPÉTENCES TECHNIQUES</h2>
-            <div class="grid-3">
-                <div class="card">
-                    <h3 style="font-family: var(--font-title); font-size: 1.15rem; font-weight: 700; margin-bottom: 15px; color: var(--color-cyan);"><i class="fa-solid fa-server"></i> Systèmes & Administration</h3>
-                    <ul>
-                        <li><strong>Active Directory :</strong> Gestion des comptes utilisateurs, attributions des droits d'accès et stratégies de sécurité.</li>
-                        <li><strong>Console SaaS :</strong> Administration et configuration de la console Google Workspace (gestion des comptes, règles).</li>
-                        <li><strong>Systèmes Clients/Serveurs :</strong> Installation, déploiement et maintenance (Windows 10/11, Windows Server).</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3 style="font-family: var(--font-title); font-size: 1.15rem; font-weight: 700; margin-bottom: 15px; color: var(--color-cyan);"><i class="fa-solid fa-network-wired"></i> Réseaux & Infrastructure</h3>
-                    <ul>
-                        <li><strong>Réseau LAN/VLAN :</strong> Création et configuration de réseaux locaux virtuels pour l'isolation logique des flux.</li>
-                        <li><strong>Câblage & Brassage :</strong> Brassage physique RJ45 dans les baies de brassage et maintenance du câblage réseau.</li>
-                        <li><strong>Équipements actifs :</strong> Configuration d'adresses IP statiques, plans d'adressage et routeurs/switchs.</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3 style="font-family: var(--font-title); font-size: 1.15rem; font-weight: 700; margin-bottom: 15px; color: var(--color-cyan);"><i class="fa-solid fa-headset"></i> Support N1 & N2</h3>
-                    <ul>
-                        <li><strong>Support Utilisateurs :</strong> Prise en charge des tickets d'incidents matériels et logiciels (GLPI).</li>
-                        <li><strong>Déploiement & Masterisation :</strong> Configuration initiale et déploiement de postes utilisateurs.</li>
-                        <li><strong>Diagnostic & Maintenance :</strong> Dépannage réseau, résolution des pannes courantes et assistance à distance.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="contact-footer">
-                <span><i class="fa-solid fa-envelope"></i> ilyeschatti13@icloud.com</span>
-                <span>|</span>
-                <span><i class="fa-solid fa-phone"></i> 07 48 61 38 99</span>
-            </div>
-        </section>
+<!-- À PROPOS -->
+<div class="page" id="apropos">
+  <section class="band">
+    <div class="wrap">
+      <div class="eyebrow">Profil</div>
+      <h2 class="h-sec">À propos de moi</h2>
+      <p class="lead">Technicien Systèmes &amp; Réseaux en alternance · BTS SIO SISR · Suma</p>
+      <div class="grid about" style="grid-template-columns:1.3fr .9fr;margin-top:34px">
+        <div class="card">
+          <h3>Ma présentation</h3>
+          <p class="txt">Après un bac STI2D, je me suis orienté vers un BTS SIO option SISR pour me spécialiser dans l'administration système, la gestion des réseaux et le support technique.</p>
+          <p class="txt">J'effectue mon alternance au service informatique des Transports Suma, où je prends en charge le support utilisateur de niveau 1 et 2, le déploiement de postes, la gestion des comptes et des projets concrets d'infrastructure sur plusieurs dépôts.</p>
+          <p class="txt" style="margin:0">Curieux et autonome, j'aime comprendre le fonctionnement des systèmes et résoudre des problèmes concrets. Mon objectif est de poursuivre en licence pour approfondir l'administration systèmes et la cybersécurité.</p>
+        </div>
+        <div class="card">
+          <h3>Informations</h3>
+          <div class="info-row"><span class="k">Nom</span><span class="v">Ilyes Nasr Chatti</span></div>
+          <div class="info-row"><span class="k">Formation</span><span class="v">BTS SIO — SISR</span></div>
+          <div class="info-row"><span class="k">École</span><span class="v">M2S Formation, Vitrolles</span></div>
+          <div class="info-row"><span class="k">Alternance</span><span class="v">Transports Suma, Rognac</span></div>
+          <div class="info-row"><span class="k">Email</span><span class="v">ilyeschatti13@icloud.com</span></div>
+          <div class="info-row"><span class="k">Statut</span><span class="v"><span class="badge cur">Alternance en cours</span></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Slide 3 : Immersion en Alternance -->
-        <section id="entreprise" class="slide">
-            <h2 class="section-title">02. Immersion en Alternance</h2>
-            <div class="entreprise-grid">
-                <div class="card">
-                    <img src="Suma_Logo.png" alt="Logo Suma" style="max-height: 60px; margin-bottom: 15px;">
-                    <h3 style="font-family: var(--font-title); font-size: 1.1rem; font-weight: 700; margin-bottom: 15px; color: var(--color-text);">Missions au Service Informatique (DSI)</h3>
-                    <ul style="font-size: 0.88rem;">
-                        <li>Support utilisateur & gestion des incidents de N1 à N2 (Tickets GLPI).</li>
-                        <li>Préparation, masterisation et déploiement des postes de travail.</li>
-                        <li>Gestion des entrées/sorties (création de comptes AD, Google Workspace).</li>
-                        <li>Centralisation du système de vidéoprotection multi-sites (Solution Eufy).</li>
-                        <li>Gestion fine des accès (Compte Admin & sous-comptes par dépôt).</li>
-                    </ul>
-                </div>
-                <div class="entreprise-images">
-                    <img src="batiment-suma.png" alt="Locaux Transports Suma" style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-                    <img src="eufy-home.png" alt="Accueil Eufy" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border: 2px solid #e2e8f0;">
-                </div>
-            </div>
-            <div class="contact-footer">
-                <span>Transports Suma - Rognac (DSI)</span>
-            </div>
-        </section>
+  <section class="band alt">
+    <div class="wrap">
+      <h2 class="h-sec">Mon parcours scolaire</h2>
+      <div class="tl">
+        <div class="tl-item">
+          <div class="top"><h4>BTS SIO — option SISR</h4><span class="badge cur">En cours</span></div>
+          <div class="dt">Sept. 2025 — Juin 2027</div>
+          <div class="org">M2S Formation, Vitrolles · Alternance chez Transports Suma</div>
+        </div>
+        <div class="tl-item">
+          <div class="top"><h4>Baccalauréat technologique STI2D</h4><span class="badge ok">Obtenu</span></div>
+          <div class="dt">2025</div>
+          <div class="org">Lycée Pierre Mendès France, Vitrolles · Spécialité Énergies et environnement</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Slide 4 : Ma Journée Type -->
-        <section id="journee" class="slide">
-            <h2 class="section-title">03. Ma Journée Type</h2>
-            <div class="grid-4">
-                <div class="card journee-card">
-                    <i class="fa-solid fa-envelope-open-text"></i>
-                    <h3>08h00 - Accueil & Planification</h3>
-                    <p>Ouverture des mails. Consultation des missions de la journée.</p>
-                </div>
-                <div class="card journee-card">
-                    <i class="fa-solid fa-headset"></i>
-                    <h3>09h30 - Support Proactif (7 Dépôts)</h3>
-                    <p>Appels de contrôle aux 7 sites. Diagnostic et installation de logiciels à distance.</p>
-                </div>
-                <div class="card journee-card">
-                    <i class="fa-solid fa-laptop-code"></i>
-                    <h3>11h30 - Préparation Matériel</h3>
-                    <p>Configuration de nouveaux postes. Création compte local 'User' & Pack Office.</p>
-                </div>
-                <div class="card journee-card">
-                    <i class="fa-solid fa-server"></i>
-                    <h3>14h00 - Gestion Applicative</h3>
-                    <p>Logiciel ABC : Support de niveau 1 et escalade prestataire. Logiciel Solid : Administration directe sur le serveur.</p>
-                </div>
-            </div>
-            <div class="contact-footer">
-                <span>Organisation quotidienne du service de support</span>
-            </div>
-        </section>
+  <section class="band">
+    <div class="wrap">
+      <h2 class="h-sec">Compétences SISR</h2>
+      <div class="grid g3" style="margin-top:28px">
+        <div class="card hov">
+          <div class="ic-top"><i class="fa-solid fa-server"></i></div>
+          <h3>Systèmes &amp; administration</h3>
+          <ul class="ul">
+            <li>Active Directory : comptes, droits d'accès, stratégies de sécurité</li>
+            <li>Google Workspace : administration de la console SaaS</li>
+            <li>Windows 10/11 &amp; Windows Server : installation, déploiement, maintenance</li>
+          </ul>
+        </div>
+        <div class="card hov">
+          <div class="ic-top"><i class="fa-solid fa-network-wired"></i></div>
+          <h3>Réseaux &amp; infrastructure</h3>
+          <ul class="ul">
+            <li>LAN / VLAN : création et configuration, isolation des flux</li>
+            <li>pfSense : configuration WAN, LAN et VLAN en console</li>
+            <li>Câblage &amp; brassage RJ45, plans d'adressage IP</li>
+          </ul>
+        </div>
+        <div class="card hov">
+          <div class="ic-top"><i class="fa-solid fa-headset"></i></div>
+          <h3>Support N1 &amp; N2</h3>
+          <ul class="ul">
+            <li>Gestion des tickets d'incidents matériels et logiciels (GLPI)</li>
+            <li>Masterisation et déploiement de postes utilisateurs</li>
+            <li>Diagnostic, dépannage réseau et assistance à distance</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 
-        <!-- Slide 5 : Projets Majeurs -->
-        <section id="projets" class="slide">
-            <h2 class="section-title">04. Projets Majeurs</h2>
-            <div class="grid-2">
-                <div class="card projet-card">
-                    <h3>Administration Google Workspace</h3>
-                    <ul style="font-size: 0.88rem; margin-top: 10px;">
-                        <li>Création et cycle de vie des comptes sous le domaine @villeton.fr.</li>
-                        <li>Création d'un Google Sites collaboratif pour l'on-boarding RH.</li>
-                        <li>Déploiement des stratégies de sécurité et de filtrage cloud.</li>
-                    </ul>
-                    <div style="margin-top: 15px;">
-                        <span class="tech-tag">SaaS</span>
-                        <span class="tech-tag">Sécurité</span>
-                    </div>
-                </div>
-                <div class="card projet-card">
-                    <h3>Vidéoprotection Globale (Eufy)</h3>
-                    <ul style="font-size: 0.88rem; margin-top: 10px;">
-                        <li>Supervision centralisée de l'ensemble des dépôts régionaux.</li>
-                        <li>Application stricte de la politique du moindre privilège.</li>
-                        <li>Isolation logique des flux vidéo pour sécuriser les accès.</li>
-                    </ul>
-                    <div style="margin-top: 15px;">
-                        <span class="tech-tag">Vidéoprotection</span>
-                        <span class="tech-tag">Sécurité</span>
-                    </div>
-                </div>
-            </div>
-            <div class="contact-footer">
-                <span>Réalisations techniques en entreprise</span>
-            </div>
-        </section>
+<!-- ENTREPRISE -->
+<div class="page" id="entreprise">
+  <section class="band">
+    <div class="wrap">
+      <div class="eyebrow">Alternance</div>
+      <h2 class="h-sec">Mon alternance chez Suma</h2>
+      <p class="lead">Société Nouvelle Transports Suma · service informatique · Rognac · 2025–2027. Entreprise de transport de voyageurs présente sur plusieurs dépôts de la région.</p>
+      <div class="stats" style="margin-top:30px">
+        <div><div class="n">Rognac</div><div class="l">Siège · DSI</div></div>
+        <div><div class="n">7</div><div class="l">Dépôts suivis</div></div>
+        <div><div class="n">24 mois</div><div class="l">Durée</div></div>
+        <div><div class="n">N1 → N2</div><div class="l">Support</div></div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Slide 6 : Veille Technologique (05. PROTECTION & RECHERCHE) -->
-        <section id="veille" class="slide">
-            <h2 class="section-title">05. Protection & Recherche</h2>
-            <div class="grid-3">
-                
-                <!-- Carte 1 : Reconnaissance & Shodan -->
-                <div class="card veille-card">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <h3>Reconnaissance & Shodan</h3>
-                    <ul>
-                        <li><strong>Ciblage IoT :</strong> Identification des équipements connectés vulnérables exposés sur le web avec Shodan.</li>
-                        <li><strong>Recherche de ports exposés :</strong> Ciblage des caméras IP ayant des ports ouverts par erreur (ex: port RTSP 554).</li>
-                        <li><strong>Flux de veille continue :</strong> Suivi proactif des vulnérabilités émergentes (Flux RSS, alertes CERT-FR et ANSSI).</li>
-                    </ul>
-                    <img src="shodan-capture.png" alt="Reconnaissance Shodan (Port 554)" class="veille-img shodan-capture-img">
-                </div>
+  <section class="band alt">
+    <div class="wrap">
+      <h2 class="h-sec">Mes missions au service informatique</h2>
+      <div class="grid g2" style="margin-top:28px">
+        <div class="card hov">
+          <div class="ic-top"><i class="fa-solid fa-headset"></i></div>
+          <h3>Support &amp; postes de travail</h3>
+          <ul class="ul">
+            <li>Support utilisateur et gestion des incidents de N1 à N2 (tickets GLPI)</li>
+            <li>Préparation, masterisation et déploiement des postes</li>
+            <li>Prise en main à distance des postes des dépôts (TeamViewer / AnyDesk)</li>
+          </ul>
+        </div>
+        <div class="card hov">
+          <div class="ic-top"><i class="fa-solid fa-users-gear"></i></div>
+          <h3>Comptes &amp; accès</h3>
+          <ul class="ul">
+            <li>Gestion des entrées/sorties : création de comptes Active Directory</li>
+            <li>Administration de la console Google Workspace</li>
+            <li>Gestion fine des accès : compte admin et sous-comptes par dépôt</li>
+          </ul>
+        </div>
+        <div class="card hov">
+          <div class="ic-top"><i class="fa-solid fa-video"></i></div>
+          <h3>Vidéoprotection multi-sites</h3>
+          <ul class="ul">
+            <li>Centralisation de la vidéoprotection de tous les dépôts (solution Eufy)</li>
+            <li>Application de la politique du moindre privilège</li>
+            <li>Sécurisation des accès et des flux vidéo</li>
+          </ul>
+        </div>
+        <div class="card hov">
+          <div class="ic-top"><i class="fa-solid fa-code"></i></div>
+          <h3>Automatisation &amp; applicatif</h3>
+          <ul class="ul">
+            <li>Scripts Google Apps Script pour le service RH</li>
+            <li>Support des logiciels métier et escalade prestataire</li>
+            <li>Diagnostic réseau des boîtiers de suivi carburant</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-                <!-- Carte 2 : Mouvement Latéral -->
-                <div class="card veille-card">
-                    <i class="fa-solid fa-bug"></i>
-                    <h3>Mouvement Latéral</h3>
-                    <ul>
-                        <li><strong>Tête de pont :</strong> La caméra vulnérable compromise sert de point d'entrée initial et d'ancrage dans l'infrastructure de l'entreprise.</li>
-                        <li><strong>Rebond et Scan LAN :</strong> Pivotement depuis l'appareil compromis pour scanner le réseau local (LAN) et identifier des cibles internes.</li>
-                        <li><strong>Infiltration système :</strong> Exploitation de failles internes pour compromettre les serveurs critiques et étendre les privilèges.</li>
-                    </ul>
-                </div>
+  <section class="band">
+    <div class="wrap">
+      <h2 class="h-sec">Ma journée type</h2>
+      <p class="lead">L'organisation d'une journée au support, sur les 7 dépôts.</p>
+      <div class="grid g4" style="margin-top:28px">
+        <div class="card hov jcard"><div class="ic-top"><i class="fa-solid fa-envelope-open-text"></i></div><div class="hr">08h00</div><h3>Accueil &amp; planification</h3><p>Ouverture des mails, consultation des missions de la journée.</p></div>
+        <div class="card hov jcard"><div class="ic-top"><i class="fa-solid fa-headset"></i></div><div class="hr">09h30</div><h3>Support proactif</h3><p>Contrôle des 7 sites, diagnostic et installation de logiciels à distance.</p></div>
+        <div class="card hov jcard"><div class="ic-top"><i class="fa-solid fa-laptop-code"></i></div><div class="hr">11h30</div><h3>Préparation matériel</h3><p>Configuration de nouveaux postes, comptes locaux et pack Office.</p></div>
+        <div class="card hov jcard"><div class="ic-top"><i class="fa-solid fa-server"></i></div><div class="hr">14h00</div><h3>Gestion applicative</h3><p>Support des logiciels métier et administration directe sur serveur.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
 
-                <!-- Carte 3 : Solutions d'Infrastructure -->
-                <div class="card veille-card">
-                    <i class="fa-solid fa-shield-halved"></i>
-                    <h3>Solutions Réseau</h3>
-                    <ul>
-                        <li>Isolation logique stricte dans un VLAN dédié aux caméras IP.</li>
-                        <li>Filtrage des flux (Pare-feu local) bloquant tout accès non initié vers le LAN.</li>
-                        <li>Désactivation de l'UPnP et mises à jour régulières des firmwares.</li>
-                    </ul>
-                </div>
+<!-- BTS SIO -->
+<div class="page" id="bts">
+  <section class="band">
+    <div class="wrap">
+      <div class="bts-hero">
+        <div class="cmd">$ BTS_SIO_2027 &gt; formez-vous aux métiers de l'informatique_</div>
+        <h2>BTS SIO</h2>
+        <p>Services Informatiques aux Organisations</p>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+          <span class="chip"><i class="fa-solid fa-layer-group"></i> Niveau 5 (Bac+2)</span>
+          <span class="chip"><i class="fa-solid fa-clock"></i> 2 ans</span>
+          <span class="chip"><i class="fa-solid fa-briefcase"></i> Alternance</span>
+        </div>
+      </div>
+      <div class="bts-tabs">
+        <button class="bts-tab on" onclick="btsTab(this,'b-ov')">Vue d'ensemble</button>
+        <button class="bts-tab" onclick="btsTab(this,'b-sp')">Spécialisations</button>
+        <button class="bts-tab" onclick="btsTab(this,'b-pr')">Programme</button>
+        <button class="bts-tab" onclick="btsTab(this,'b-de')">Débouchés</button>
+      </div>
+      <div class="bts-panel on" id="b-ov">
+        <div class="grid g2">
+          <div class="card"><h3>Une formation polyvalente</h3><p class="txt" style="margin:0">Le BTS SIO forme des professionnels capables de répondre aux besoins informatiques des organisations, autour de deux spécialités : l'infrastructure (SISR) ou le développement (SLAM). J'ai choisi l'option <strong>SISR</strong>, orientée systèmes et réseaux.</p></div>
+          <div class="card"><h3>Le tronc commun</h3><ul class="ul"><li>Architecture matérielle et systèmes d'exploitation</li><li>Bases de données et requêtes SQL</li><li>Algorithmique et programmation</li><li>Support et communication client</li></ul></div>
+        </div>
+      </div>
+      <div class="bts-panel" id="b-sp">
+        <div class="grid g2">
+          <div class="card" style="border-top:4px solid var(--cyan)"><span class="tag">SISR · mon option</span><h3 style="margin-top:8px">Solutions d'Infrastructure, Systèmes et Réseaux</h3><ul class="ul"><li>Administration systèmes Windows / Linux</li><li>Gestion des réseaux et sécurité</li><li>Virtualisation et cloud</li><li>Support et maintenance de l'infrastructure</li></ul></div>
+          <div class="card"><span class="tag" style="background:#ede9fe;color:#5b21b6">SLAM</span><h3 style="margin-top:8px">Solutions Logicielles et Applications Métiers</h3><ul class="ul"><li>Développement (Python, Java, C#)</li><li>Web et frameworks (HTML/CSS/JS)</li><li>Bases de données (SQL / NoSQL)</li><li>Tests, intégration et UX/UI</li></ul></div>
+        </div>
+      </div>
+      <div class="bts-panel" id="b-pr">
+        <div class="grid g2">
+          <div class="card"><h3>Enseignements généraux</h3><ul class="ul"><li>Culture générale et expression</li><li>Anglais</li><li>Mathématiques pour l'informatique</li><li>Culture économique, juridique et managériale</li></ul></div>
+          <div class="card"><h3>Enseignements SISR</h3><ul class="ul"><li>Administration des systèmes (Windows Server, Linux, AD)</li><li>Réseaux : TCP/IP, routage, commutation, VLAN</li><li>Sécurité : pare-feu, VPN, chiffrement, authentification</li><li>Virtualisation &amp; cloud</li></ul></div>
+        </div>
+      </div>
+      <div class="bts-panel" id="b-de">
+        <div class="grid g2">
+          <div class="card"><h3>Débouchés SISR</h3><ul class="ul"><li>Administrateur systèmes &amp; réseaux</li><li>Technicien support informatique</li><li>Technicien infrastructure</li><li>Vers la cybersécurité</li></ul></div>
+          <div class="card"><h3>Poursuite d'études</h3><ul class="ul"><li>Licence professionnelle — systèmes &amp; réseaux</li><li>Bachelor informatique</li><li>École d'ingénieur en alternance</li><li>Certifications professionnelles (CCNA…)</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 
-            </div>
-            <div class="contact-footer">
-                <span>Veille Technologique SIO SISR - Sécurité des Objets Connectés</span>
-            </div>
-        </section>
+<!-- TCS -->
+<div class="page" id="tcs">
+  <section class="band">
+    <div class="wrap">
+      <div class="eyebrow">Compétences professionnelles</div>
+      <h2 class="h-sec">Tableau de synthèse des compétences</h2>
+      <p class="lead">Synthèse des compétences acquises en formation et en entreprise · BTS SIO SISR · 2025–2027.</p>
+      <div class="docbox">
+        <div class="ic-top"><i class="fa-solid fa-clipboard-check"></i></div>
+        <h3 style="margin-bottom:6px">Tableau de compétences — Ilyes Nasr Chatti</h3>
+        <p class="txt">Document officiel de synthèse des compétences du BTS SIO.</p>
+        <a class="btn btn-p" href="TCS.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-download"></i> Télécharger le TCS (PDF)</a>
+      </div>
+    </div>
+  </section>
+  <section class="band alt">
+    <div class="wrap">
+      <h2 class="h-sec">Parcours de formation</h2>
+      <div class="tl">
+        <div class="tl-item"><div class="top"><h4>Année 1</h4><span class="dt">2025–2026</span></div><div class="org">Fondamentaux IT : bases systèmes, réseaux TCP/IP, support utilisateur, premiers déploiements.</div></div>
+        <div class="tl-item"><div class="top"><h4>Année 2</h4><span class="dt">2026–2027</span></div><div class="org">Spécialisation SISR : sécurité réseau, projets d'infrastructure, vidéoprotection, automatisation.</div></div>
+      </div>
+    </div>
+  </section>
+  <section class="band">
+    <div class="wrap">
+      <h2 class="h-sec">Domaines couverts</h2>
+      <div class="grid g2" style="margin-top:28px">
+        <div class="card hov"><div class="ic-top"><i class="fa-solid fa-network-wired"></i></div><h3>Réseaux &amp; infrastructure</h3><p class="txt" style="margin:0">VLAN, pfSense, brassage RJ45, plans d'adressage IP, interventions multi-dépôts.</p></div>
+        <div class="card hov"><div class="ic-top"><i class="fa-solid fa-server"></i></div><h3>Systèmes &amp; administration</h3><p class="txt" style="margin:0">Active Directory, Google Workspace, déploiement de postes, Windows 10/11 &amp; Server.</p></div>
+        <div class="card hov"><div class="ic-top"><i class="fa-solid fa-shield-halved"></i></div><h3>Sécurité</h3><p class="txt" style="margin:0">Gestion fine des accès, moindre privilège, sécurisation de la vidéoprotection, veille sécurité.</p></div>
+        <div class="card hov"><div class="ic-top"><i class="fa-solid fa-headset"></i></div><h3>Support &amp; service</h3><p class="txt" style="margin:0">Tickets GLPI (N1/N2), prise en main à distance, support des logiciels métier.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
 
-    </main>
+<!-- PROJETS -->
+<div class="page" id="projets">
+  <section class="band">
+    <div class="wrap">
+      <div class="eyebrow">Réalisations professionnelles</div>
+      <h2 class="h-sec">Mes projets en entreprise</h2>
+      <p class="lead">Projets et missions réalisés en alternance au service informatique des Transports Suma · 2025–2027.</p>
+      <div style="margin-top:34px">
 
-    <!-- JavaScript de Gestion du Scroll et de la Navigation -->
-    <script>
-        const container = document.getElementById('presentation-container');
-        const slides = document.querySelectorAll('.slide');
-        const navLinks = document.querySelectorAll('.nav-link');
+        <div class="proj"><div class="num">01</div><div class="body">
+          <div class="head"><div><div class="meta">Suma · Vidéoprotection</div><h3>Centralisation de la vidéoprotection multi-sites</h3></div><span class="badge ok"><i class="fa-solid fa-check"></i> Réalisé</span></div>
+          <p class="desc">Centralisation du système de vidéoprotection de l'ensemble des dépôts sous la solution Eufy, avec une gestion rigoureuse des accès.</p>
+          <ul class="ul"><li>Supervision centralisée de tous les dépôts régionaux</li><li>Compte admin + sous-comptes par dépôt (moindre privilège)</li><li>Sécurisation des accès et des flux vidéo</li></ul>
+          <div style="margin-top:12px"><span class="tag">Eufy</span><span class="tag">Vidéoprotection</span><span class="tag">Sécurité</span></div>
+        </div></div>
 
-        // Mettre en surbrillance l'onglet actif au défilement
-        container.addEventListener('scroll', () => {
-            let activeSlideId = '';
-            
-            slides.forEach(slide => {
-                const slideTop = slide.offsetTop;
-                const slideHeight = slide.clientHeight;
-                
-                // Si la slide occupe plus de la moitié de l'écran visible
-                if (container.scrollTop >= (slideTop - slideHeight / 2)) {
-                    activeSlideId = slide.id;
-                }
-            });
+        <div class="proj"><div class="num">02</div><div class="body">
+          <div class="head"><div><div class="meta">Suma · SaaS</div><h3>Administration Google Workspace</h3></div><span class="badge ok"><i class="fa-solid fa-check"></i> Réalisé</span></div>
+          <p class="desc">Gestion du cycle de vie des comptes et de la console d'administration pour la messagerie de l'entreprise.</p>
+          <ul class="ul"><li>Création et gestion des comptes (entrées / sorties)</li><li>Règles de sécurité et de filtrage</li><li>Support des services Google aux utilisateurs</li></ul>
+          <div style="margin-top:12px"><span class="tag">Google Workspace</span><span class="tag">SaaS</span><span class="tag">Sécurité</span></div>
+        </div></div>
 
-            // Mettre à jour la classe active sur les liens
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${activeSlideId}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
+        <div class="proj"><div class="num">03</div><div class="body">
+          <div class="head"><div><div class="meta">Suma · Automatisation</div><h3>Scripts Google Apps Script pour la RH</h3></div><span class="badge ok"><i class="fa-solid fa-check"></i> Réalisé</span></div>
+          <p class="desc">Automatisation de tâches administratives récurrentes pour le service RH.</p>
+          <ul class="ul"><li>Registre du personnel géré via Google Sheets + Apps Script</li><li>Envoi automatisé des fiches de paye aux salariés</li><li>Formulaire d'entretien professionnel converti en Google Forms, réponses centralisées pour la RH</li></ul>
+          <div style="margin-top:12px"><span class="tag">Apps Script</span><span class="tag">Google Sheets</span><span class="tag">Automatisation</span></div>
+        </div></div>
 
-        // Fonction de scroll vers la slide demandée
-        function scrollToSlide(slideId) {
-            event.preventDefault();
-            const targetSlide = document.getElementById(slideId);
-            if (targetSlide) {
-                container.scrollTo({
-                    top: targetSlide.offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-        }
-    </script>
+        <div class="proj"><div class="num">04</div><div class="body">
+          <div class="head"><div><div class="meta">Suma · Support</div><h3>Déploiement de postes &amp; support multi-dépôts</h3></div><span class="badge ok"><i class="fa-solid fa-check"></i> Réalisé</span></div>
+          <p class="desc">Support de niveau 1 et 2 et préparation du matériel pour les 7 dépôts.</p>
+          <ul class="ul"><li>Masterisation et déploiement des postes de travail</li><li>Gestion des tickets d'incidents (GLPI)</li><li>Prise en main à distance (TeamViewer / AnyDesk)</li></ul>
+          <div style="margin-top:12px"><span class="tag">GLPI</span><span class="tag">Masterisation</span><span class="tag">Support N1/N2</span></div>
+        </div></div>
+
+        <div class="proj"><div class="num">05</div><div class="body">
+          <div class="head"><div><div class="meta">Suma · Logiciel métier</div><h3>Mise en place du logiciel Helen (girouettes bus)</h3></div><span class="badge cur">En cours</span></div>
+          <p class="desc">Prise en main du logiciel Helen (Hanover Displays) pour configurer les girouettes des bus, puis formation du dépôt concerné.</p>
+          <ul class="ul"><li>Installation du logiciel et analyse des bases de destinations</li><li>Séparation des lignes scolaires et des lignes régulières</li><li>Prise en main à distance et formation des utilisateurs</li></ul>
+          <div style="margin-top:12px"><span class="tag">Helen</span><span class="tag">Logiciel métier</span><span class="tag">Formation</span></div>
+        </div></div>
+
+        <div class="proj"><div class="num">06</div><div class="body">
+          <div class="head"><div><div class="meta">Suma · Réseau</div><h3>Diagnostic réseau du boîtier de suivi carburant</h3></div><span class="badge cur">En cours</span></div>
+          <p class="desc">Dépannage d'un boîtier ProFleet DiaBOX (suivi du carburant) devenu injoignable sur le réseau.</p>
+          <ul class="ul"><li>Tests de connectivité : ping, ports, passerelle (PowerShell)</li><li>Analyse du plan d'adressage et des accès d'administration web</li><li>Accès direct au boîtier pour vérifier sa configuration IP</li></ul>
+          <div style="margin-top:12px"><span class="tag">Réseau</span><span class="tag">Diagnostic</span><span class="tag">PowerShell</span></div>
+        </div></div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PROCÉDURES -->
+<div class="page" id="procedures">
+  <section class="band">
+    <div class="wrap">
+      <div class="eyebrow">Documentation technique</div>
+      <h2 class="h-sec">Mes procédures techniques</h2>
+      <p class="lead">Procédures que j'ai réalisées et rédigées moi-même, téléchargeables en PDF.</p>
+      <div class="grid g3" style="margin-top:28px">
+        <div class="pcard hov">
+          <div class="cap">PFSENSE<span class="badge ok">Terminé</span></div>
+          <div class="pb">
+            <h3>Configuration WAN / LAN / VLAN sur pfSense</h3>
+            <div class="yr">2025–2026</div>
+            <p class="d">Configuration en console des interfaces WAN et LAN d'un pare-feu pfSense, puis création des VLAN pour segmenter le réseau.</p>
+            <a class="dl" href="procedure-pfsense.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-download"></i> Télécharger le PDF</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- VEILLE TECHNO -->
+<div class="page" id="veille-tech">
+  <section class="band">
+    <div class="wrap">
+      <div class="eyebrow">Surveillance technologique</div>
+      <h2 class="h-sec">Veille technologique</h2>
+      <p class="lead">Sécurité des objets connectés et des caméras IP · directement liée à mon projet de vidéoprotection chez Suma.</p>
+      <div class="card vcard" style="margin-top:30px">
+        <div class="vdate">2026<small>SÉCU IOT</small></div>
+        <div class="vcode">// VEILLE_TECHNO_01</div>
+        <h3>Sécurité des caméras IP &amp; objets connectés</h3>
+        <div class="vsrc">Shodan · CERT-FR · ANSSI</div>
+        <p class="txt" style="margin-top:14px">Cette veille porte sur les vulnérabilités des caméras IP et objets connectés exposés sur Internet, et sur les moyens de les sécuriser. Elle alimente directement mon projet de vidéoprotection multi-sites.</p>
+        <div class="vsub">Éléments suivis</div>
+        <ul class="ul">
+          <li><strong>Reconnaissance (Shodan) :</strong>&nbsp;identification des équipements IoT et caméras IP exposés, ports ouverts par erreur (ex. RTSP 554)</li>
+          <li><strong>Mouvement latéral :</strong>&nbsp;une caméra compromise sert de point d'entrée, puis de rebond pour scanner le réseau local</li>
+          <li><strong>Solutions réseau :</strong>&nbsp;VLAN dédié aux caméras, filtrage des flux par pare-feu, UPnP désactivé, firmwares à jour</li>
+          <li><strong>Veille continue :</strong>&nbsp;suivi des vulnérabilités émergentes (flux RSS, alertes CERT-FR et ANSSI)</li>
+        </ul>
+        <p class="vint">Intérêt professionnel : cette veille sécurise concrètement le système Eufy en place chez Suma et relie la théorie (surface d'attaque, segmentation) à une infrastructure réelle que j'administre.</p>
+      </div>
+      <h2 class="h-sec" style="margin-top:50px;font-size:1.4rem">Tableau de suivi</h2>
+      <div class="tbl"><table class="suivi">
+        <thead><tr><th>Date</th><th>Source</th><th>Sujet</th><th>Résumé</th></tr></thead>
+        <tbody>
+          <tr><td>2026</td><td>Shodan</td><td>Caméras IP exposées</td><td>Recherche de ports RTSP 554 ouverts, cartographie de la surface d'attaque</td></tr>
+          <tr><td>2026</td><td>CERT-FR / ANSSI</td><td>Vulnérabilités IoT</td><td>Suivi des alertes et bonnes pratiques de segmentation réseau</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+</div>
+
+<!-- VEILLE JURIDIQUE -->
+<div class="page" id="veille-jur">
+  <section class="band">
+    <div class="wrap">
+      <div class="eyebrow">Réglementation &amp; lois</div>
+      <h2 class="h-sec">Veille juridique</h2>
+      <p class="lead">RGPD et vidéoprotection sur le lieu de travail · en lien direct avec le système de caméras que j'administre chez Suma.</p>
+      <div class="card vcard jur" style="margin-top:30px">
+        <div class="vdate jur">2026<small>CNIL · RGPD</small></div>
+        <div class="vcode">// VEILLE_JURIDIQUE_01</div>
+        <h3>RGPD &amp; vidéoprotection au travail</h3>
+        <div class="vsrc">CNIL · RGPD · Code du travail</div>
+        <p class="txt" style="margin-top:14px">Cette veille concerne les obligations légales encadrant l'installation et l'exploitation d'un système de vidéoprotection en entreprise. Elle est directement liée à ma mission de centralisation des caméras chez Suma.</p>
+        <div class="vsub">Éléments suivis</div>
+        <ul class="ul">
+          <li>Information des salariés et affichage obligatoire des zones filmées</li>
+          <li>Durée de conservation des images limitée (en principe 1 mois maximum)</li>
+          <li>Interdiction de filmer en continu les postes de travail et les zones de pause</li>
+          <li>Accès aux images réservé aux seules personnes habilitées</li>
+          <li>Registre des traitements et respect des droits des personnes (RGPD)</li>
+        </ul>
+        <p class="vint">Intérêt professionnel : garantir que le dispositif que j'administre reste conforme à la loi. Les sous-comptes par dépôt mis en place limitent déjà l'accès aux images aux seules personnes habilitées.</p>
+      </div>
+      <h2 class="h-sec" style="margin-top:50px;font-size:1.4rem">Tableau de suivi juridique</h2>
+      <div class="tbl"><table class="suivi jur">
+        <thead><tr><th>Date</th><th>Thème</th><th>Source</th><th>Résumé</th></tr></thead>
+        <tbody>
+          <tr><td>2026</td><td>Protection des données</td><td>RGPD · CNIL</td><td>Obligations liées à la vidéoprotection : information, durée, proportionnalité</td></tr>
+          <tr><td>2026</td><td>Droit du travail</td><td>Code du travail</td><td>Encadrement de la surveillance des salariés sur le lieu de travail</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+</div>
+
+<!-- CONTACT -->
+<div class="page" id="contact">
+  <section class="band">
+    <div class="wrap">
+      <div class="eyebrow">Contact</div>
+      <h2 class="h-sec">Me contacter</h2>
+      <p class="lead">Pour toute question sur mon parcours ou mes projets, contactez-moi par mail.</p>
+      <div class="grid g2" style="margin-top:30px;max-width:760px">
+        <a class="card hov" href="mailto:ilyeschatti13@icloud.com" style="text-align:center">
+          <div class="ic-top" style="margin:0 auto 14px"><i class="fa-solid fa-envelope"></i></div>
+          <h3>Email</h3><p class="txt" style="margin:0">ilyeschatti13@icloud.com</p>
+        </a>
+        <div class="card" style="text-align:center">
+          <div class="ic-top" style="margin:0 auto 14px"><i class="fa-solid fa-location-dot"></i></div>
+          <h3>Localisation</h3><p class="txt" style="margin:0">Vitrolles, France</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">Ilyes Nasr Chatti</div>
+    <p>Technicien Systèmes &amp; Réseaux · BTS SIO SISR · Alternance Suma</p>
+    <div class="fmeta">
+      <a href="mailto:ilyeschatti13@icloud.com"><i class="fa-solid fa-envelope"></i> ilyeschatti13@icloud.com</a>
+      <span><i class="fa-solid fa-location-dot"></i> Vitrolles, France</span>
+    </div>
+    <div class="cp">© 2026 Ilyes Nasr Chatti — Portfolio BTS SIO SISR</div>
+  </div>
+</footer>
+
+<script>
+const pages=document.querySelectorAll('.page');
+const links=document.querySelectorAll('.menu a.lk');
+const map={accueil:'accueil',apropos:'apropos',entreprise:'apropos',bts:'bts',tcs:'tcs',projets:'projets',procedures:'projets','veille-tech':'veilles','veille-jur':'veilles',contact:'contact'};
+function go(id){
+  pages.forEach(p=>p.classList.toggle('show',p.id===id));
+  links.forEach(l=>l.classList.toggle('on',l.dataset.p===(map[id]||id)));
+  closeMenu();
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(id==='accueil') typeTerm();
+  history.replaceState(null,'','#'+id);
+}
+const menu=document.getElementById('menu'),scrim=document.getElementById('scrim');
+function toggleMenu(){menu.classList.toggle('open');scrim.classList.toggle('show')}
+function closeMenu(){menu.classList.remove('open');scrim.classList.remove('show')}
+function btsTab(btn,id){
+  document.querySelectorAll('.bts-tab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.bts-panel').forEach(p=>p.classList.remove('on'));
+  btn.classList.add('on');document.getElementById(id).classList.add('on');
+}
+const phrases=['whoami','ipconfig /all','Get-ADUser -Filter *','ping 8.8.8.8','Administration systèmes & réseaux'];
+let pi=0,timer;
+function typeTerm(){
+  const el=document.getElementById('typed');if(!el)return;
+  clearTimeout(timer);
+  const ph=phrases[pi];let ci=0;
+  (function step(){
+    el.textContent=ph.slice(0,ci);
+    if(ci<ph.length){ci++;timer=setTimeout(step,70);}
+    else{timer=setTimeout(()=>{pi=(pi+1)%phrases.length;typeTerm();},1600);}
+  })();
+}
+window.addEventListener('DOMContentLoaded',()=>{
+  const h=location.hash.replace('#','');
+  if(h&&document.getElementById(h)&&document.getElementById(h).classList.contains('page')) go(h); else {links[0].classList.add('on');typeTerm();}
+});
+</script>
 </body>
 </html>
